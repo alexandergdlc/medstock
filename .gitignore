@@ -1,0 +1,28 @@
+# Dependencias y salidas reproducibles
+node_modules/
+dist/
+build/
+coverage/
+.wrangler/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.codex/
+.agents/*
+!.agents/skills/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
