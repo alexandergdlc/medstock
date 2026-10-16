@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P8_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P8_coll">
+    <bpmn:participant id="P8_pool" name="PR-08 Conteo y ajuste" processRef="P8" />
+  </bpmn:collaboration>
+  <bpmn:process id="P8" isExecutable="false">
+    <bpmn:laneSet id="P8_lanes">
+      <bpmn:lane id="P8_lane0" name="Operador">
+        <bpmn:flowNodeRef>P8_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P8_t1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P8_lane1" name="Aprobador distinto">
+        <bpmn:flowNodeRef>P8_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P8_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P8_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P8_lane2" name="MedStock">
+        <bpmn:flowNodeRef>P8_gate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P8_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P8_ey</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P8_start" name="Inicio">
+      <bpmn:outgoing>P8_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P8_t1" name="Registrar conteo y proponer diferencia">
+      <bpmn:incoming>P8_f0</bpmn:incoming>
+      <bpmn:outgoing>P8_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P8_t2" name="Revisar evidencia y saldo vigente">
+      <bpmn:incoming>P8_f1</bpmn:incoming>
+      <bpmn:outgoing>P8_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P8_gate" name="¿Ajuste autorizado y válido?">
+      <bpmn:incoming>P8_f2</bpmn:incoming>
+      <bpmn:outgoing>P8_f3</bpmn:outgoing>
+      <bpmn:outgoing>P8_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P8_yes" name="Confirmar compensación y auditoría">
+      <bpmn:incoming>P8_f3</bpmn:incoming>
+      <bpmn:outgoing>P8_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P8_no" name="Rechazar o pedir nuevo cálculo">
+      <bpmn:incoming>P8_f4</bpmn:incoming>
+      <bpmn:outgoing>P8_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P8_ey" name="Ajuste confirmado">
+      <bpmn:incoming>P8_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P8_en" name="Sin ajuste aplicado">
+      <bpmn:incoming>P8_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P8_f0" sourceRef="P8_start" targetRef="P8_t1" name="" />
+    <bpmn:sequenceFlow id="P8_f1" sourceRef="P8_t1" targetRef="P8_t2" name="" />
+    <bpmn:sequenceFlow id="P8_f2" sourceRef="P8_t2" targetRef="P8_gate" name="" />
+    <bpmn:sequenceFlow id="P8_f3" sourceRef="P8_gate" targetRef="P8_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P8_f4" sourceRef="P8_gate" targetRef="P8_no" name="No" />
+    <bpmn:sequenceFlow id="P8_f5" sourceRef="P8_yes" targetRef="P8_ey" name="" />
+    <bpmn:sequenceFlow id="P8_f6" sourceRef="P8_no" targetRef="P8_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P8_diagram">
+    <bpmndi:BPMNPlane id="P8_plane" bpmnElement="P8_coll">
+      <bpmndi:BPMNShape id="P8_pool_di" bpmnElement="P8_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_lane_di0" bpmnElement="P8_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_lane_di1" bpmnElement="P8_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_lane_di2" bpmnElement="P8_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P8_edge0" bpmnElement="P8_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P8_edge1" bpmnElement="P8_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="540.0" y="215.0" />
+        <di:waypoint x="540.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P8_edge2" bpmnElement="P8_f2">
+        <di:waypoint x="540.0" y="311.0" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="870.0" y="339.5" />
+        <di:waypoint x="870.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P8_edge3" bpmnElement="P8_f3">
+        <di:waypoint x="870.0" y="422.0" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P8_edge4" bpmnElement="P8_f4">
+        <di:waypoint x="897.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="660.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P8_edge5" bpmnElement="P8_f5">
+        <di:waypoint x="750.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="870.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P8_edge6" bpmnElement="P8_f6">
+        <di:waypoint x="540.0" y="671.0" />
+        <di:waypoint x="540.0" y="744.5" />
+        <di:waypoint x="540.0" y="744.5" />
+        <di:waypoint x="540.0" y="818.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P8_start_di" bpmnElement="P8_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_t1_di" bpmnElement="P8_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_t2_di" bpmnElement="P8_t2">
+        <dc:Bounds x="420.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_gate_di" bpmnElement="P8_gate">
+        <dc:Bounds x="843.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_yes_di" bpmnElement="P8_yes">
+        <dc:Bounds x="750.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_no_di" bpmnElement="P8_no">
+        <dc:Bounds x="420.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_ey_di" bpmnElement="P8_ey">
+        <dc:Bounds x="853.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P8_en_di" bpmnElement="P8_en">
+        <dc:Bounds x="523.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

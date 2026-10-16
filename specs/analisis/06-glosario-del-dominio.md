@@ -1,8 +1,8 @@
 # Glosario y significado de cantidades
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 | Término | Definición en MedStock |
 |---|---|
@@ -53,3 +53,12 @@ consumir sí produce salida. Lo reservado a una solicitud no puede consumirse de
 otra. Caducidad o bloqueo del lote impiden consumo aun con reserva previa.
 Las cantidades de distintas unidades base no se suman como un único stock operativo:
 veinte tabletas y cinco frascos son dos saldos distintos.
+
+## Términos precisados en 0.3.0
+
+- **Autorizado:** cantidad de producto aprobada para un origen y destino, conservada históricamente aunque luego se entregue o se cancele su saldo.
+- **Pendiente autorizado:** autorizado menos entregado menos cancelado después de autorizar. Incluye cantidades reservadas y todavía sin reserva.
+- **Demanda por decidir:** cantidad solicitada aún sin aprobación, rechazo ni cancelación previa a autorización; no habilita movimientos.
+- **Establecimiento central:** nodo logístico de la cadena con ubicaciones y permisos propios; no es una clínica asistencial ficticia.
+- **Salida final a servicio:** salida de custodia gestionada, distinta de un traslado entre almacenes/farmacia y distinta de administración clínica al paciente.
+- **Cobertura:** estimación del tiempo que podría cubrir un saldo según una demanda histórica identificada; exige periodo y denominador válidos.

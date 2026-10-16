@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P7_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P7_coll">
+    <bpmn:participant id="P7_pool" name="PR-07 Devolución" processRef="P7" />
+  </bpmn:collaboration>
+  <bpmn:process id="P7" isExecutable="false">
+    <bpmn:laneSet id="P7_lanes">
+      <bpmn:lane id="P7_lane0" name="Receptor de farmacia">
+        <bpmn:flowNodeRef>P7_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P7_t1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P7_lane1" name="Responsable farmacéutico">
+        <bpmn:flowNodeRef>P7_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P7_gate</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P7_lane2" name="MedStock">
+        <bpmn:flowNodeRef>P7_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P7_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P7_ey</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P7_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P7_start" name="Inicio">
+      <bpmn:outgoing>P7_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P7_t1" name="Verificar origen y recibir en cuarentena">
+      <bpmn:incoming>P7_f0</bpmn:incoming>
+      <bpmn:outgoing>P7_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P7_t2" name="Evaluar conservación por subcantidad">
+      <bpmn:incoming>P7_f1</bpmn:incoming>
+      <bpmn:outgoing>P7_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P7_gate" name="¿Se permite liberar?">
+      <bpmn:incoming>P7_f2</bpmn:incoming>
+      <bpmn:outgoing>P7_f3</bpmn:outgoing>
+      <bpmn:outgoing>P7_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P7_yes" name="Liberar solo cantidad aprobada">
+      <bpmn:incoming>P7_f3</bpmn:incoming>
+      <bpmn:outgoing>P7_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P7_no" name="Mantener segregado o pendiente con motivo">
+      <bpmn:incoming>P7_f4</bpmn:incoming>
+      <bpmn:outgoing>P7_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P7_ey" name="Decisión registrada">
+      <bpmn:incoming>P7_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P7_en" name="Custodia segregada">
+      <bpmn:incoming>P7_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P7_f0" sourceRef="P7_start" targetRef="P7_t1" name="" />
+    <bpmn:sequenceFlow id="P7_f1" sourceRef="P7_t1" targetRef="P7_t2" name="" />
+    <bpmn:sequenceFlow id="P7_f2" sourceRef="P7_t2" targetRef="P7_gate" name="" />
+    <bpmn:sequenceFlow id="P7_f3" sourceRef="P7_gate" targetRef="P7_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P7_f4" sourceRef="P7_gate" targetRef="P7_no" name="No" />
+    <bpmn:sequenceFlow id="P7_f5" sourceRef="P7_yes" targetRef="P7_ey" name="" />
+    <bpmn:sequenceFlow id="P7_f6" sourceRef="P7_no" targetRef="P7_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P7_diagram">
+    <bpmndi:BPMNPlane id="P7_plane" bpmnElement="P7_coll">
+      <bpmndi:BPMNShape id="P7_pool_di" bpmnElement="P7_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_lane_di0" bpmnElement="P7_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_lane_di1" bpmnElement="P7_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_lane_di2" bpmnElement="P7_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P7_edge0" bpmnElement="P7_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P7_edge1" bpmnElement="P7_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="540.0" y="215.0" />
+        <di:waypoint x="540.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P7_edge2" bpmnElement="P7_f2">
+        <di:waypoint x="540.0" y="311.0" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="540.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P7_edge3" bpmnElement="P7_f3">
+        <di:waypoint x="540.0" y="422.0" />
+        <di:waypoint x="540.0" y="455.5" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P7_edge4" bpmnElement="P7_f4">
+        <di:waypoint x="567.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="990.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P7_edge5" bpmnElement="P7_f5">
+        <di:waypoint x="750.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="870.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P7_edge6" bpmnElement="P7_f6">
+        <di:waypoint x="990.0" y="635.0" />
+        <di:waypoint x="1015.0" y="635.0" />
+        <di:waypoint x="1015.0" y="835.0" />
+        <di:waypoint x="887.0" y="835.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P7_start_di" bpmnElement="P7_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_t1_di" bpmnElement="P7_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_t2_di" bpmnElement="P7_t2">
+        <dc:Bounds x="420.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_gate_di" bpmnElement="P7_gate">
+        <dc:Bounds x="513.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_yes_di" bpmnElement="P7_yes">
+        <dc:Bounds x="750.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_no_di" bpmnElement="P7_no">
+        <dc:Bounds x="750.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_ey_di" bpmnElement="P7_ey">
+        <dc:Bounds x="853.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P7_en_di" bpmnElement="P7_en">
+        <dc:Bounds x="853.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

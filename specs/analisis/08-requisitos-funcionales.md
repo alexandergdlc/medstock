@@ -1,8 +1,8 @@
 # Requisitos funcionales y aceptación principal
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Convenciones del catálogo
 
@@ -82,6 +82,10 @@ implementaciones ni contar dos veces el mismo valor de negocio.
 | RF-062 | Disponer retorno rechazado | P2 | I3 | Responsable autorizado | CU-014 |
 | RF-063 | Consultar decisión y evidencia operativa | P2 | I3 | Auditor | CU-015 |
 | RF-064 | Conciliar compromisos y saldos físicos | P2 | I3 | Auditor o responsable | CU-015 |
+| RF-065 | Configurar la red de custodia | P1 | I1 | Administrador | CU-003 |
+| RF-066 | Autorizar cantidades de solicitud | P1 | I2 | Farmacia o responsable facultado | CU-019 |
+| RF-067 | Analizar cobertura y riesgo de merma | P2 | I3 | Responsable de farmacia o cadena | CU-020 |
+| RF-068 | Evaluar redistribución preventiva | P2 | I3 | Responsable de cadena | CU-020 |
 
 ## RF-001 — Acceder y cerrar sesión
 
@@ -231,7 +235,7 @@ El sistema debe: Mostrar alertas según umbrales configurados, sin crear operaci
 
 **Actor:** Solicitante. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-002. **Caso:** CU-007. **Reglas:** RN-017, RN-027, RN-016.
+**Objetivo:** OBJ-002. **Caso:** CU-007. **Reglas:** RN-017, RN-027, RN-016, RN-044.
 
 El sistema debe: Preparar y enviar cantidades requeridas por un servicio y sede, sin datos clínicos personales.
 
@@ -243,7 +247,7 @@ El sistema debe: Preparar y enviar cantidades requeridas por un servicio y sede,
 
 **Actor:** Solicitante. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-002. **Caso:** CU-007. **Reglas:** RN-015, RN-017.
+**Objetivo:** OBJ-002. **Caso:** CU-007. **Reglas:** RN-015, RN-017, RN-044.
 
 El sistema debe: Consultar estado y cancelar solo las cantidades pendientes permitidas por su estado.
 
@@ -255,7 +259,7 @@ El sistema debe: Consultar estado y cancelar solo las cantidades pendientes perm
 
 **Actor:** Farmacia. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-008, RN-009, RN-010, RN-011, RN-032.
+**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-008, RN-009, RN-010, RN-011, RN-032, RN-044.
 
 El sistema debe: Proponer asignación de lotes elegibles para una solicitud, con cantidades y faltantes.
 
@@ -267,7 +271,7 @@ El sistema debe: Proponer asignación de lotes elegibles para una solicitud, con
 
 **Actor:** Farmacia. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-011, RN-012, RN-013, RN-014.
+**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-011, RN-012, RN-013, RN-014, RN-044.
 
 El sistema debe: Confirmar la salida por lote, descontar stock y registrar documento, resultado y auditoría coherentes.
 
@@ -279,7 +283,7 @@ El sistema debe: Confirmar la salida por lote, descontar stock y registrar docum
 
 **Actor:** Farmacia. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-015.
+**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-015, RN-044.
 
 El sistema debe: Permitir atención parcial solo con aceptación explícita y conservar el remanente.
 
@@ -317,7 +321,7 @@ El sistema debe: Mostrar constancia de despacho con solicitud, servicio, respons
 
 **Objetivo:** OBJ-001. **Caso:** CU-009. **Reglas:** RN-018.
 
-El sistema debe: Crear solicitud entre ubicaciones de sedes distintas, con productos y cantidades.
+El sistema debe: Crear solicitud entre ubicaciones de custodia distintas, dentro de una sede o entre establecimientos, con productos y cantidades. Incluye central a sede y almacén de sede a farmacia; no confundir con salida final a servicio.
 
 **CA-020 — Aceptación principal:** Origen igual a destino se rechaza; enviar la solicitud de traslado no cambia saldos.
 
@@ -567,11 +571,11 @@ El sistema debe: Informar causas de rechazo y referencia de seguimiento, diferen
 
 **Actor:** Farmacia. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-015, RN-024.
+**Objetivo:** OBJ-002. **Caso:** CU-008. **Reglas:** RN-015, RN-024, RN-044.
 
 El sistema debe: Registrar la aceptación explícita de cantidad parcial, actor, fecha y remanente antes de confirmar esa salida.
 
-**CA-041 — Aceptación principal:** Dadas veinte unidades solicitadas y doce disponibles, sin aceptación no hay salida; con aceptación quedan doce entregadas y ocho pendientes, con responsable identificado.
+**CA-041 — Aceptación principal:** Dadas veinte unidades solicitadas y autorizadas, y doce disponibles, sin aceptación no hay salida; con aceptación quedan doce entregadas y ocho pendientes, con responsable identificado.
 
 **Origen y estado:** FU-001; capacidad incluida, criterios de detalle sujetos a las PP relacionadas.
 
@@ -579,11 +583,11 @@ El sistema debe: Registrar la aceptación explícita de cantidad parcial, actor,
 
 **Actor:** Solicitante y farmacia. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-002. **Caso:** CU-007. **Reglas:** RN-015, RN-017.
+**Objetivo:** OBJ-002. **Caso:** CU-007. **Reglas:** RN-015, RN-017, RN-044.
 
 El sistema debe: Permitir nuevas entregas contra el remanente y su cancelación explícita, conservando las entregas anteriores.
 
-**CA-042 — Aceptación principal:** De veinte solicitadas y doce entregadas, entregar cinco más deja tres pendientes; cancelar esas tres deja una solicitud cerrada parcialmente, no una entrega de veinte.
+**CA-042 — Aceptación principal:** De veinte solicitadas y autorizadas y doce entregadas, entregar cinco más deja tres pendientes; cancelar esas tres deja una solicitud cerrada parcialmente, no una entrega de veinte.
 
 **Origen y estado:** FU-001; capacidad incluida, criterios de detalle sujetos a las PP relacionadas.
 
@@ -591,11 +595,11 @@ El sistema debe: Permitir nuevas entregas contra el remanente y su cancelación 
 
 **Actor:** Solicitante. **Prioridad:** P1. **Incremento:** I2.
 
-**Objetivo:** OBJ-006. **Caso:** CU-007. **Reglas:** RN-015, RN-033.
+**Objetivo:** OBJ-006. **Caso:** CU-007. **Reglas:** RN-015, RN-033, RN-044.
 
-El sistema debe: Mostrar por línea cantidades solicitadas, entregadas, canceladas, pendientes y reservadas vigentes cuando exista reserva.
+El sistema debe: Mostrar por línea solicitado, por decidir, rechazado, autorizado, entregado, cancelado antes/después de autorizar, pendiente autorizado y reserva vigente. Identificar urgencia y avisar al responsable si queda saldo urgente; la reserva no reduce otra vez el pendiente.
 
-**CA-043 — Aceptación principal:** Una solicitud con veinte solicitadas, doce entregadas, dos canceladas y cuatro reservadas muestra seis pendientes, cuatro de ellos comprometidos; no resta la reserva otra vez del pendiente.
+**CA-043 — Aceptación principal:** Una solicitud con veinte solicitadas y autorizadas, doce entregadas, dos canceladas y cuatro reservadas muestra seis pendientes, cuatro de ellos comprometidos; no resta la reserva otra vez del pendiente.
 
 **Origen y estado:** FU-001; capacidad incluida, criterios de detalle sujetos a las PP relacionadas.
 
@@ -603,11 +607,11 @@ El sistema debe: Mostrar por línea cantidades solicitadas, entregadas, cancelad
 
 **Actor:** Farmacia autorizada. **Prioridad:** P2. **Incremento:** I3.
 
-**Objetivo:** OBJ-002. **Caso:** CU-017. **Reglas:** RN-016, RN-037, RN-038, RN-014.
+**Objetivo:** OBJ-002. **Caso:** CU-017. **Reglas:** RN-016, RN-037, RN-038, RN-014, RN-044.
 
-El sistema debe: Apartar cantidades contra una solicitud enviada mediante una operación explícita, asignación FEFO, vigencia finita y registro de resultado. Enviar una solicitud por sí solo no reserva.
+El sistema debe: Apartar cantidades contra el saldo de una solicitud autorizada y vigente mediante una operación explícita, asignación FEFO, vigencia finita y registro de resultado. Enviar una solicitud por sí solo no reserva.
 
-**CA-044 — Aceptación principal:** Con treinta unidades utilizables elegibles y sin reservas, reservar veinte deja físico treinta, reservado veinte y libre diez; el reintento de esa reserva no aparta otras veinte.
+**CA-044 — Aceptación principal:** Con solicitud autorizada por veinte, treinta unidades utilizables elegibles y sin reservas, reservar veinte deja físico treinta, reservado veinte y libre diez; el reintento de esa reserva no aparta otras veinte.
 
 **Origen y estado:** FU-001; capacidad incluida, criterios de detalle sujetos a las PP relacionadas.
 
@@ -651,7 +655,7 @@ El sistema debe: Hacer ineficaz una reserva al alcanzar su instante de fin y com
 
 **Actor:** Farmacia. **Prioridad:** P2. **Incremento:** I3.
 
-**Objetivo:** OBJ-002. **Caso:** CU-017. **Reglas:** RN-012, RN-013, RN-038, RN-042.
+**Objetivo:** OBJ-002. **Caso:** CU-017. **Reglas:** RN-012, RN-013, RN-038, RN-042, RN-044.
 
 El sistema debe: Usar una reserva vigente de la solicitud para confirmar entrega, descontando físico y compromiso por la misma cantidad en una unidad de negocio.
 
@@ -735,7 +739,7 @@ El sistema debe: Comprobar elegibilidad temporal tanto al reservar como al confi
 
 **Actor:** Operador habilitado. **Prioridad:** P2. **Incremento:** I3.
 
-**Objetivo:** OBJ-004. **Caso:** CU-019. **Reglas:** RN-021, RN-029, RN-040.
+**Objetivo:** OBJ-004. **Caso:** CU-019. **Reglas:** RN-021, RN-029, RN-040, RN-044.
 
 El sistema debe: Presentar para los tipos configurados una solicitud de aprobación vinculada a cantidades, lotes, motivo, evidencia y versión del documento.
 
@@ -747,7 +751,7 @@ El sistema debe: Presentar para los tipos configurados una solicitud de aprobaci
 
 **Actor:** Responsable autorizado. **Prioridad:** P2. **Incremento:** I3.
 
-**Objetivo:** OBJ-004. **Caso:** CU-019. **Reglas:** RN-002, RN-021, RN-040.
+**Objetivo:** OBJ-004. **Caso:** CU-019. **Reglas:** RN-002, RN-021, RN-040, RN-044.
 
 El sistema debe: Registrar decisión, autor, fecha y razón según tipo y ámbito, sin que aprobar ejecute por sí solo movimientos reservados para otra confirmación.
 
@@ -771,7 +775,7 @@ El sistema debe: Impedir que quien propone un ajuste o baja se otorgue la aproba
 
 **Actor:** Responsable y operador. **Prioridad:** P2. **Incremento:** I3.
 
-**Objetivo:** OBJ-004. **Caso:** CU-019. **Reglas:** RN-011, RN-040.
+**Objetivo:** OBJ-004. **Caso:** CU-019. **Reglas:** RN-011, RN-040, RN-044.
 
 El sistema debe: Exigir nueva revisión si cambia el contenido aprobado y revalidar permisos y condiciones antes de ejecutar. Una aprobación no omite controles actuales de stock.
 
@@ -850,3 +854,51 @@ El sistema debe: Contrastar cantidades físicas, elegibles, compromisos vigentes
 **CA-064 — Aceptación principal:** Una reserva expirada no reduce el libre efectivo; una cantidad consumida ya es salida física y no permanece también como compromiso activo.
 
 **Origen y estado:** FU-001; capacidad incluida, criterios de detalle sujetos a las PP relacionadas.
+
+## RF-065 — Configurar la red de custodia
+
+**Actor:** Administrador. **Prioridad:** P1. **Incremento:** I1.
+
+**Objetivo:** OBJ-001. **Caso:** CU-003. **Reglas:** RN-001, RN-002, RN-043.
+
+El sistema debe: Registrar establecimiento central, sedes clínicas y ubicaciones tipificadas, vinculando cada farmacia y servicio a su sede y permisos.
+
+**CA-065 — Aceptación principal:** Crear central y tres clínicas, cada una con almacén y farmacia, sin saldos iniciales ficticios; añadir otra farmacia o sede no requiere código.
+
+**Origen y estado:** FU-001; decisión de producto aceptada; parámetros operativos PN-002/PN-004/PN-007 pendientes.
+
+## RF-066 — Autorizar cantidades de solicitud
+
+**Actor:** Farmacia o responsable facultado. **Prioridad:** P1. **Incremento:** I2.
+
+**Objetivo:** OBJ-002. **Caso:** CU-019. **Reglas:** RN-017, RN-040, RN-044.
+
+El sistema debe: Decidir cantidades por línea y registrar versión, responsable y motivo de rechazo parcial/total; impedir reserva o despacho sin saldo autorizado. Mantener visible la demanda no autorizada.
+
+**CA-066 — Aceptación principal:** Solicitar 100 y autorizar 80 deja 20 por decidir o rechazadas según decisión explícita. Entregar 40 deja 40 autorizadas pendientes; intentar reservar o despachar 81 se rechaza. Autorizar 100 y entregar 40 deja 60 pendientes.
+
+**Origen y estado:** FU-001; decisión de producto aceptada; parámetros operativos PN-002/PN-004/PN-007 pendientes.
+
+## RF-067 — Analizar cobertura y riesgo de merma
+
+**Actor:** Responsable de farmacia o cadena. **Prioridad:** P2. **Incremento:** I3.
+
+**Objetivo:** OBJ-002. **Caso:** CU-020. **Reglas:** RN-030, RN-033, RN-045.
+
+El sistema debe: Mostrar demanda solicitada, autorizada y atendida, saldos pendientes, salidas finales, bajas por causa, libre, compromiso, antigüedad y próximos vencimientos por producto y ubicación; señalar sobrestock/baja rotación con parámetros versionados y corte.
+
+**CA-067 — Aceptación principal:** En un periodo de ensayo con 30 unidades de salidas finales y traslado interno de 50, la demanda atendida no se infla a 80. Sin historial suficiente, la cobertura se marca no calculable y no se recomienda reposición automática.
+
+**Origen y estado:** FU-001; decisión de producto aceptada; parámetros operativos PN-002/PN-004/PN-007 pendientes.
+
+## RF-068 — Evaluar redistribución preventiva
+
+**Actor:** Responsable de cadena. **Prioridad:** P2. **Incremento:** I3.
+
+**Objetivo:** OBJ-002. **Caso:** CU-020. **Reglas:** RN-008, RN-018, RN-044, RN-046.
+
+El sistema debe: Preparar propuesta trazable de redistribución, con origen/destino, lotes, cantidad, demanda, restricciones y fundamento. Registrar aceptación o descarte y vincular traslado sujeto a autorización.
+
+**CA-068 — Aceptación principal:** De 100 elegibles con 80 comprometidas, no proponer más de 20 libres. Aceptar la propuesta no cambia saldos; si se bloquea el lote antes de expedir, el traslado no sale.
+
+**Origen y estado:** FU-001; decisión de producto aceptada; parámetros operativos PN-002/PN-004/PN-007 pendientes.

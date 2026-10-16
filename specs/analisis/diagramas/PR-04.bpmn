@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P4_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P4_coll">
+    <bpmn:participant id="P4_pool" name="PR-04 Solicitud" processRef="P4" />
+  </bpmn:collaboration>
+  <bpmn:process id="P4" isExecutable="false">
+    <bpmn:laneSet id="P4_lanes">
+      <bpmn:lane id="P4_lane0" name="Responsable de servicio">
+        <bpmn:flowNodeRef>P4_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P4_t1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P4_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P4_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P4_lane1" name="Farmacia" />
+      <bpmn:lane id="P4_lane2" name="MedStock">
+        <bpmn:flowNodeRef>P4_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P4_gate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P4_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P4_ey</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P4_start" name="Inicio">
+      <bpmn:outgoing>P4_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P4_t1" name="Crear líneas y prioridad">
+      <bpmn:incoming>P4_f0</bpmn:incoming>
+      <bpmn:outgoing>P4_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P4_t2" name="Validar datos y ámbito">
+      <bpmn:incoming>P4_f1</bpmn:incoming>
+      <bpmn:outgoing>P4_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P4_gate" name="¿Datos válidos?">
+      <bpmn:incoming>P4_f2</bpmn:incoming>
+      <bpmn:outgoing>P4_f3</bpmn:outgoing>
+      <bpmn:outgoing>P4_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P4_yes" name="Enviar demanda sin reserva">
+      <bpmn:incoming>P4_f3</bpmn:incoming>
+      <bpmn:outgoing>P4_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P4_no" name="Informar correcciones requeridas">
+      <bpmn:incoming>P4_f4</bpmn:incoming>
+      <bpmn:outgoing>P4_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P4_ey" name="Pendiente de autorización">
+      <bpmn:incoming>P4_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P4_en" name="Borrador por corregir">
+      <bpmn:incoming>P4_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P4_f0" sourceRef="P4_start" targetRef="P4_t1" name="" />
+    <bpmn:sequenceFlow id="P4_f1" sourceRef="P4_t1" targetRef="P4_t2" name="" />
+    <bpmn:sequenceFlow id="P4_f2" sourceRef="P4_t2" targetRef="P4_gate" name="" />
+    <bpmn:sequenceFlow id="P4_f3" sourceRef="P4_gate" targetRef="P4_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P4_f4" sourceRef="P4_gate" targetRef="P4_no" name="No" />
+    <bpmn:sequenceFlow id="P4_f5" sourceRef="P4_yes" targetRef="P4_ey" name="" />
+    <bpmn:sequenceFlow id="P4_f6" sourceRef="P4_no" targetRef="P4_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P4_diagram">
+    <bpmndi:BPMNPlane id="P4_plane" bpmnElement="P4_coll">
+      <bpmndi:BPMNShape id="P4_pool_di" bpmnElement="P4_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_lane_di0" bpmnElement="P4_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_lane_di1" bpmnElement="P4_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_lane_di2" bpmnElement="P4_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P4_edge0" bpmnElement="P4_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P4_edge1" bpmnElement="P4_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="870.0" y="215.0" />
+        <di:waypoint x="870.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P4_edge2" bpmnElement="P4_f2">
+        <di:waypoint x="870.0" y="311.0" />
+        <di:waypoint x="870.0" y="339.5" />
+        <di:waypoint x="870.0" y="339.5" />
+        <di:waypoint x="870.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P4_edge3" bpmnElement="P4_f3">
+        <di:waypoint x="870.0" y="422.0" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P4_edge4" bpmnElement="P4_f4">
+        <di:waypoint x="897.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="330.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P4_edge5" bpmnElement="P4_f5">
+        <di:waypoint x="750.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="870.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P4_edge6" bpmnElement="P4_f6">
+        <di:waypoint x="210.0" y="671.0" />
+        <di:waypoint x="210.0" y="744.5" />
+        <di:waypoint x="210.0" y="744.5" />
+        <di:waypoint x="210.0" y="818.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P4_start_di" bpmnElement="P4_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_t1_di" bpmnElement="P4_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_t2_di" bpmnElement="P4_t2">
+        <dc:Bounds x="750.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_gate_di" bpmnElement="P4_gate">
+        <dc:Bounds x="843.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_yes_di" bpmnElement="P4_yes">
+        <dc:Bounds x="750.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_no_di" bpmnElement="P4_no">
+        <dc:Bounds x="90.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_ey_di" bpmnElement="P4_ey">
+        <dc:Bounds x="853.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P4_en_di" bpmnElement="P4_en">
+        <dc:Bounds x="193.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

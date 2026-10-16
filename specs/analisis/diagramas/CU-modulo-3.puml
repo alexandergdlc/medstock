@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+title Logística y corrección
+rectangle MedStock {
+usecase "CU-009: Expedir traslado" as CU009
+usecase "CU-010: Recibir y resolver traslado" as CU010
+usecase "CU-011: Recibir y evaluar devolución" as CU011
+usecase "CU-012: Contar y ajustar" as CU012
+usecase "CU-013: Bloquear, liberar o retirar lote" as CU013
+usecase "CU-014: Registrar baja o compensación" as CU014
+}
+actor "Responsable de origen y operador autorizado." as A0
+A0 -- CU009
+actor "Receptor de destino y responsable autorizado." as A1
+A1 -- CU010
+actor "Receptor y responsable farmacéutico." as A2
+A2 -- CU011
+actor "Operador y aprobador distinto." as A3
+A3 -- CU012
+actor "Responsable farmacéutico/central." as A4
+A4 -- CU013
+actor "Responsable autorizado." as A5
+A5 -- CU014
+@enduml

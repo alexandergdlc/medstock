@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P1_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P1_coll">
+    <bpmn:participant id="P1_pool" name="PR-01 Organización y catálogo" processRef="P1" />
+  </bpmn:collaboration>
+  <bpmn:process id="P1" isExecutable="false">
+    <bpmn:laneSet id="P1_lanes">
+      <bpmn:lane id="P1_lane0" name="Administrador">
+        <bpmn:flowNodeRef>P1_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_t1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P1_lane1" name="Gestor de catálogo">
+        <bpmn:flowNodeRef>P1_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P1_lane2" name="MedStock">
+        <bpmn:flowNodeRef>P1_gate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_ey</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P1_start" name="Inicio">
+      <bpmn:outgoing>P1_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P1_t1" name="Definir establecimiento y ubicaciones">
+      <bpmn:incoming>P1_f0</bpmn:incoming>
+      <bpmn:outgoing>P1_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P1_t2" name="Revisar códigos y unidades">
+      <bpmn:incoming>P1_f1</bpmn:incoming>
+      <bpmn:outgoing>P1_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P1_gate" name="¿Datos válidos?">
+      <bpmn:incoming>P1_f2</bpmn:incoming>
+      <bpmn:outgoing>P1_f3</bpmn:outgoing>
+      <bpmn:outgoing>P1_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P1_yes" name="Registrar configuración sin stock ficticio">
+      <bpmn:incoming>P1_f3</bpmn:incoming>
+      <bpmn:outgoing>P1_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P1_no" name="Corregir duplicado o conversión">
+      <bpmn:incoming>P1_f4</bpmn:incoming>
+      <bpmn:outgoing>P1_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P1_ey" name="Configuración disponible">
+      <bpmn:incoming>P1_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P1_en" name="Corrección pendiente">
+      <bpmn:incoming>P1_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P1_f0" sourceRef="P1_start" targetRef="P1_t1" name="" />
+    <bpmn:sequenceFlow id="P1_f1" sourceRef="P1_t1" targetRef="P1_t2" name="" />
+    <bpmn:sequenceFlow id="P1_f2" sourceRef="P1_t2" targetRef="P1_gate" name="" />
+    <bpmn:sequenceFlow id="P1_f3" sourceRef="P1_gate" targetRef="P1_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P1_f4" sourceRef="P1_gate" targetRef="P1_no" name="No" />
+    <bpmn:sequenceFlow id="P1_f5" sourceRef="P1_yes" targetRef="P1_ey" name="" />
+    <bpmn:sequenceFlow id="P1_f6" sourceRef="P1_no" targetRef="P1_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P1_diagram">
+    <bpmndi:BPMNPlane id="P1_plane" bpmnElement="P1_coll">
+      <bpmndi:BPMNShape id="P1_pool_di" bpmnElement="P1_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_lane_di0" bpmnElement="P1_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_lane_di1" bpmnElement="P1_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_lane_di2" bpmnElement="P1_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P1_edge0" bpmnElement="P1_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P1_edge1" bpmnElement="P1_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="540.0" y="215.0" />
+        <di:waypoint x="540.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P1_edge2" bpmnElement="P1_f2">
+        <di:waypoint x="540.0" y="311.0" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="870.0" y="339.5" />
+        <di:waypoint x="870.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P1_edge3" bpmnElement="P1_f3">
+        <di:waypoint x="870.0" y="422.0" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P1_edge4" bpmnElement="P1_f4">
+        <di:waypoint x="897.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="660.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P1_edge5" bpmnElement="P1_f5">
+        <di:waypoint x="750.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="870.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P1_edge6" bpmnElement="P1_f6">
+        <di:waypoint x="540.0" y="671.0" />
+        <di:waypoint x="540.0" y="744.5" />
+        <di:waypoint x="540.0" y="744.5" />
+        <di:waypoint x="540.0" y="818.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P1_start_di" bpmnElement="P1_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_t1_di" bpmnElement="P1_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_t2_di" bpmnElement="P1_t2">
+        <dc:Bounds x="420.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_gate_di" bpmnElement="P1_gate">
+        <dc:Bounds x="843.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_yes_di" bpmnElement="P1_yes">
+        <dc:Bounds x="750.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_no_di" bpmnElement="P1_no">
+        <dc:Bounds x="420.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_ey_di" bpmnElement="P1_ey">
+        <dc:Bounds x="853.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_en_di" bpmnElement="P1_en">
+        <dc:Bounds x="523.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

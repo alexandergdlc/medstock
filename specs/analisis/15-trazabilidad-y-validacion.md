@@ -1,8 +1,8 @@
 # Trazabilidad y plan de validación de requisitos
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Matriz funcional completa
 
@@ -26,11 +26,11 @@ las PP se vinculan desde RN y el registro 14.
 | OBJ-002 | RF-010 | RN-002, RN-008 | CU-006 | CA-010 | I1 |
 | OBJ-003 | RF-011 | RN-024, RN-033 | CU-006 | CA-011 | I1 |
 | OBJ-002 | RF-012 | RN-009, RN-030 | CU-006 | CA-012 | I3 |
-| OBJ-002 | RF-013 | RN-017, RN-027, RN-016 | CU-007 | CA-013 | I2 |
-| OBJ-002 | RF-014 | RN-015, RN-017 | CU-007 | CA-014 | I2 |
-| OBJ-002 | RF-015 | RN-008, RN-009, RN-010, RN-011, RN-032 | CU-008 | CA-015 | I2 |
-| OBJ-002 | RF-016 | RN-011, RN-012, RN-013, RN-014 | CU-008 | CA-016 | I2 |
-| OBJ-002 | RF-017 | RN-015 | CU-008 | CA-017 | I2 |
+| OBJ-002 | RF-013 | RN-017, RN-027, RN-016, RN-044 | CU-007 | CA-013 | I2 |
+| OBJ-002 | RF-014 | RN-015, RN-017, RN-044 | CU-007 | CA-014 | I2 |
+| OBJ-002 | RF-015 | RN-008, RN-009, RN-010, RN-011, RN-032, RN-044 | CU-008 | CA-015 | I2 |
+| OBJ-002 | RF-016 | RN-011, RN-012, RN-013, RN-014, RN-044 | CU-008 | CA-016 | I2 |
+| OBJ-002 | RF-017 | RN-015, RN-044 | CU-008 | CA-017 | I2 |
 | OBJ-003 | RF-018 | RN-014, RN-034 | CU-008 | CA-018 | I2 |
 | OBJ-003 | RF-019 | RN-024, RN-035, RN-036 | CU-008 | CA-019 | I2 |
 | OBJ-001 | RF-020 | RN-018 | CU-009 | CA-020 | I3 |
@@ -54,43 +54,49 @@ las PP se vinculan desde RN y el registro 14.
 | OBJ-004 | RF-038 | RN-024, RN-025, RN-029 | CU-002 | CA-038 | I1 |
 | OBJ-003 | RF-039 | RN-012, RN-031 | CU-015 | CA-039 | I2 |
 | OBJ-006 | RF-040 | RN-014, RN-034 | CU-001 | CA-040 | I1 |
-| OBJ-002 | RF-041 | RN-015, RN-024 | CU-008 | CA-041 | I2 |
-| OBJ-002 | RF-042 | RN-015, RN-017 | CU-007 | CA-042 | I2 |
-| OBJ-006 | RF-043 | RN-015, RN-033 | CU-007 | CA-043 | I2 |
-| OBJ-002 | RF-044 | RN-016, RN-037, RN-038, RN-014 | CU-017 | CA-044 | I3 |
+| OBJ-002 | RF-041 | RN-015, RN-024, RN-044 | CU-008 | CA-041 | I2 |
+| OBJ-002 | RF-042 | RN-015, RN-017, RN-044 | CU-007 | CA-042 | I2 |
+| OBJ-006 | RF-043 | RN-015, RN-033, RN-044 | CU-007 | CA-043 | I2 |
+| OBJ-002 | RF-044 | RN-016, RN-037, RN-038, RN-014, RN-044 | CU-017 | CA-044 | I3 |
 | OBJ-002 | RF-045 | RN-037, RN-033 | CU-017 | CA-045 | I3 |
 | OBJ-002 | RF-046 | RN-014, RN-037, RN-039 | CU-017 | CA-046 | I3 |
 | OBJ-002 | RF-047 | RN-028, RN-039 | CU-017 | CA-047 | I3 |
-| OBJ-002 | RF-048 | RN-012, RN-013, RN-038, RN-042 | CU-017 | CA-048 | I3 |
+| OBJ-002 | RF-048 | RN-012, RN-013, RN-038, RN-042, RN-044 | CU-017 | CA-048 | I3 |
 | OBJ-002 | RF-049 | RN-008, RN-022, RN-039 | CU-017 | CA-049 | I3 |
 | OBJ-003 | RF-050 | RN-024, RN-039, RN-042 | CU-017 | CA-050 | I3 |
 | OBJ-002 | RF-051 | RN-006, RN-009 | CU-018 | CA-051 | I1 |
 | OBJ-002 | RF-052 | RN-009, RN-028, RN-040 | CU-018 | CA-052 | I1 |
 | OBJ-002 | RF-053 | RN-009, RN-030 | CU-018 | CA-053 | I3 |
 | OBJ-002 | RF-054 | RN-009, RN-011, RN-038 | CU-018 | CA-054 | I2 |
-| OBJ-004 | RF-055 | RN-021, RN-029, RN-040 | CU-019 | CA-055 | I3 |
-| OBJ-004 | RF-056 | RN-002, RN-021, RN-040 | CU-019 | CA-056 | I3 |
+| OBJ-004 | RF-055 | RN-021, RN-029, RN-040, RN-044 | CU-019 | CA-055 | I3 |
+| OBJ-004 | RF-056 | RN-002, RN-021, RN-040, RN-044 | CU-019 | CA-056 | I3 |
 | OBJ-004 | RF-057 | RN-021, RN-029 | CU-019 | CA-057 | I3 |
-| OBJ-004 | RF-058 | RN-011, RN-040 | CU-019 | CA-058 | I3 |
+| OBJ-004 | RF-058 | RN-011, RN-040, RN-044 | CU-019 | CA-058 | I3 |
 | OBJ-003 | RF-059 | RN-020, RN-041 | CU-011 | CA-059 | I3 |
 | OBJ-003 | RF-060 | RN-013, RN-014, RN-020 | CU-011 | CA-060 | I3 |
 | OBJ-002 | RF-061 | RN-008, RN-020, RN-041 | CU-011 | CA-061 | I3 |
 | OBJ-003 | RF-062 | RN-021, RN-023, RN-041 | CU-014 | CA-062 | I3 |
 | OBJ-003 | RF-063 | RN-024, RN-033, RN-040, RN-041 | CU-015 | CA-063 | I3 |
 | OBJ-003 | RF-064 | RN-031, RN-037, RN-042 | CU-015 | CA-064 | I3 |
+| OBJ-001 | RF-065 | RN-001, RN-002, RN-043 | CU-003 | CA-065 | I1 |
+| OBJ-002 | RF-066 | RN-017, RN-040, RN-044 | CU-019 | CA-066 | I2 |
+| OBJ-002 | RF-067 | RN-030, RN-033, RN-045 | CU-020 | CA-067 | I3 |
+| OBJ-002 | RF-068 | RN-008, RN-018, RN-044, RN-046 | CU-020 | CA-068 | I3 |
 
 ## Cobertura de reglas
 
 | Regla | Requisitos relacionados |
 | --- | --- |
-| RN-001 | RF-003, RF-004 |
-| RN-002 | RF-001, RF-002, RF-004, RF-010, RF-035, RF-056 |
+
+
+| RN-001 | RF-003, RF-004, RF-065 |
+| RN-002 | RF-001, RF-002, RF-004, RF-010, RF-035, RF-056, RF-065 |
 | RN-003 | RF-005 |
 | RN-004 | RF-006 |
 | RN-005 | RF-006 |
 | RN-006 | RF-008, RF-051 |
 | RN-007 | RF-007, RF-008, RF-009 |
-| RN-008 | RF-010, RF-015, RF-025, RF-049, RF-061 |
+| RN-008 | RF-010, RF-015, RF-025, RF-049, RF-061, RF-068 |
 | RN-009 | RF-008, RF-012, RF-015, RF-051, RF-052, RF-053, RF-054 |
 | RN-010 | RF-015, RF-021 |
 | RN-011 | RF-015, RF-016, RF-028, RF-054, RF-058 |
@@ -99,8 +105,8 @@ las PP se vinculan desde RN y el registro 14.
 | RN-014 | RF-009, RF-016, RF-018, RF-021, RF-022, RF-040, RF-044, RF-046, RF-060 |
 | RN-015 | RF-014, RF-017, RF-041, RF-042, RF-043 |
 | RN-016 | RF-013, RF-044 |
-| RN-017 | RF-013, RF-014, RF-042 |
-| RN-018 | RF-020, RF-021, RF-022 |
+| RN-017 | RF-013, RF-014, RF-042, RF-066 |
+| RN-018 | RF-020, RF-021, RF-022, RF-068 |
 | RN-019 | RF-022, RF-023 |
 | RN-020 | RF-024, RF-025, RF-031, RF-059, RF-060, RF-061 |
 | RN-021 | RF-023, RF-026, RF-027, RF-030, RF-055, RF-056, RF-057, RF-062 |
@@ -112,23 +118,27 @@ las PP se vinculan desde RN y el registro 14.
 | RN-027 | RF-013 |
 | RN-028 | RF-037, RF-047, RF-052 |
 | RN-029 | RF-002, RF-038, RF-055, RF-057 |
-| RN-030 | RF-012, RF-037, RF-053 |
+| RN-030 | RF-012, RF-037, RF-053, RF-067 |
 | RN-031 | RF-023, RF-026, RF-034, RF-039, RF-064 |
 | RN-032 | RF-015 |
-| RN-033 | RF-011, RF-032, RF-034, RF-035, RF-043, RF-045, RF-063 |
+| RN-033 | RF-011, RF-032, RF-034, RF-035, RF-043, RF-045, RF-063, RF-067 |
 | RN-034 | RF-018, RF-040 |
 | RN-035 | RF-019 |
 | RN-036 | RF-019 |
 | RN-037 | RF-044, RF-045, RF-046, RF-064 |
 | RN-038 | RF-044, RF-048, RF-054 |
 | RN-039 | RF-046, RF-047, RF-049, RF-050 |
-| RN-040 | RF-052, RF-055, RF-056, RF-058, RF-063 |
+| RN-040 | RF-052, RF-055, RF-056, RF-058, RF-063, RF-066 |
 | RN-041 | RF-059, RF-061, RF-062, RF-063 |
 | RN-042 | RF-048, RF-050, RF-064 |
+| RN-043 | RF-065 |
+| RN-044 | RF-013, RF-014, RF-015, RF-016, RF-017, RF-041, RF-042, RF-043, RF-044, RF-048, RF-055, RF-056, RF-058, RF-066, RF-068 |
+| RN-045 | RF-067 |
+| RN-046 | RF-068 |
 
 ## Escenarios adicionales de frontera y fallo
 
-Son especificaciones de pruebas futuras, no resultados ejecutados. Cada ensayo debe
+Los escenarios de reserva/despacho presuponen demanda autorizada por cantidad suficiente, salvo ensayo explícito de rechazo de autorización. Son especificaciones de pruebas futuras, no resultados ejecutados. Cada ensayo debe
 registrar fixture, identidad de operaciones, intercalación/fallo y conciliación final.
 
 | ID | RF | Dado | Cuando | Entonces |

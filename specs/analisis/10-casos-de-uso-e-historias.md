@@ -1,8 +1,8 @@
 # Casos de uso y recorridos del usuario
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Catálogo y uso
 
@@ -63,7 +63,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Entrada/disparador:** Nueva sede/ubicación o solicitud de cierre. **Postcondición:** Estructura vigente y referencias conservadas.
 
-**Requisitos:** RF-003, RF-004, RF-036.
+**Requisitos:** RF-003, RF-004, RF-036, RF-065.
 
 **Flujo principal:**
 
@@ -158,7 +158,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 **Flujo principal:**
 
 1. Crear borrador sin datos personales clínicos.
-2. Revisar cantidades y enviar.
+2. Revisar cantidades y enviar sin comprometer stock; consultar decisión y saldo autorizado.
 3. Consultar avance y cancelar pendiente cuando proceda.
 
 **Alternativas y errores:**
@@ -171,7 +171,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Actor:** Farmacia.
 
-**Precondiciones:** Solicitud enviada y permiso de salida.
+**Precondiciones:** Solicitud autorizada vigente y permiso de salida.
 
 **Entrada/disparador:** Identidad de operación, cantidad y aceptación parcial. **Postcondición:** Despacho confirmado con remanente y constancia.
 
@@ -179,7 +179,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Flujo principal:**
 
-1. Revisar servicio, pendiente y elegibilidad.
+1. Revisar servicio, autorización vigente, pendiente autorizado y elegibilidad.
 2. Proponer asignación FEFO de lotes.
 3. Registrar aceptación parcial si corresponde.
 4. Revalidar permisos, lotes y saldos al confirmar.
@@ -198,7 +198,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Actor:** Responsable de origen y operador autorizado.
 
-**Precondiciones:** Origen/destino activos distintos.
+**Precondiciones:** Ubicaciones de custodia activas distintas, de la misma sede o de establecimientos diferentes.
 
 **Entrada/disparador:** Solicitud, autorización y líneas. **Postcondición:** Unidades en tránsito y salida de origen.
 
@@ -392,7 +392,7 @@ la relación historia → CU → RF → RN → CA de 15.
 
 **Actor:** Farmacia autorizada; expiración disparada por tiempo operativo.
 
-**Precondiciones:** Solicitud enviada, sede habilitada, duración finita configurada y lotes elegibles.
+**Precondiciones:** Solicitud autorizada vigente, sede habilitada, duración finita configurada y lotes elegibles.
 
 **Entrada/disparador:** Cantidad a comprometer, identidad y fin de reserva. **Postcondición:** Compromiso o consumo/liberación coherente sin efecto duplicado.
 
@@ -400,7 +400,7 @@ la relación historia → CU → RF → RN → CA de 15.
 
 **Flujo principal:**
 
-1. Consultar pendiente y libre elegible sin usar una vista antigua como garantía.
+1. Comprobar autorización de la demanda, saldo autorizado pendiente y libre elegible sin usar una vista antigua como garantía.
 2. Crear explícitamente reserva por lote mediante FEFO; confirmar compromiso y registro juntos.
 3. Mostrar asignación, fin, remanente y propietario de la solicitud.
 4. Al despachar, revalidar identidad, tiempo, lote y cantidad y consumir físico/compromiso juntos.
@@ -447,7 +447,7 @@ la relación historia → CU → RF → RN → CA de 15.
 
 **Entrada/disparador:** Documento/versiones, cantidades, lotes, motivo y evidencia. **Postcondición:** Decisión recuperable y ejecución sobre contenido vigente.
 
-**Requisitos:** RF-055, RF-056, RF-057, RF-058.
+**Requisitos:** RF-055, RF-056, RF-057, RF-058, RF-066.
 
 **Flujo principal:**
 
@@ -463,3 +463,32 @@ la relación historia → CU → RF → RN → CA de 15.
 - Otra sede o permiso revocado: no aprobar/ejecutar.
 - Cambia cantidad/lote/contenido significativo: nueva revisión, no reutilizar aprobación.
 - Saldo insuficiente al ejecutar: rechazo coherente aunque hubiera aprobación previa.
+
+## CU-020 — Evaluar riesgo y redistribución
+
+**Actor:** Responsable de farmacia o cadena.
+
+**Precondiciones:** Permisos de lectura, periodo y política de indicadores identificados.
+
+**Entrada/disparador:** Revisión de sobrestock, vencimientos o demanda pendiente.
+**Postcondición:** Riesgos informados y propuesta decidida, sin movimiento automático.
+
+**Requisitos:** RF-067, RF-068.
+
+**Flujo principal:**
+
+1. Consultar saldos, demanda, salidas finales y vencimientos con corte y ámbito.
+2. Evaluar historial y señalar cobertura no calculable cuando corresponda.
+3. Comparar origen libre elegible con necesidad y restricciones del destino.
+4. Revisar propuesta y registrar aceptación o descarte con motivo.
+5. Si se acepta, iniciar traslado vinculado, sujeto a autorización y revalidación al expedir.
+
+**Alternativas y errores:**
+
+- Historial insuficiente o cero demanda: mostrar limitación, no falsa cobertura segura.
+- Lote bloqueado, reservado o tiempo de traslado incompatible: excluir o pedir revisión.
+- Stock cambia después de propuesta: revalidar antes de expedir.
+- No incrementar consumo aparente con traslados, bajas o ajustes.
+
+
+Diagramas complementarios: [actividades de cada caso](21-diagramas-de-casos-de-uso.md) y [vista UML por módulo](23-diagramas-uml-de-casos-de-uso.md).

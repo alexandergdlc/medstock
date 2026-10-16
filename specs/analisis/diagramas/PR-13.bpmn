@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P13_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P13_coll">
+    <bpmn:participant id="P13_pool" name="PR-13 Autorización" processRef="P13" />
+  </bpmn:collaboration>
+  <bpmn:process id="P13" isExecutable="false">
+    <bpmn:laneSet id="P13_lanes">
+      <bpmn:lane id="P13_lane0" name="Solicitante">
+        <bpmn:flowNodeRef>P13_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P13_t1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P13_lane1" name="Responsable autorizado">
+        <bpmn:flowNodeRef>P13_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P13_gate</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P13_lane2" name="MedStock">
+        <bpmn:flowNodeRef>P13_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P13_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P13_ey</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P13_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P13_start" name="Inicio">
+      <bpmn:outgoing>P13_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P13_t1" name="Presentar contenido y versión">
+      <bpmn:incoming>P13_f0</bpmn:incoming>
+      <bpmn:outgoing>P13_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P13_t2" name="Revisar ámbito cantidades y evidencia">
+      <bpmn:incoming>P13_f1</bpmn:incoming>
+      <bpmn:outgoing>P13_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P13_gate" name="¿Autoriza?">
+      <bpmn:incoming>P13_f2</bpmn:incoming>
+      <bpmn:outgoing>P13_f3</bpmn:outgoing>
+      <bpmn:outgoing>P13_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P13_yes" name="Registrar decisión y techo autorizado">
+      <bpmn:incoming>P13_f3</bpmn:incoming>
+      <bpmn:outgoing>P13_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P13_no" name="Registrar rechazo y motivo por línea">
+      <bpmn:incoming>P13_f4</bpmn:incoming>
+      <bpmn:outgoing>P13_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P13_ey" name="Autorizado sin movimiento físico">
+      <bpmn:incoming>P13_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P13_en" name="Rechazo registrado">
+      <bpmn:incoming>P13_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P13_f0" sourceRef="P13_start" targetRef="P13_t1" name="" />
+    <bpmn:sequenceFlow id="P13_f1" sourceRef="P13_t1" targetRef="P13_t2" name="" />
+    <bpmn:sequenceFlow id="P13_f2" sourceRef="P13_t2" targetRef="P13_gate" name="" />
+    <bpmn:sequenceFlow id="P13_f3" sourceRef="P13_gate" targetRef="P13_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P13_f4" sourceRef="P13_gate" targetRef="P13_no" name="No" />
+    <bpmn:sequenceFlow id="P13_f5" sourceRef="P13_yes" targetRef="P13_ey" name="" />
+    <bpmn:sequenceFlow id="P13_f6" sourceRef="P13_no" targetRef="P13_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P13_diagram">
+    <bpmndi:BPMNPlane id="P13_plane" bpmnElement="P13_coll">
+      <bpmndi:BPMNShape id="P13_pool_di" bpmnElement="P13_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_lane_di0" bpmnElement="P13_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_lane_di1" bpmnElement="P13_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_lane_di2" bpmnElement="P13_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P13_edge0" bpmnElement="P13_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P13_edge1" bpmnElement="P13_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="540.0" y="215.0" />
+        <di:waypoint x="540.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P13_edge2" bpmnElement="P13_f2">
+        <di:waypoint x="540.0" y="311.0" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="540.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P13_edge3" bpmnElement="P13_f3">
+        <di:waypoint x="540.0" y="422.0" />
+        <di:waypoint x="540.0" y="455.5" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P13_edge4" bpmnElement="P13_f4">
+        <di:waypoint x="567.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="990.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P13_edge5" bpmnElement="P13_f5">
+        <di:waypoint x="750.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="870.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P13_edge6" bpmnElement="P13_f6">
+        <di:waypoint x="990.0" y="635.0" />
+        <di:waypoint x="1015.0" y="635.0" />
+        <di:waypoint x="1015.0" y="835.0" />
+        <di:waypoint x="887.0" y="835.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P13_start_di" bpmnElement="P13_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_t1_di" bpmnElement="P13_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_t2_di" bpmnElement="P13_t2">
+        <dc:Bounds x="420.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_gate_di" bpmnElement="P13_gate">
+        <dc:Bounds x="513.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_yes_di" bpmnElement="P13_yes">
+        <dc:Bounds x="750.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_no_di" bpmnElement="P13_no">
+        <dc:Bounds x="750.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_ey_di" bpmnElement="P13_ey">
+        <dc:Bounds x="853.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P13_en_di" bpmnElement="P13_en">
+        <dc:Bounds x="853.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

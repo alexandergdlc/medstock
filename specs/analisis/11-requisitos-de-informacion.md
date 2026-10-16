@@ -1,8 +1,8 @@
 # Información, validaciones e integraciones
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Diccionario conceptual de información
 
@@ -12,7 +12,7 @@ mantienen los valores aplicados entonces para no reescribir el pasado.
 
 | Concepto | Información mínima | Validación | Relaciones / sensibilidad |
 |---|---|---|---|
-| Sede | Código, nombre, zona horaria, estado | Código único; cierre sin pendientes | Ubicaciones y permisos; sin datos clínicos |
+| Sede/establecimiento | Código, nombre, tipo central logístico o clínica, zona horaria, estado | Código único; cierre sin pendientes | Ubicaciones y permisos; sin datos clínicos |
 | Ubicación | Código, sede, clase, estado | Una sede o ámbito de tránsito definido | Existencias y movimientos |
 | Servicio | Código, sede, responsable | Ámbito vigente | Solicitudes; no historia clínica |
 | Usuario | Identidad, estado y asignaciones | Activo y permiso por operación | Datos de personal; acceso limitado |
@@ -22,8 +22,8 @@ mantienen los valores aplicados entonces para no reescribir el pasado.
 | Existencia | Lote, ubicación, condición, cantidad y corte | Cantidad no negativa; condición reconocida | No sumar distintas unidades |
 | Procedencia | Proveedor/origen y referencia controlada | Documento identificable | Recepción; evitar datos personales innecesarios |
 | Recepción/línea | Número, procedencia, ubicación, lotes, cantidad, evaluación, autor | Total convertido y confirmación coherente | Genera entrada por condición |
-| Solicitud/línea | Servicio, solicitante, producto, solicitado, entregado, cancelado y estado | Cantidades consistentes con RN-017 | Uno o varios despachos |
-| Despacho/línea | Solicitud, sede, operador, lote, cantidad y destino | Entrega acumulada <= solicitado | Constancia; no pacientes |
+| Solicitud/línea | Servicio, solicitante, producto, solicitado, por decidir, rechazado, autorizado, entregado, cancelado antes/después de autorizar, pendiente autorizado, prioridad y estado | Cantidades consistentes con RN-017 | Uno o varios despachos |
+| Despacho/línea | Solicitud, sede, operador, lote, cantidad y destino | Entrega acumulada <= autorizado <= solicitado | Constancia; no pacientes |
 | Traslado/línea | Origen, destino, autorización, lote, expedido, recibido y diferencia | Conservación y límite por pendiente | Tránsito y recepciones |
 | Devolución/línea | Despacho original, lote, cantidad, evaluación y evaluador | Límite acumulado retornable | Cuarentena y decisión |
 | Conteo/ajuste | Corte, físico, saldo, diferencia, motivo, evidencia, solicitante y aprobador | Revalidar al aprobar; aprobador distinto | Compensación vinculada |
@@ -80,3 +80,16 @@ Los compromisos se registran como asignaciones y eventos, no como recepciones f�
 El detalle temporal de reserva requiere zona/instante inequívoco; el navegador no
 es autoridad del tiempo. El almacenamiento de evidencias no obliga a elegir un
 servicio concreto en análisis.
+
+## Información para prevención de merma
+
+RF-067 conserva periodo, corte, ventana de demanda, mínimos/máximos configurados,
+libre, comprometido, salidas finales, demanda pendiente y bajas por causa. Cobertura
+candidata = libre elegible / promedio diario de salidas finales del periodo; sin
+días observados suficientes o denominador cero se informa no calculable. Se muestra
+la limitación: las salidas históricas no capturan por sí solas demanda insatisfecha.
+No sumar unidades de productos diferentes como una cobertura global.
+
+RF-068 conserva versión de datos, origen/destino, lote, cantidad propuesta, evidencia
+de necesidad, conservación, plazo de transporte y decisión. La propuesta vincula el
+traslado real; una alerta o propuesta no es una reserva ni un movimiento.

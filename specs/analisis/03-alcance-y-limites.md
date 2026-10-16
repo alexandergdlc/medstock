@@ -1,8 +1,8 @@
 # Alcance, límites y entregas incrementales
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Frontera funcional
 
@@ -37,7 +37,7 @@ El alcance se ampliará mediante requisitos y revisión, no por un cambio oculto
 | Incremento | Valor demostrable | Grupos de capacidades |
 |---|---|---|
 | I1 | Recepción y visibilidad segura por sede | Acceso, sedes, catálogo, lotes, stock, bloqueo y auditoría de cambios |
-| I2 | Solicitud y despacho confiable | FEFO, parcialidad, idempotencia, concurrencia, constancia, verificación y conciliación |
+| I2 | Solicitud y despacho confiable | Autorización de demanda, FEFO, parcialidad, idempotencia, concurrencia, constancia, verificación y conciliación |
 | I3 | Operación de cadena | Reservas finitas, traslados, devoluciones, conteos/ajustes, retiros, bajas, alertas y reportes |
 
 Las funciones de I3 siguen incluidas en el análisis. El primer incremento no se
@@ -66,3 +66,17 @@ Las cinco capacidades están incluidas en el análisis para implementación post
 En I2 se puede operar todavía sin reservas, pero la evolución I3 requiere reserva
 explícita, libre/comprometido, consumo y liberación coherentes. No se incorpora la
 reserva automática por enviar solicitud ni se promete implementar todo en un Sprint.
+
+## Organización y optimización confirmadas
+
+Se incluye un establecimiento logístico central y almacenes por sede. Inicialmente
+cada sede clínica tiene una farmacia principal; el modelo permite más ubicaciones.
+El stock se conserva en almacenes y farmacias, no se duplica por compartir un local.
+Transferir de almacén a farmacia usa traslado entre ubicaciones; entregar a servicio
+sale de la custodia gestionada. Activar un stock de emergencia futuro requiere
+especificar su ubicación, responsables y circuito de reposición/consumo.
+
+I1 incluye RF-065; I2 incluye RF-066 aunque las reservas se implementen en I3.
+I3 incluye RF-067/RF-068: análisis explicable de riesgos y redistribución supervisada.
+La optimización se evalúa por disponibilidad y reducción de pérdida evitable; no por
+cantidad de movimientos. No se promete merma cero ni un motor predictivo entrenado.
