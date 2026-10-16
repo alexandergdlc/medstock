@@ -1,7 +1,7 @@
 # Verificación de la preparación
 
 Fecha de trabajo: 2026-10-15, zona America/Lima. El entorno Linux registra la fecha
-UTC 2026-10-16. Esta evidencia cubre configuración y documentación, no la aplicación.
+UTC 2026-10-16. Esta evidencia histórica del PR #1 cubre configuración y documentación, no la aplicación.
 
 ## Procedencia
 
@@ -29,7 +29,8 @@ UTC 2026-10-16. Esta evidencia cubre configuración y documentación, no la apli
 
 No se ejecutó una sesión interactiva de Codex, no se probó Windows y no se ejecutaron
 skills de implementación. No hay aplicación, base de datos, despliegue ni mediciones
-de carga. La carpeta de análisis aún no existe: está prevista para un PR posterior.
+de carga. En ese PR la carpeta de análisis aún no existía; su revisión posterior se documenta
+en [revisión del análisis](revision-analisis.md).
 La CLI no está instalada en la computadora de Alexander por haberla preparado aquí.
 
 La preparación incorpora diez skills oficiales; `speckit-taskstoissues` es una
