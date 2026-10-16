@@ -94,5 +94,5 @@ inclusión deja de ser una duda de alcance. Permanecen por validar los detalles 
 como duración de reserva y precisión de vencimiento. Esto no acredita validación de
 un responsable farmacéutico ni convierte una decisión del producto en mandato legal.
 
-La elección entre Scrum, un enfoque inspirado en él o SDD con Kanban sigue propuesta;
-ver [alternativas de organización](19-organizacion-agil-y-sdd.md).
+Alexander aceptó SDD + Kanban; ver [organización del trabajo](19-organizacion-agil-y-sdd.md).
+El tablero y los parámetros de flujo siguen pendientes de puesta en práctica.

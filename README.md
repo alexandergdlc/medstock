@@ -4,7 +4,7 @@
 
 Proyecto individual de **Alexander Gómez de la Cruz**, UNSCH, IS-488 Arquitectura de
 Software, semestre 2026-II. Desarrollo guiado por especificaciones (SDD) con GitHub
-Spec Kit y Codex.
+Spec Kit y Codex, y gestión del flujo con Kanban.
 
 ## Estado actual
 

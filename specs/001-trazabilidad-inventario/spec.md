@@ -192,38 +192,7 @@ Como responsable quiero aprobar o rechazar una operación concreta y asegurar qu
 
 **Why this priority**: Evita autoaprobación y reutilización de decisiones sobre cantidades o lotes diferentes.
 
-**Independent Test**: Con un ajuste propuesto, probar aprobación válida, cambio de contenido, revocación y rechazo sin efectos.
-
-**Acceptance Scenarios**:
-
-- [CA-055](../analisis/08-requisitos-funcionales.md): Solicitar autorización vinculada.
-- [CA-056](../analisis/08-requisitos-funcionales.md): Aprobar o rechazar con alcance.
-- [CA-057](../analisis/08-requisitos-funcionales.md): Exigir separación de funciones.
-- [CA-058](../analisis/08-requisitos-funcionales.md): Invalidar aprobaciones desactualizadas.
-
-**Flujos:** CU-019.
-
-### Edge Cases
-
-Concurrencia por últimas unidades; respuesta perdida; identidad repetida con contenido
-diferente; fallo entre efectos; lote bloqueado o vencido tras consultar; empate FEFO;
-traslado parcial con daño y faltante; devolución acumulada concurrente; compensación
-sobre stock ya consumido; revocación de permisos; corte de reporte y truncado de
-historial. Los resultados esperados están en CA-101 a CA-126 del
-[plan de validación](../analisis/15-trazabilidad-y-validacion.md).
-
-## Requirements *(mandatory)*
-
-### Functional Requirements
-
-La definición única de cada RF y su criterio está en el
-[catálogo funcional](../analisis/08-requisitos-funcionales.md). Esta especificación
-lo incorpora por referencia, evitando dos textos normativos divergentes.
-
-| Historia | Requisitos canónicos |
-| --- | --- |
-| HU-001 | RF-007, RF-008, RF-009, RF-010, RF-011, RF-051 |
-| HU-002 | RF-013, RF-014, RF-015, RF-016, RF-017, RF-018, RF-019, RF-041, RF-042, RF-043 |
+**Independent Test**: Con un ajuste …375 tokens truncated…2, RF-043 |
 | HU-003 | RF-001, RF-002, RF-003, RF-004, RF-005, RF-006, RF-036, RF-037, RF-038, RF-040 |
 | HU-004 | RF-028, RF-029, RF-032, RF-033, RF-039, RF-052, RF-054, RF-063 |
 | HU-005 | RF-020, RF-021, RF-022, RF-023 |
@@ -268,8 +237,9 @@ el [modelo conceptual](../analisis/12-modelo-conceptual.md); no se fija almacena
 Alexander confirmó la inclusión de las cinco capacidades para implementación posterior.
 Reservas pasa de evolución fuera de detalle a capacidad analizada en I3. Permanecen
 propuestos duración, prioridad FEFO durante compromiso, interpretación temporal y
-matriz final de autorizaciones. Scrum/Kanban se comparan como opciones de gestión,
-sin alterar los requisitos clínico-logísticos ni declarar adopción automática.
+matriz final de autorizaciones. Alexander aceptó SDD + Kanban para gestionar el
+trabajo; esta decisión no altera los requisitos clínico-logísticos. El tablero
+todavía no se ha creado.
 
 ## Assumptions
 

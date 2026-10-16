@@ -58,5 +58,6 @@ de crear plan técnico o implementación. El PR de análisis no se integra autom
 Incluye explícitamente las cinco capacidades para implementación posterior. Añade
 24 RF especializados, seis RNF y seis RN; amplía procesos, información, permisos,
 reservas y autorizaciones. Agrega correspondencia con fuentes oficiales de inspección
-y comparación Scrum/Kanban como propuesta de gestión aún no elegida. No se cambia
+y comparación Scrum/Kanban. Alexander aceptó SDD + Kanban; se registra la decisión
+y el flujo de revisión del análisis, con criterios de terminado. No se cambia
 la constitución ni se implementa software o tablero.
