@@ -1,6 +1,6 @@
 # Supuestos, políticas propuestas y riesgos
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -24,7 +24,7 @@ confirmado. El borrador permite revisarlas sin pedir respuestas para cada párra
 | PP-003 | Fecha | Excluir vencimiento <= fecha operativa; mes/año no se normaliza sin validación. | Responsable farmacéutico | PN-001 |
 | PP-004 | Empate FEFO | Primera recepción en la ubicación de salida y después identificador de lote. | Farmacia | PN-002 |
 | PP-005 | Parciales | Rechazar insuficiencia salvo aceptación explícita; conservar remanente. | Responsable de servicio / farmacia | PN-002 |
-| PP-006 | Reservas | No reservar por solicitar ni por consultar en primer incremento. | Propietario / farmacia | PN-002 |
+| PP-006 | Reservas | Capacidad incluida por Alexander: reserva explícita y finita en I3; solicitar/consultar no reserva. Plazo y autoridades se validan. | Propietario / farmacia | PN-002 |
 | PP-007 | Edición de solicitud | No editar líneas atendidas; cancelar solo remanente. | Responsable de servicio | PN-002 |
 | PP-008 | Diferencias | Faltante conserva tránsito; daño recibido se segrega en destino. | Logística y destino | PN-003 |
 | PP-009 | Ajustes | Aprobador distinto; revalidar saldo/corte antes de confirmar. | Responsable de cadena | PN-003 |
@@ -34,12 +34,22 @@ confirmado. El borrador permite revisarlas sin pedir respuestas para cada párra
 | PP-013 | No caducables | Categoría autorizada o exclusión del prototipo; sin FEFO artificial. | Gestor de catálogo / farmacia | PN-001 |
 | PP-014 | Frontera de stock | La salida al servicio deja el inventario gestionado; subinventario clínico posterior. | Propietario / responsable de servicio | PN-004 |
 
+## Políticas de detalle añadidas en 0.2.0
+
+| ID | Tema | Valor propuesto | Validador requerido | Pendiente |
+| --- | --- | --- | --- | --- |
+| PP-015 | Asignación de reserva | Consumir el lote reservado si sigue elegible, sin reasignación silenciosa porque apareció otro lote anterior; revisión de prioridad pendiente. | Farmacia | PN-002 |
+| PP-016 | Plazo | Cada reserva exige fin T definido por política configurada; no hay duración universal aprobada ni reserva indefinida. | Responsable de cadena | PN-002 |
+| PP-017 | Contenido aprobado | Cambios significativos de cantidades/lotes requieren nueva revisión; aprobación no omite controles actuales. | Responsable de cadena | PN-003 |
+| PP-018 | Retorno por línea | Conservar evidencia de conservación y origen; decidir por cantidad y mantener evaluación pendiente para el remanente. | Responsable farmacéutico | PN-001 |
+
+
 ## Pendientes y momentos de cierre
 
 | ID | Decisión / evidencia faltante | Impacto | Responsable / cierre |
 |---|---|---|---|
 | PN-001 | Unidades, lote, vencimiento y categorías especiales | Elegibilidad y calidad de datos | Responsable farmacéutico antes de diseñar recepción/FEFO |
-| PN-002 | Parcialidad, reservas, empate y umbrales | Flujo y cantidades pendientes | Alexander con representantes operativos antes de diseñar despacho |
+| PN-002 | Detalles de parcialidad; duración, consumo y liberación de reservas; empates y umbrales | Las cinco capacidades están incluidas; quedan parámetros y políticas operativas | Alexander con representantes operativos antes de diseñar cada capacidad |
 | PN-003 | Aprobaciones y resolución de diferencias | Integridad logística y correcciones | Responsable de cadena antes de diseñar I3 |
 | PN-004 | Roles finales y frontera de stock del servicio | Alcance y privacidad | Alexander y organización antes de fijar permisos |
 | PN-005 | Perfil, volumen y tiempos objetivos de carga | Factibilidad de 2 000 usuarios y cuota | Alexander antes de plan de carga / diseño de rendimiento |
@@ -75,3 +85,14 @@ clínicos, un almacén central obligatorio ni cuota ilimitada de servicios gratu
 
 Estas estimaciones orientan el análisis; no son frecuencias observadas ni evaluación
 actuarial. La mitigación técnica se justificará posteriormente con evidencia.
+
+## Aclaración del alcance aceptado
+
+Alexander confirmó que las cinco capacidades deben contemplarse para implementación
+posterior: parcialidad, reservas, vencimientos, autorizaciones y devoluciones. La
+inclusión deja de ser una duda de alcance. Permanecen por validar los detalles PP,
+como duración de reserva y precisión de vencimiento. Esto no acredita validación de
+un responsable farmacéutico ni convierte una decisión del producto en mandato legal.
+
+La elección entre Scrum, un enfoque inspirado en él o SDD con Kanban sigue propuesta;
+ver [alternativas de organización](19-organizacion-agil-y-sdd.md).

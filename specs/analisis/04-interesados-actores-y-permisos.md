@@ -1,6 +1,6 @@
 # Interesados, actores y permisos
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -41,6 +41,7 @@ incluido por defecto. Cualquier permiso adicional exige asignación explícita.
 | Proponer ajuste | — | — | S | S | — | S | S | — |
 | Aprobar ajuste | — | — | S si asignado | — | — | — | S si asignado | — |
 | Liberar cuarentena/bloquear | — | — | — | — | — | — | S/C asignado | lectura C |
+| Reservar/consumir/cancelar compromiso | — | — | supervisar S | — | P seguimiento | S | supervisar S/C | lectura C |
 | Auditoría/verificación | administrativa C | — | lectura S | — | P seguimiento | lectura S | lectura S/C | lectura C |
 | Reportes/exportaciones | administrativa C | — | S | S si asignado | P | S | S/C | C |
 

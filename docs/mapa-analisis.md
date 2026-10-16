@@ -24,6 +24,9 @@ Consultar el [índice del análisis](../specs/analisis/00-indice-y-estado.md).
 | `15-trazabilidad-y-validacion.md` | Necesidad, objetivo, regla, requisito y aceptación |
 | `16-drivers-y-escenarios-de-calidad.md` | Drivers priorizados y escenarios medibles |
 | `17-fuentes-y-referencias.md` | Fuentes oficiales, alcance y referencias bibliográficas |
+| `18-capacidades-especializadas.md` | Parcialidad, reservas, fechas, autorizaciones y retornos |
+| `19-organizacion-agil-y-sdd.md` | Comparación de gestión ágil y propuesta SDD/Kanban |
+| `20-correspondencia-minsa-digemid.md` | Numerales verificados y límites de atribución |
 
 Los modelos editables se incluirán mediante Mermaid o fuentes asociadas. No se
 inventará un proceso actual observado si no se dispone de entrevistas o documentos.

@@ -1,6 +1,6 @@
 # Drivers y escenarios de calidad
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -132,6 +132,80 @@ Las prioridades de esta versión son propuestas por riesgo para revisión de Ale
 | Elemento afectado | Plan de carga y presupuesto |
 | Respuesta | Calcula consumo y reduce/separa ensayo si excede cuota |
 | Medida | No ejecutar sin presupuesto; informar cuota, consumo previsto y condición de parada. |
+
+## Escenarios especializados
+
+### ESC-010
+
+| Campo | Definición |
+| --- | --- |
+| Requisitos | RNF-013 |
+| Fuente del estímulo | Dos operadores |
+| Estímulo | Reservar o consumir/cancelar las mismas unidades |
+| Entorno | Lote con diez libres o reserva activa, sin fallo artificial |
+| Elemento afectado | Compromisos y salida física |
+| Respuesta | Resolver una sola vez sin sobreasignar ni doble liberar |
+| Medida | CA-119, CA-120 y CA-121; cero violaciones de RN-037/RN-042. |
+
+### ESC-011
+
+| Campo | Definición |
+| --- | --- |
+| Requisitos | RNF-014 |
+| Fuente del estímulo | Tiempo operativo |
+| Estímulo | Alcanzar fin T o cambiar elegibilidad del lote |
+| Entorno | Limpieza de reservas retrasada y hora de cliente manipulada |
+| Elemento afectado | Decisión de consumo y disponible |
+| Respuesta | Aplicar vigencia efectiva, sin depender de etiqueta antigua |
+| Medida | CA-122 y CA-126; no consumo en T o después ni libre falso por bloqueo. |
+
+### ESC-012
+
+| Campo | Definición |
+| --- | --- |
+| Requisitos | RNF-016 |
+| Fuente del estímulo | Operador y aprobador |
+| Estímulo | Cambiar contenido o revocar permiso tras aprobar |
+| Entorno | Aprobación de una versión anterior |
+| Elemento afectado | Autorización al ejecutar |
+| Respuesta | Exigir revisión vigente y condiciones actuales |
+| Medida | CA-123; 100 % de variantes no autorizadas rechazadas. |
+
+### ESC-013
+
+| Campo | Definición |
+| --- | --- |
+| Requisitos | RNF-015 |
+| Fuente del estímulo | Auditor |
+| Estímulo | Reconstruir liberación y parcialidad por evidencia |
+| Entorno | Datos de ensayo con revisiones y devoluciones por subcantidad |
+| Elemento afectado | Historial de decisiones |
+| Respuesta | Mostrar autor, contenido, motivo y vínculo sin sobrescritura |
+| Medida | RF-063 y CA-124/CA-125; decisiones y acumulados reconstruibles. |
+
+### ESC-014
+
+| Campo | Definición |
+| --- | --- |
+| Requisitos | RNF-017 |
+| Fuente del estímulo | Usuario |
+| Estímulo | Consultar compromisos y confirmar después de otro cambio |
+| Entorno | Otra operación entre vista y confirmación |
+| Elemento afectado | Consulta y ejecución |
+| Respuesta | Mostrar corte y revalidar asignación efectiva |
+| Medida | RF-045 y RF-054; ningún saldo de pantalla sustituye validación al confirmar. |
+
+### ESC-015
+
+| Campo | Definición |
+| --- | --- |
+| Requisitos | RNF-018 |
+| Fuente del estímulo | Responsable de revisión |
+| Estímulo | Cambiar una de las cinco políticas |
+| Entorno | Análisis especializado antes de implementar |
+| Elemento afectado | Requisitos y evidencias |
+| Respuesta | Actualizar aceptación y atribución de origen |
+| Medida | Cinco capacidades cubiertas con positivos/negativos y trazabilidad de 18/20. |
 
 ## CP-01 — Perfil candidato de carga
 

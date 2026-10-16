@@ -1,6 +1,6 @@
 # Casos de uso y recorridos del usuario
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -153,7 +153,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Entrada/disparador:** Líneas positivas en unidad base. **Postcondición:** Solicitud enviada o remanente cancelado.
 
-**Requisitos:** RF-013, RF-014.
+**Requisitos:** RF-013, RF-014, RF-042, RF-043.
 
 **Flujo principal:**
 
@@ -175,7 +175,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Entrada/disparador:** Identidad de operación, cantidad y aceptación parcial. **Postcondición:** Despacho confirmado con remanente y constancia.
 
-**Requisitos:** RF-015, RF-016, RF-017, RF-018, RF-019.
+**Requisitos:** RF-015, RF-016, RF-017, RF-018, RF-019, RF-041.
 
 **Flujo principal:**
 
@@ -250,7 +250,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Entrada/disparador:** Cantidad/lote devuelto y evidencia. **Postcondición:** Cuarentena y decisión documentada.
 
-**Requisitos:** RF-024, RF-025.
+**Requisitos:** RF-024, RF-025, RF-059, RF-060, RF-061.
 
 **Flujo principal:**
 
@@ -320,7 +320,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Entrada/disparador:** Motivo, evidencia, cantidades y condición. **Postcondición:** Movimiento vinculado de salida o corrección.
 
-**Requisitos:** RF-030, RF-031.
+**Requisitos:** RF-030, RF-031, RF-062.
 
 **Flujo principal:**
 
@@ -343,7 +343,7 @@ Los pasos describen negocio, no contratos API ni clases de implementación.
 
 **Entrada/disparador:** Periodo, ámbito y cierre esperado. **Postcondición:** Informe de resultados y anomalías.
 
-**Requisitos:** RF-032, RF-033, RF-039.
+**Requisitos:** RF-032, RF-033, RF-039, RF-063, RF-064.
 
 **Flujo principal:**
 
@@ -387,3 +387,79 @@ Las historias priorizadas están en la especificación Spec Kit y se prueban con
 fixtures controladas de sus dependencias. No se necesita repetir un catálogo completo
 de requisitos dentro de cada historia. El mantenimiento del producto requiere seguir
 la relación historia → CU → RF → RN → CA de 15.
+
+## CU-017 — Reservar, consumir y liberar cantidades
+
+**Actor:** Farmacia autorizada; expiración disparada por tiempo operativo.
+
+**Precondiciones:** Solicitud enviada, sede habilitada, duración finita configurada y lotes elegibles.
+
+**Entrada/disparador:** Cantidad a comprometer, identidad y fin de reserva. **Postcondición:** Compromiso o consumo/liberación coherente sin efecto duplicado.
+
+**Requisitos:** RF-044, RF-045, RF-046, RF-047, RF-048, RF-049, RF-050.
+
+**Flujo principal:**
+
+1. Consultar pendiente y libre elegible sin usar una vista antigua como garantía.
+2. Crear explícitamente reserva por lote mediante FEFO; confirmar compromiso y registro juntos.
+3. Mostrar asignación, fin, remanente y propietario de la solicitud.
+4. Al despachar, revalidar identidad, tiempo, lote y cantidad y consumir físico/compromiso juntos.
+5. Cancelar remanente o reconocer expiración/invalidación; registrar una sola liberación.
+
+**Alternativas y errores:**
+
+- Solicitar por sí solo no reserva; no crear reserva con plazo indefinido.
+- Dos reservas compiten por diez: no se apartan más de diez en total.
+- En T o después no se consume, aunque limpieza todavía no haya actualizado la etiqueta.
+- Un lote bloqueado no queda libre al invalidar su reserva.
+- Cancelación y consumo concurrentes se resuelven una sola vez por cantidad remanente.
+
+## CU-018 — Interpretar fechas e identificar vencimientos
+
+**Actor:** Responsable farmacéutico y operador autorizado.
+
+**Precondiciones:** Política de fecha y zona identificadas; producto dentro de alcance.
+
+**Entrada/disparador:** Valor del rótulo, precisión, versión de política y umbrales. **Postcondición:** Fecha operativa interpretable y decisión trazable.
+
+**Requisitos:** RF-051, RF-052, RF-053, RF-054.
+
+**Flujo principal:**
+
+1. Capturar fecha tal como se declara y precisión día o mes/año.
+2. Aplicar solo una interpretación autorizada para el producto y conservar referencia.
+3. Si cambia la política, registrar revisión y evaluar lotes afectados sin reescribir historia.
+4. Identificar próximos a vencer según umbral y corte.
+5. Al reservar o despachar, volver a comprobar elegibilidad con el tiempo operativo actual.
+
+**Alternativas y errores:**
+
+- Formato imposible o mes/año sin política: retener para revisión y no habilitar despacho.
+- Alerta de proximidad no equivale a vencido.
+- Cambiar hora del navegador no prolonga elegibilidad.
+- No afirmar que el corte <= hoy es un mandato de MINSA: continúa propuesto en PP-003.
+
+## CU-019 — Solicitar y ejecutar autorizaciones operativas
+
+**Actor:** Operador solicitante y responsable con permiso específico.
+
+**Precondiciones:** Tipo de operación configurado para aprobación y ámbito asignado.
+
+**Entrada/disparador:** Documento/versiones, cantidades, lotes, motivo y evidencia. **Postcondición:** Decisión recuperable y ejecución sobre contenido vigente.
+
+**Requisitos:** RF-055, RF-056, RF-057, RF-058.
+
+**Flujo principal:**
+
+1. Preparar solicitud de aprobación identificando versión y contenido.
+2. Presentar a un aprobador autorizado por tipo y sede.
+3. Registrar aprobación o rechazo con autor, instante y motivo.
+4. Antes de ejecutar, comprobar contenido, permiso vigente y stock/condiciones actuales.
+5. Ejecutar la operación vinculada con su identidad y auditoría; aprobación sola no cambia stock.
+
+**Alternativas y errores:**
+
+- Para ajuste/baja, creador y aprobador deben diferir según política; roles acumulados no exceptúan.
+- Otra sede o permiso revocado: no aprobar/ejecutar.
+- Cambia cantidad/lote/contenido significativo: nueva revisión, no reutilizar aprobación.
+- Saldo insuficiente al ejecutar: rechazo coherente aunque hubiera aprobación previa.

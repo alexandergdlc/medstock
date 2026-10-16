@@ -1,6 +1,6 @@
 # Alcance, límites y entregas incrementales
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -14,7 +14,7 @@ los servicios están fuera de la primera versión (RN-035, PP-014).
 ## Incluido
 
 Organización, usuarios y permisos; catálogo común y presentaciones; procedencias;
-recepción con lotes y condición; consultas de stock; solicitudes; FEFO; confirmación
+recepción con lotes y condición; consultas de stock; solicitudes; reservas explícitas; FEFO; confirmación
 indivisible; recuperación de operaciones; traslados con diferencias; devoluciones;
 conteos y ajustes; bloqueos/retiros; bajas; auditoría, conciliación y reportes.
 
@@ -38,7 +38,7 @@ El alcance se ampliará mediante requisitos y revisión, no por un cambio oculto
 |---|---|---|
 | I1 | Recepción y visibilidad segura por sede | Acceso, sedes, catálogo, lotes, stock, bloqueo y auditoría de cambios |
 | I2 | Solicitud y despacho confiable | FEFO, parcialidad, idempotencia, concurrencia, constancia, verificación y conciliación |
-| I3 | Operación de cadena | Traslados, devoluciones, conteos/ajustes, retiros, bajas, alertas y reportes |
+| I3 | Operación de cadena | Reservas finitas, traslados, devoluciones, conteos/ajustes, retiros, bajas, alertas y reportes |
 
 Las funciones de I3 siguen incluidas en el análisis. El primer incremento no se
 presentará como sistema empresarial terminado ni se programará sin sus criterios.
@@ -59,3 +59,10 @@ dominio ya adquirido y Cloudflare prioritario. El objetivo de gran escala puede
 entrar en tensión con cuota gratuita y tiempo individual: se evaluará mediante
 prototipos técnicos e incrementos, sin reducir controles de integridad para aparentar
 mayor rendimiento. La viabilidad de producción real no está acreditada.
+
+## Especialización confirmada
+
+Las cinco capacidades están incluidas en el análisis para implementación posterior.
+En I2 se puede operar todavía sin reservas, pero la evolución I3 requiere reserva
+explícita, libre/comprometido, consumo y liberación coherentes. No se incorpora la
+reserva automática por enviar solicitud ni se promete implementar todo en un Sprint.

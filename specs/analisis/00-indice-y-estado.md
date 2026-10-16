@@ -1,6 +1,6 @@
 # Análisis de MedStock: índice y estado
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -37,6 +37,9 @@ está identificada. Tres sedes iniciales y nombres genéricos son datos de ensay
 | [15 Trazabilidad](15-trazabilidad-y-validacion.md) | ¿Cómo se relacionan objetivos y aceptación? |
 | [16 Drivers](16-drivers-y-escenarios-de-calidad.md) | ¿Qué condicionará la arquitectura? |
 | [17 Fuentes](17-fuentes-y-referencias.md) | ¿Qué se consultó y hasta dónde sustenta? |
+| [18 Especialización](18-capacidades-especializadas.md) | ¿Cómo se detallan las cinco capacidades? |
+| [19 Trabajo ágil](19-organizacion-agil-y-sdd.md) | ¿Cómo combinar gestión y SDD? |
+| [20 Correspondencia sanitaria](20-correspondencia-minsa-digemid.md) | ¿Qué respaldo se verificó y qué es política propia? |
 
 ## Convenciones y autoridad
 
@@ -46,6 +49,7 @@ está identificada. Tres sedes iniciales y nombres genéricos son datos de ensay
 - **ACORDADA**: decisión aceptada por Alexander en la conversación. No equivale a
   aprobación de un responsable farmacéutico ni a certificación sanitaria.
 - **PROPUESTA**: valor o comportamiento razonable para revisar, claramente identificado.
+  Las cinco capacidades están incluidas; sus parámetros de detalle pueden seguir propuestos.
 - **PENDIENTE**: decisión sin cierre suficiente para implementar el flujo afectado.
 - P1 = imprescindible para integridad/núcleo; P2 = necesaria para alcance completo;
   P3 = evolución opcional. La prioridad no fija una fecha de entrega.

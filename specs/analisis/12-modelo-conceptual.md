@@ -1,6 +1,6 @@
 # Modelo conceptual del dominio
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -66,3 +66,22 @@ solicitudes/despachos, logística inversa y auditoría. No son microservicios
 obligatorios. Un modelo conceptual no fija tablas, módulos físicos, proveedores ni
 un diagrama de clases de implementación. Los detalles de recepción y traslado
 referencian el mismo lote y operación para conservar trazabilidad.
+
+## Reservas y decisiones de negocio
+
+```mermaid
+erDiagram
+    SOLICITUD ||--o{ RESERVA : compromete
+    RESERVA ||--|{ LINEA_RESERVA : asigna
+    LOTE ||--o{ LINEA_RESERVA : corresponde
+    UBICACION ||--o{ LINEA_RESERVA : delimita
+    LINEA_RESERVA ||--o{ LINEA_DESPACHO : consume
+    DOCUMENTO_OPERATIVO ||--o{ APROBACION : solicita
+    USUARIO ||--o{ APROBACION : decide
+    POLITICA_TEMPORAL ||--o{ INTERPRETACION_LOTE : fundamenta
+    LOTE ||--o{ INTERPRETACION_LOTE : interpreta
+```
+
+Una reserva solo compromete su remanente vigente. La aprobación refiere una versión
+del contenido del documento operativo y no es un permiso global. La interpretación
+del lote conserva su precisión y política, sin sustituir el rótulo original.

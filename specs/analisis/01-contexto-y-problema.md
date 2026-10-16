@@ -1,6 +1,6 @@
 # Contexto, problema y levantamiento
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -57,6 +57,7 @@ libera cuarentena?, ¿qué se registra en un traslado?, ¿cómo se acreditan da�
 ## Límites de la investigación
 
 La fuente sanitaria de 2022 se identificó, pero su anexo completo no se extrajo por
-el tamaño del archivo. Se consultó el texto accesible de la modificación de 2024;
+el tamaño del archivo. Se consultó el texto accesible de la modificación de 2024 y, en la revisión 0.2.0,
+las guías oficiales de inspección identificadas en FU-011/FU-012;
 queda pendiente revisión del conjunto normativo aplicable y del personal competente.
 Las políticas de detalle de MedStock tienen origen PP, no se atribuyen a una ley.

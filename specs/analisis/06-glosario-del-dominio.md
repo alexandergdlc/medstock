@@ -1,6 +1,6 @@
 # Glosario y significado de cantidades
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -18,13 +18,13 @@
 | Existencia | Cantidad de un lote en ubicación y condición determinadas |
 | Físico en sede | Unidades presentes, sumadas por condiciones; no implica que todas sean despachables |
 | Utilizable | Condición que cumple los controles para participar en selección |
-| Disponible | Utilizable y elegible en el instante de confirmar; no incluye tránsito o bloqueo |
+| Disponible libre | Utilizable elegible menos compromisos vigentes para otras asignaciones; no incluye tránsito o bloqueo |
 | Cuarentena | Segregado mientras se decide aceptación o liberación |
 | Bloqueado | No elegible por una restricción documentada |
 | Vencido | No elegible según la fecha operativa; físico hasta su baja autorizada |
 | Tránsito | Custodia lógica después de expedir y antes de aceptar/resolver en destino |
 | Solicitud | Demanda de un servicio; no reserva stock en PP-006 |
-| Reserva | Retención temporal de disponible; pospuesta en el primer incremento |
+| Reserva | Compromiso temporal explícito por lote y solicitud; incluido para I3 con vigencia y liberación |
 | Despacho | Salida confirmada de farmacia/almacén hacia un servicio |
 | Dispensación | Acto farmacéutico clínico; no se confunde con la salida logística del prototipo |
 | Movimiento | Efecto registrado sobre ubicación, condición o cantidad de un lote |
@@ -47,7 +47,9 @@ Si además hay 4 en tránsito, el total bajo custodia de cadena es 21. El dispon
 ordinario puede ser 12, sujeto a vigencia y controles de confirmación. No se suman
 las mismas unidades como disponibles del destino antes de recibirlas.
 
-En PP-006 no hay reservas; si se incorporan, deberá redefinirse disponible = utilizable
-elegible menos reservas vigentes y adaptar concurrencia, estados y conciliación.
+Sin reservas vigentes, libre = utilizable elegible. Con reservas activas,
+libre = utilizable elegible - compromiso vigente. Reservar no cambia el físico;
+consumir sí produce salida. Lo reservado a una solicitud no puede consumirse desde
+otra. Caducidad o bloqueo del lote impiden consumo aun con reserva previa.
 Las cantidades de distintas unidades base no se suman como un único stock operativo:
 veinte tabletas y cinco frascos son dos saldos distintos.

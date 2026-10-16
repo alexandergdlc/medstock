@@ -1,6 +1,6 @@
 # Información, validaciones e integraciones
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -66,3 +66,17 @@ No incluir tokens de sesión en logs ni credenciales en exportaciones.
 
 No existe contrato de API externa aceptado. OpenAPI, esquemas físicos, mecanismos
 concretos de identidad y gestión de archivos se definen en diseño técnico.
+
+## Información especializada
+
+| Concepto | Datos mínimos adicionales | Control |
+|---|---|---|
+| Reserva | Solicitud, propietario/ámbito, líneas y lotes, cantidad inicial, consumida, liberada y remanente, inicio/fin y estado | Identidad recuperable; vigencia evaluada con tiempo operativo |
+| Aprobación | Tipo, documento/versiones, contenido significativo, solicitante/aprobador, decisión y motivo | No reutilizar sobre contenido distinto; permiso vigente al ejecutar |
+| Política temporal | Valor rotulado y precisión, interpretación aprobada, versión y vigencia | No inventar día desde mes/año ni alterar historia |
+| Evaluación de retorno | Cantidades por línea aceptada/rechazada/pendiente, causa y evidencia de conservación | Suma de decisiones no supera lo recibido; responsable facultado |
+
+Los compromisos se registran como asignaciones y eventos, no como recepciones físicas.
+El detalle temporal de reserva requiere zona/instante inequívoco; el navegador no
+es autoridad del tiempo. El almacenamiento de evidencias no obliga a elegir un
+servicio concreto en análisis.

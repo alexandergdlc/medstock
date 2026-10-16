@@ -1,6 +1,6 @@
 # Estados, eventos y transiciones
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -84,3 +84,37 @@ estar no bloqueado y aun así estar vencido. Bloquear no mueve cantidades físic
 
 La incertidumbre del cliente no es un estado de stock ni prueba de rollback. El
 diseño determinará estados internos y recuperación sin introducir efectos duplicados.
+
+## Reserva explícita
+
+```mermaid
+stateDiagram-v2
+    [*] --> Activa: confirmar compromiso
+    Activa --> ParcialmenteConsumida: consumir una parte
+    Activa --> Consumida: consumir todo
+    ParcialmenteConsumida --> ParcialmenteConsumida: consumir otra parte
+    ParcialmenteConsumida --> Consumida: consumir remanente
+    Activa --> Cancelada: liberar remanente
+    Activa --> Expirada: alcanzar fin T
+    Activa --> Invalidada: lote o solicitud no elegible
+    ParcialmenteConsumida --> CerradaConLiberacion: cancelar o alcanzar T o invalidar
+    Consumida --> [*]
+    Cancelada --> [*]
+    Expirada --> [*]
+    Invalidada --> [*]
+    CerradaConLiberacion --> [*]
+```
+
+El estado temporal efectivo se evalúa al operar; la limpieza diferida no prolonga
+vigencia. En cierres parciales se conserva la causa exacta (cancelación, expiración
+o invalidación). Sumar consumido, liberado y remanente debe reconstruir la cantidad
+inicial. Al cancelar la parte pendiente de una solicitud, sus reservas remanentes
+se liberan de forma coherente; no se revierten unidades entregadas.
+
+## Autorización sobre contenido
+
+Pendiente → Aprobada o Rechazada; Aprobada → Invalidada si cambia el contenido
+significativo o ya no es válida para ejecutar. Una nueva revisión se registra como
+otra decisión vinculada y conserva la anterior. Ejecutar requiere además el permiso
+vigente y las precondiciones de stock/lote. No se confunde este ciclo con la sesión
+de acceso del usuario.

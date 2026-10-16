@@ -1,6 +1,6 @@
 # Requisitos de calidad y restricciones
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -24,6 +24,18 @@ operación y perfil de carga; promedio sin percentiles no acredita rapidez.
 | RNF-010 | Compatibilidad | PROPUESTO | Recorridos principales operables en versiones estables de Chrome, Edge y Firefox disponibles al ejecutar la prueba, a 360 y 1366 px. | Registrar versiones, resolución y resultados; no asegurar versiones futuras. | DRV-007 |
 | RNF-011 | Trazabilidad/mantenibilidad | ACORDADO | Cada cambio de comportamiento enlaza RF/RN, aceptación y evidencia; no hay IDs ni enlaces internos huérfanos. | Revisión de PR, enlaces y matriz; pruebas afectadas antes de integrar código. | DRV-008 |
 | RNF-012 | Costo y observabilidad | RESTRICCIÓN ACORDADA | Sin contratar servicios adicionales ni ejecutar carga que exceda el presupuesto de cuotas aprobado; identificar cada operación y sus fallos sin secretos. | Revisión de cuotas oficiales, cálculo previo de consumo y logs de ensayo sanitizados. | DRV-009 |
+
+## Calidad de las capacidades especializadas
+
+| ID | Atributo | Estado | Criterio | Verificación | Driver |
+| --- | --- | --- | --- | --- | --- |
+| RNF-013 | Consistencia de reservas | CAPACIDAD ACORDADA | Cero sobrecompromisos o doble consumo/liberación en las carreras CA-119 a CA-121; conservar físico y remanente. | Concurrencia sobre el mismo lote, reintentos, consulta de saldos y conciliación. | DRV-001 |
+| RNF-014 | Validez temporal efectiva | CRITERIO PROPUESTO | En T y después ninguna operación considera vigente una reserva con fin T, aunque no se haya ejecutado limpieza. Fechas se evalúan con política y zona registradas. | Reloj controlado en T menos un instante, T y después; no aceptar hora de cliente como autoridad. | DRV-006 |
+| RNF-015 | Evidencia y no sobrescritura | ACORDADO | El 100 % de decisiones de las cinco capacidades conserva actor, ámbito, fecha, contenido/versiones y motivo exigible; las revisiones no borran evidencia previa. | Muestreo exhaustivo de fixtures y reconstrucción con RF-063; CA-125. | DRV-005 |
+| RNF-016 | Autorización al ejecutar | ACORDADO | Ninguna aprobación de otra sede, autoaprobación prohibida, versión distinta o permiso revocado permite ejecutar. | Matriz negativa de RF-055 a RF-058; CA-123. | DRV-003 |
+| RNF-017 | Trazabilidad temporal de consultas | CRITERIO PROPUESTO | Cada consulta de compromiso/remanente indica corte y cantidades separadas; la vista se revalida al ejecutar. No se presentan datos anteriores como garantía de asignación. | Revisar cortes y ensayar modificación entre consulta y confirmación; sin objetivo de refresco automático aún aprobado. | DRV-007 |
+| RNF-018 | Cobertura de reglas especializadas | ACORDADO | Las cinco capacidades tienen aceptación positiva/negativa; reservas y devoluciones incluyen carreras y reintentos; no se atribuyen políticas de software a MINSA sin evidencia. | Matriz de cobertura 18, CA y correspondencia normativa 20, con referencias cruzadas completas. | DRV-008 |
+
 
 ## Restricciones técnicas propuestas
 

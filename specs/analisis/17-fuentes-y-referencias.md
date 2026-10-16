@@ -1,6 +1,6 @@
 # Fuentes, alcance de evidencia y referencias
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -23,6 +23,15 @@ elaboración propia para MedStock.
 | FU-008 | Cloudflare, límites de Workers | Presupuesto de prueba: cuota gratuita consultada de 100 000 solicitudes/día |
 | FU-009 | Cloudflare, precios D1 | Cuotas consultadas: 5 millones de filas leídas y 100 000 escritas/día; no equivalen a despachos |
 | FU-010 | GitHub Spec Kit 1.2.0, skills oficiales instaladas | Estructura de especificación y checklist; herramienta y metodología no certifican el producto |
+
+## Fuentes adicionales de la revisión 0.2.0
+
+| ID | Fuente | Uso limitado |
+| --- | --- | --- |
+| FU-011 | DIRIS Lima Este, acta de inspección BPOF y hojas modificatorias | Entrega parcial en receta 7.5.2.27, p. 11; no extrapolar como obligación idéntica a solicitud interna |
+| FU-012 | GERESA Arequipa, guía de inspección BPOF publicada en sitio oficial | Numerales 7.5.1.19/.20 (p. 7) y 7.5.1.27–.31 (p. 8): vencimientos, rotación y retorno; no reemplaza manual íntegro |
+| FU-013 | Schwaber y Sutherland, Guía Scrum 2020 oficial | Responsabilidades y marco completo; sirve para comparar, no declarar adopción ya realizada |
+| FU-014 | The Kanban Guide, edición mayo 2025 oficial | Visualización, control de flujo y mejora; propuesta de gestión individual, pendiente de elección |
 
 ## Citas utilizadas
 
@@ -75,9 +84,31 @@ El sílabo está en los archivos suministrados por Alexander, no se inventa una 
 
 ## Verificación sanitaria pendiente
 
-Antes de sostener aplicación profesional se debe revisar el anexo completo de 2022,
+La revisión 0.2.0 añadió guías oficiales de inspección con numerales concretos
+registrados en [correspondencia](20-correspondencia-minsa-digemid.md). Antes de
+sostener aplicación profesional se debe revisar el anexo completo original de 2022,
 sus modificaciones y el marco vigente de establecimientos farmacéuticos. La búsqueda
 identificó también cambios posteriores del reglamento, que no se analizaron aquí.
 La revisión documental parcial no certifica cumplimiento ni habilita uso asistencial.
 Se debe identificar qué disposiciones corresponden a cada establecimiento y a los
 productos concretos del alcance. Este punto se mantiene en PN-007.
+
+## Referencias añadidas en 0.2.0 (APA 7)
+
+Dirección de Redes Integradas de Salud Lima Este. (s. f.). *Acta de inspección de
+buenas prácticas de oficina farmacéutica* [Guía e instrumentos modificatorios].
+https://www.dirislimaeste.gob.pe/Virtual2/Otros_Link/DFCVS/ACTA%20DE%20INSPECCI%C3%93N%20BPOF%20ASF.pdf
+
+Gerencia Regional de Salud Arequipa. (s. f.). *Guía de inspección de buenas prácticas
+de oficina farmacéutica: Anexo N.º 4*.
+https://saludarequipa.gob.pe/wp-content/uploads/2025/09/ACTA-GUIA-BPOF-6.0.22_ANEXO-4.pdf
+
+Schwaber, K., & Sutherland, J. (2020). *The Scrum Guide*.
+https://scrumguides.org/scrum-guide.html
+
+Orderly Disruption Limited, & Daniel S. Vacanti, Inc. (2025, 1 de mayo). *The Kanban
+Guide*. https://kanbanguides.org/the-kanban-guide/
+
+Las referencias nuevas se separan para facilitar revisión del cambio; en una
+exportación académica se ordenará alfabéticamente la lista conjunta. No se afirma
+una revisión exhaustiva de toda la normativa a partir de búsquedas parciales.

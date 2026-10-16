@@ -1,6 +1,6 @@
 # Reglas de negocio e invariantes
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -20,13 +20,13 @@ atribuidas a DIGEMID ni a una cadena privada. Su detalle y decisión están en 1
 | RN-007 | Recepción | Ninguna recepción confirmada incorpora cantidades sin origen, documento, detalle por lote, responsable y resultado de revisión. Lo observado queda en cuarentena. | ACORDADA |
 | RN-008 | Disponibilidad | Solo se despacha existencia de condición utilizable y cantidad suficiente. Cuarentena, bloqueo, vencimiento y tránsito no son disponibilidad para solicitudes ordinarias. | ACORDADA |
 | RN-009 | Vencimiento | La elegibilidad compara la fecha de vencimiento con la fecha operativa de la sede. Para el prototipo, fecha menor o igual a hoy se excluye. Fechas solo mes/año requieren normalización validada por un responsable. | PROPUESTA PP-003 |
-| RN-010 | Orden FEFO | Seleccionar el vencimiento elegible más cercano; los empates se resuelven con primera recepción en la ubicación de salida y luego identificador estable de lote. Se documenta toda asignación. | ACORDADA; desempate PROPUESTA PP-004 |
+| RN-010 | Orden FEFO | Aplicar FEFO sobre libre elegible al asignar sin reserva o crear una reserva; empate por primera recepción en ubicación de salida y luego ID de lote. Consumir reserva respeta su asignación vigente, revalidando elegibilidad; no reasigna silenciosamente. | ACORDADA; detalle PP-004 y PP-015 |
 | RN-011 | Confirmación | La selección mostrada es preliminar: al confirmar se vuelven a comprobar existencia, estado del lote, permisos y cantidad pendiente. | ACORDADA |
 | RN-012 | Integridad de operación | Cada recepción, despacho o salida de traslado confirmada une su documento, cambios de existencia y auditoría: se confirman juntos o no producen efecto de negocio. | ACORDADA |
 | RN-013 | Sin negativos | Ninguna intercalación de operaciones válidas puede dejar existencia negativa o entregar más unidades que las disponibles. | ACORDADA |
 | RN-014 | Reintentos | Una misma operación lógica produce como máximo un efecto: un reintento con el mismo contenido devuelve su resultado; contenido diferente con la misma identidad se rechaza. | ACORDADA |
 | RN-015 | Parcialidad | Si no alcanza el stock, se rechaza sin efectos salvo aceptación explícita de una cantidad parcial. La cantidad pendiente se conserva; nunca se marca completada una solicitud incompleta. | PROPUESTA PP-005 |
-| RN-016 | Reservas | En el primer incremento las solicitudes no reservan stock: consultar o enviar una solicitud no reduce disponible. Las reservas temporales se posponen. | PROPUESTA PP-006 |
+| RN-016 | Reservas explícitas | Enviar o consultar una solicitud no reserva stock. El alcance incluye una operación explícita de reserva por lote, con vigencia finita, consumo y liberación; su activación está prevista en I3. | CAPACIDAD ACORDADA; detalle PP-006 |
 | RN-017 | Solicitud | Solo una solicitud enviada y vigente puede atenderse. Su creador no cambia líneas ya atendidas ni cancela unidades entregadas. | PROPUESTA PP-007 |
 | RN-018 | Traslado | El origen y destino son distintos. La salida descuenta origen y crea tránsito; la recepción descuenta tránsito y acredita destino sin duplicar existencia global. | ACORDADA |
 | RN-019 | Diferencias | En recepción de traslado, cantidades dañadas quedan segregadas y faltantes permanecen como diferencia pendiente; no se convierte automáticamente un faltante en pérdida aprobada. | PROPUESTA PP-008 |
@@ -47,6 +47,18 @@ atribuidas a DIGEMID ni a una cadena privada. Su detalle y decisión están en 1
 | RN-034 | Aislamiento de fallos | Un resultado incierto no autoriza repetir con otra identidad: primero se consulta el resultado de la operación original. | ACORDADA |
 | RN-035 | Salida a servicio | La entrega a un servicio constituye salida del inventario gestionado. No afirma que el medicamento fue administrado al paciente; el subinventario clínico del servicio es evolución posterior. | PROPUESTA PP-014 |
 | RN-036 | Obligaciones separadas | La aplicación apoya registros y controles; el software no acredita inspección física, condiciones de conservación ni certificación sanitaria. | ACORDADA |
+
+## Reglas especializadas de compromiso y decisión
+
+| ID | Regla | Definición | Estado |
+| --- | --- | --- | --- |
+| RN-037 | Compromisos y libre | En cada corte, libre = utilizable elegible menos compromiso vigente consumible. El compromiso no cambia físico y no supera la cantidad elegible a la que se vincula. | CAPACIDAD ACORDADA; detalle PP-006 |
+| RN-038 | Elegibilidad de reserva | Solo se reserva para solicitud vigente, ámbito permitido y lotes elegibles. La reserva se asigna por FEFO y nunca autoriza consumir un lote que después dejó de ser elegible. | ACORDADA; detalle PP-015 |
+| RN-039 | Ciclo temporal | Una reserva se cancela, expira o invalida solo por su remanente. A partir del fin T ya no compromete ni autoriza consumo, independientemente de cuándo se actualice su estado materializado. Un lote bloqueado no pasa a libre por liberar la reserva. | CAPACIDAD ACORDADA; plazo PP-016 |
+| RN-040 | Decisión ligada al contenido | Aprobaciones e interpretaciones conservan versión, alcance, autor y evidencia. Una aprobación no se reutiliza con cantidades o lotes diferentes ni sustituye revalidar permisos y stock. | PROPUESTA PP-017 |
+| RN-041 | Evidencia del retorno | Liberar devolución exige causa, origen y evidencia de conservación revisada por responsable facultado. Rechazarla conserva stock segregado hasta una disposición autorizada. | ACORDADA; procedimiento PP-018 |
+| RN-042 | Conservación de reserva | Reservado inicial = consumido + liberado/caducado/invalidado + remanente. Solo consumir genera la salida física correspondiente; cada unidad se consume o libera una sola vez. | ACORDADA |
+
 
 ## Elegibilidad FEFO
 
@@ -73,3 +85,13 @@ Bloquear un lote no elimina unidades físicas. Cancelar una solicitud no reviert
 entrega confirmada. Una baja disminuye custodia con evidencia; cambiar el estado del
 lote a vencido no la disminuye. Los factores históricos no se recalculan con cambios
 posteriores del catálogo.
+
+## Disponibilidad con reservas
+
+Sin reservas activas, libre coincide con utilizable elegible. Con reservas, las
+cantidades comprometidas no están libres para otras solicitudes. La solicitud
+propietaria puede consumir su propia asignación vigente y pedir libre adicional
+mediante otra asignación válida; no se limita su derecho a su vista de libre ajeno.
+Si llega otro lote con vencimiento anterior después de reservar, PP-015 propone
+respetar el compromiso original válido; reasignar exige una operación explícita,
+no un cambio silencioso. Esta política debe revisarse antes de implementar reservas.

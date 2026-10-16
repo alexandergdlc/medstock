@@ -8,7 +8,7 @@
 
 **Input**: Especificar MedStock para una cadena ampliable de clínicas, medicamentos
 e insumos por lote, recepción, solicitudes internas, despacho FEFO, traslados,
-devoluciones, ajustes, bloqueos y auditoría verificable. Tres sedes son datos iniciales;
+devoluciones, ajustes, reservas explícitas, vencimientos, autorizaciones y auditoría verificable. Tres sedes son datos iniciales;
 el objetivo de carga es 2 000 usuarios activos simultáneamente. Desarrollo individual.
 
 ## User Scenarios & Testing *(mandatory)*
@@ -33,6 +33,8 @@ Como operador de almacén autorizado quiero recibir productos por lote y consult
 - [CA-010](../analisis/08-requisitos-funcionales.md): Consultar existencias.
 - [CA-011](../analisis/08-requisitos-funcionales.md): Consultar historial por lote.
 
+- [CA-051](../analisis/08-requisitos-funcionales.md): Capturar precisión del vencimiento.
+
 **Flujos:** CU-005, CU-006. Los criterios completos son canónicos en 08 y los casos en 10.
 
 ### HU-002 — Solicitar y despachar con FEFO (Priority: P1)
@@ -52,6 +54,10 @@ Como farmacia quiero atender demanda interna mediante lotes elegibles, conservan
 - [CA-017](../analisis/08-requisitos-funcionales.md): Atender parcialmente.
 - [CA-018](../analisis/08-requisitos-funcionales.md): Recuperar resultado.
 - [CA-019](../analisis/08-requisitos-funcionales.md): Emitir constancia de salida.
+
+- [CA-041](../analisis/08-requisitos-funcionales.md): Registrar consentimiento de entrega parcial.
+- [CA-042](../analisis/08-requisitos-funcionales.md): Continuar o cerrar remanentes.
+- [CA-043](../analisis/08-requisitos-funcionales.md): Consultar seguimiento de parciales.
 
 **Flujos:** CU-007, CU-008. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -94,6 +100,10 @@ Como responsable y auditor quiero impedir salidas de lotes afectados y reconstru
 - [CA-033](../analisis/08-requisitos-funcionales.md): Verificar integridad.
 - [CA-039](../analisis/08-requisitos-funcionales.md): Reconciliar inventario.
 
+- [CA-052](../analisis/08-requisitos-funcionales.md): Versionar interpretación de fechas.
+- [CA-054](../analisis/08-requisitos-funcionales.md): Revalidar fechas al comprometer stock.
+- [CA-063](../analisis/08-requisitos-funcionales.md): Consultar decisión y evidencia operativa.
+
 **Flujos:** CU-013, CU-015. Los criterios completos son canónicos en 08 y los casos en 10.
 
 ### HU-005 — Trasladar entre sedes (Priority: P2)
@@ -130,6 +140,11 @@ Como responsable quiero evaluar devoluciones, conteos y bajas sin borrar movimie
 - [CA-030](../analisis/08-requisitos-funcionales.md): Registrar baja.
 - [CA-031](../analisis/08-requisitos-funcionales.md): Compensar error.
 
+- [CA-059](../analisis/08-requisitos-funcionales.md): Documentar causas y conservación del retorno.
+- [CA-060](../analisis/08-requisitos-funcionales.md): Controlar saldo retornable concurrente.
+- [CA-061](../analisis/08-requisitos-funcionales.md): Evaluar retorno por línea.
+- [CA-062](../analisis/08-requisitos-funcionales.md): Disponer retorno rechazado.
+
 **Flujos:** CU-011, CU-012, CU-014. Los criterios completos son canónicos en 08 y los casos en 10.
 
 ### HU-007 — Supervisar la cadena (Priority: P2)
@@ -146,7 +161,47 @@ Como responsable central quiero consultar alertas y reportes por corte y ámbito
 - [CA-034](../analisis/08-requisitos-funcionales.md): Consolidar reportes.
 - [CA-035](../analisis/08-requisitos-funcionales.md): Exportar resultados.
 
+- [CA-053](../analisis/08-requisitos-funcionales.md): Identificar próximos vencimientos.
+
 **Flujos:** CU-006, CU-016. Los criterios completos son canónicos en 08 y los casos en 10.
+
+### HU-008 — Comprometer y consumir stock mediante reserva (Priority: P2)
+
+Como farmacia quiero apartar cantidades por lote para una solicitud y liberar su remanente por tiempo o cancelación sin alterar el físico incorrectamente.
+
+**Why this priority**: Permite compromisos explícitos y evita sobreasignación entre solicitantes.
+
+**Independent Test**: Con treinta unidades de ensayo, reservar veinte, consumir cinco y cancelar quince; ensayar las carreras de creación/consumo/liberación.
+
+**Acceptance Scenarios**:
+
+- [CA-044](../analisis/08-requisitos-funcionales.md): Crear reserva explícita por lote.
+- [CA-045](../analisis/08-requisitos-funcionales.md): Consultar libre y comprometido.
+- [CA-046](../analisis/08-requisitos-funcionales.md): Cancelar y liberar reserva.
+- [CA-047](../analisis/08-requisitos-funcionales.md): Expirar reserva por tiempo operativo.
+- [CA-048](../analisis/08-requisitos-funcionales.md): Consumir reserva al despachar.
+- [CA-049](../analisis/08-requisitos-funcionales.md): Invalidar reserva no elegible.
+- [CA-050](../analisis/08-requisitos-funcionales.md): Auditar ciclo de reserva.
+- [CA-064](../analisis/08-requisitos-funcionales.md): Conciliar compromisos y saldos físicos.
+
+**Flujos:** CU-017, CU-015.
+
+### HU-009 — Decidir autorizaciones sobre contenido vigente (Priority: P2)
+
+Como responsable quiero aprobar o rechazar una operación concreta y asegurar que se ejecute solo sobre su contenido y ámbito válidos.
+
+**Why this priority**: Evita autoaprobación y reutilización de decisiones sobre cantidades o lotes diferentes.
+
+**Independent Test**: Con un ajuste propuesto, probar aprobación válida, cambio de contenido, revocación y rechazo sin efectos.
+
+**Acceptance Scenarios**:
+
+- [CA-055](../analisis/08-requisitos-funcionales.md): Solicitar autorización vinculada.
+- [CA-056](../analisis/08-requisitos-funcionales.md): Aprobar o rechazar con alcance.
+- [CA-057](../analisis/08-requisitos-funcionales.md): Exigir separación de funciones.
+- [CA-058](../analisis/08-requisitos-funcionales.md): Invalidar aprobaciones desactualizadas.
+
+**Flujos:** CU-019.
 
 ### Edge Cases
 
@@ -154,7 +209,7 @@ Concurrencia por últimas unidades; respuesta perdida; identidad repetida con co
 diferente; fallo entre efectos; lote bloqueado o vencido tras consultar; empate FEFO;
 traslado parcial con daño y faltante; devolución acumulada concurrente; compensación
 sobre stock ya consumido; revocación de permisos; corte de reporte y truncado de
-historial. Los resultados esperados están en CA-101 a CA-118 del
+historial. Los resultados esperados están en CA-101 a CA-126 del
 [plan de validación](../analisis/15-trazabilidad-y-validacion.md).
 
 ## Requirements *(mandatory)*
@@ -167,19 +222,21 @@ lo incorpora por referencia, evitando dos textos normativos divergentes.
 
 | Historia | Requisitos canónicos |
 | --- | --- |
-| HU-001 | RF-007, RF-008, RF-009, RF-010, RF-011 |
-| HU-002 | RF-013, RF-014, RF-015, RF-016, RF-017, RF-018, RF-019 |
+| HU-001 | RF-007, RF-008, RF-009, RF-010, RF-011, RF-051 |
+| HU-002 | RF-013, RF-014, RF-015, RF-016, RF-017, RF-018, RF-019, RF-041, RF-042, RF-043 |
 | HU-003 | RF-001, RF-002, RF-003, RF-004, RF-005, RF-006, RF-036, RF-037, RF-038, RF-040 |
-| HU-004 | RF-028, RF-029, RF-032, RF-033, RF-039 |
+| HU-004 | RF-028, RF-029, RF-032, RF-033, RF-039, RF-052, RF-054, RF-063 |
 | HU-005 | RF-020, RF-021, RF-022, RF-023 |
-| HU-006 | RF-024, RF-025, RF-026, RF-027, RF-030, RF-031 |
-| HU-007 | RF-012, RF-034, RF-035 |
+| HU-006 | RF-024, RF-025, RF-026, RF-027, RF-030, RF-031, RF-059, RF-060, RF-061, RF-062 |
+| HU-007 | RF-012, RF-034, RF-035, RF-053 |
+| HU-008 | RF-044, RF-045, RF-046, RF-047, RF-048, RF-049, RF-050, RF-064 |
+| HU-009 | RF-055, RF-056, RF-057, RF-058 |
 
 ### Key Entities
 
 Sede, ubicación, servicio, usuario/asignación, producto/presentación, lote/existencia,
 recepción, solicitud/despacho, traslado, devolución, conteo/ajuste, bloqueo y
-operación/movimiento/evento de auditoría. Las relaciones y significados están en
+operación/movimiento/evento de auditoría, reserva/línea, aprobación y política temporal. Las relaciones y significados están en
 el [modelo conceptual](../analisis/12-modelo-conceptual.md); no se fija almacenamiento.
 
 ## Success Criteria *(mandatory)*
@@ -198,8 +255,21 @@ el [modelo conceptual](../analisis/12-modelo-conceptual.md); no se fija almacena
   medir errores y tiempos por clase. Candidatos por validar: 95 % de consultas en
   500 ms y movimientos en 1 s, con menos de 1 % de errores técnicos y cero violaciones
   de inventario. No hay medición ni capacidad acreditada todavía.
-- **SC-006**: cada uno de los cuarenta RF tiene criterio, regla, caso de uso y objetivo;
+- **SC-006**: cada uno de los 64 RF tiene criterio, regla, caso de uso y objetivo;
   las políticas aún abiertas se identifican, no se presentan como hechos aprobados.
+
+- **SC-007**: en los escenarios de reserva no se excede el libre elegible ni se consume/libera dos veces; la vigencia se aplica incluso con limpieza retrasada.
+- **SC-008**: una autorización no habilita otro contenido o sede; las devoluciones se evalúan por subcantidad con evidencia y sin aumento automático del disponible.
+
+## Clarifications
+
+### Sesión 2026-10-15
+
+Alexander confirmó la inclusión de las cinco capacidades para implementación posterior.
+Reservas pasa de evolución fuera de detalle a capacidad analizada en I3. Permanecen
+propuestos duración, prioridad FEFO durante compromiso, interpretación temporal y
+matriz final de autorizaciones. Scrum/Kanban se comparan como opciones de gestión,
+sin alterar los requisitos clínico-logísticos ni declarar adopción automática.
 
 ## Assumptions
 

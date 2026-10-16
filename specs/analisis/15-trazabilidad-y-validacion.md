@@ -1,6 +1,6 @@
 # Trazabilidad y plan de validación de requisitos
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -54,47 +54,77 @@ las PP se vinculan desde RN y el registro 14.
 | OBJ-004 | RF-038 | RN-024, RN-025, RN-029 | CU-002 | CA-038 | I1 |
 | OBJ-003 | RF-039 | RN-012, RN-031 | CU-015 | CA-039 | I2 |
 | OBJ-006 | RF-040 | RN-014, RN-034 | CU-001 | CA-040 | I1 |
+| OBJ-002 | RF-041 | RN-015, RN-024 | CU-008 | CA-041 | I2 |
+| OBJ-002 | RF-042 | RN-015, RN-017 | CU-007 | CA-042 | I2 |
+| OBJ-006 | RF-043 | RN-015, RN-033 | CU-007 | CA-043 | I2 |
+| OBJ-002 | RF-044 | RN-016, RN-037, RN-038, RN-014 | CU-017 | CA-044 | I3 |
+| OBJ-002 | RF-045 | RN-037, RN-033 | CU-017 | CA-045 | I3 |
+| OBJ-002 | RF-046 | RN-014, RN-037, RN-039 | CU-017 | CA-046 | I3 |
+| OBJ-002 | RF-047 | RN-028, RN-039 | CU-017 | CA-047 | I3 |
+| OBJ-002 | RF-048 | RN-012, RN-013, RN-038, RN-042 | CU-017 | CA-048 | I3 |
+| OBJ-002 | RF-049 | RN-008, RN-022, RN-039 | CU-017 | CA-049 | I3 |
+| OBJ-003 | RF-050 | RN-024, RN-039, RN-042 | CU-017 | CA-050 | I3 |
+| OBJ-002 | RF-051 | RN-006, RN-009 | CU-018 | CA-051 | I1 |
+| OBJ-002 | RF-052 | RN-009, RN-028, RN-040 | CU-018 | CA-052 | I1 |
+| OBJ-002 | RF-053 | RN-009, RN-030 | CU-018 | CA-053 | I3 |
+| OBJ-002 | RF-054 | RN-009, RN-011, RN-038 | CU-018 | CA-054 | I2 |
+| OBJ-004 | RF-055 | RN-021, RN-029, RN-040 | CU-019 | CA-055 | I3 |
+| OBJ-004 | RF-056 | RN-002, RN-021, RN-040 | CU-019 | CA-056 | I3 |
+| OBJ-004 | RF-057 | RN-021, RN-029 | CU-019 | CA-057 | I3 |
+| OBJ-004 | RF-058 | RN-011, RN-040 | CU-019 | CA-058 | I3 |
+| OBJ-003 | RF-059 | RN-020, RN-041 | CU-011 | CA-059 | I3 |
+| OBJ-003 | RF-060 | RN-013, RN-014, RN-020 | CU-011 | CA-060 | I3 |
+| OBJ-002 | RF-061 | RN-008, RN-020, RN-041 | CU-011 | CA-061 | I3 |
+| OBJ-003 | RF-062 | RN-021, RN-023, RN-041 | CU-014 | CA-062 | I3 |
+| OBJ-003 | RF-063 | RN-024, RN-033, RN-040, RN-041 | CU-015 | CA-063 | I3 |
+| OBJ-003 | RF-064 | RN-031, RN-037, RN-042 | CU-015 | CA-064 | I3 |
 
 ## Cobertura de reglas
 
 | Regla | Requisitos relacionados |
 | --- | --- |
 | RN-001 | RF-003, RF-004 |
-| RN-002 | RF-001, RF-002, RF-004, RF-010, RF-035 |
+| RN-002 | RF-001, RF-002, RF-004, RF-010, RF-035, RF-056 |
 | RN-003 | RF-005 |
 | RN-004 | RF-006 |
 | RN-005 | RF-006 |
-| RN-006 | RF-008 |
+| RN-006 | RF-008, RF-051 |
 | RN-007 | RF-007, RF-008, RF-009 |
-| RN-008 | RF-010, RF-015, RF-025 |
-| RN-009 | RF-008, RF-012, RF-015 |
+| RN-008 | RF-010, RF-015, RF-025, RF-049, RF-061 |
+| RN-009 | RF-008, RF-012, RF-015, RF-051, RF-052, RF-053, RF-054 |
 | RN-010 | RF-015, RF-021 |
-| RN-011 | RF-015, RF-016, RF-028 |
-| RN-012 | RF-009, RF-016, RF-021, RF-039 |
-| RN-013 | RF-016, RF-027, RF-031 |
-| RN-014 | RF-009, RF-016, RF-018, RF-021, RF-022, RF-040 |
-| RN-015 | RF-014, RF-017 |
-| RN-016 | RF-013 |
-| RN-017 | RF-013, RF-014 |
+| RN-011 | RF-015, RF-016, RF-028, RF-054, RF-058 |
+| RN-012 | RF-009, RF-016, RF-021, RF-039, RF-048 |
+| RN-013 | RF-016, RF-027, RF-031, RF-048, RF-060 |
+| RN-014 | RF-009, RF-016, RF-018, RF-021, RF-022, RF-040, RF-044, RF-046, RF-060 |
+| RN-015 | RF-014, RF-017, RF-041, RF-042, RF-043 |
+| RN-016 | RF-013, RF-044 |
+| RN-017 | RF-013, RF-014, RF-042 |
 | RN-018 | RF-020, RF-021, RF-022 |
 | RN-019 | RF-022, RF-023 |
-| RN-020 | RF-024, RF-025, RF-031 |
-| RN-021 | RF-023, RF-026, RF-027, RF-030 |
-| RN-022 | RF-025, RF-028, RF-029, RF-030 |
-| RN-023 | RF-027, RF-030, RF-031 |
-| RN-024 | RF-011, RF-019, RF-029, RF-032, RF-038 |
+| RN-020 | RF-024, RF-025, RF-031, RF-059, RF-060, RF-061 |
+| RN-021 | RF-023, RF-026, RF-027, RF-030, RF-055, RF-056, RF-057, RF-062 |
+| RN-022 | RF-025, RF-028, RF-029, RF-030, RF-049 |
+| RN-023 | RF-027, RF-030, RF-031, RF-062 |
+| RN-024 | RF-011, RF-019, RF-029, RF-032, RF-038, RF-041, RF-050, RF-063 |
 | RN-025 | RF-033, RF-038 |
 | RN-026 | RF-003, RF-005, RF-036 |
 | RN-027 | RF-013 |
-| RN-028 | RF-037 |
-| RN-029 | RF-002, RF-038 |
-| RN-030 | RF-012, RF-037 |
-| RN-031 | RF-023, RF-026, RF-034, RF-039 |
+| RN-028 | RF-037, RF-047, RF-052 |
+| RN-029 | RF-002, RF-038, RF-055, RF-057 |
+| RN-030 | RF-012, RF-037, RF-053 |
+| RN-031 | RF-023, RF-026, RF-034, RF-039, RF-064 |
 | RN-032 | RF-015 |
-| RN-033 | RF-011, RF-032, RF-034, RF-035 |
+| RN-033 | RF-011, RF-032, RF-034, RF-035, RF-043, RF-045, RF-063 |
 | RN-034 | RF-018, RF-040 |
 | RN-035 | RF-019 |
 | RN-036 | RF-019 |
+| RN-037 | RF-044, RF-045, RF-046, RF-064 |
+| RN-038 | RF-044, RF-048, RF-054 |
+| RN-039 | RF-046, RF-047, RF-049, RF-050 |
+| RN-040 | RF-052, RF-055, RF-056, RF-058, RF-063 |
+| RN-041 | RF-059, RF-061, RF-062, RF-063 |
+| RN-042 | RF-048, RF-050, RF-064 |
 
 ## Escenarios adicionales de frontera y fallo
 
@@ -122,16 +152,29 @@ registrar fixture, identidad de operaciones, intercalación/fallo y conciliació
 | CA-117 | RF-021 | Traslado autorizado para ocho unidades y salida ya confirmada. | Se pierde respuesta y se repite la salida. | Se devuelve la expedición original; no se descuentan otras ocho ni se duplican unidades en tránsito. |
 | CA-118 | RF-003 | Tres sedes iniciales y permisos segregados. | Se registra una cuarta con sus ubicaciones y usuarios. | Puede operar según permisos sin modificar código y no comparte saldos por defecto. |
 
+## Escenarios especializados añadidos
+
+| ID | RF | Dado | Cuando | Entonces |
+| --- | --- | --- | --- | --- |
+| CA-119 | RF-044 | Diez unidades libres y dos reservas diferentes de siete. | Se confirman concurrentemente sin parciales. | Solo una reserva compromete siete; libre tres y físico diez. |
+| CA-120 | RF-048 | Diez físicas, ocho reservadas y consumo de tres. | La respuesta se pierde y se reintenta la misma operación. | Físico siete, reserva cinco y libre dos, sin segundo consumo. |
+| CA-121 | RF-046 | Reserva de seis sin consumo previo. | Se intenta consumir seis y cancelar seis al mismo tiempo. | Un resultado serial válido: consume o libera; no ambas cosas por las mismas seis unidades. |
+| CA-122 | RF-047 | Reserva con fin T y limpieza detenida. | Se opera en T y después alterando hora del navegador. | No es consumible ni reduce libre efectivo; el navegador no prolonga vigencia. |
+| CA-123 | RF-058 | Aprobación para ajuste de menos dos. | Cambian cantidad a menos tres o se revoca permiso antes de ejecutar. | No ejecuta con la aprobación anterior; ningún movimiento parcial. |
+| CA-124 | RF-061 | Seis unidades devueltas en cuarentena. | Se aprueban dos y se rechaza una. | Dos se liberan, una sigue segregada y tres permanecen en evaluación. |
+| CA-125 | RF-052 | Entrega histórica con una política temporal documentada. | Se aprueba otra política para lotes futuros. | Historia original permanece; se identifica revisión de afectados sin cambiar fechas pasadas silenciosamente. |
+| CA-126 | RF-049 | Lote bloqueado de diez con seis reservadas. | Se invalida la reserva y se consulta libre. | Compromiso consumible cero y libre cero por bloqueo; no aparecen diez disponibles. |
+
 ## Cobertura de calidad
 
 | Objetivo | RNF | Escenarios |
 |---|---|---|
 | OBJ-001 | RNF-006 | ESC-004 |
-| OBJ-002 | RNF-001 | ESC-001; CA-101/CA-105/CA-113 |
-| OBJ-003 | RNF-007, RNF-008 | ESC-005, ESC-006; CA-108/CA-109/CA-112 |
-| OBJ-004 | RNF-002 | ESC-003; CA-110 |
+| OBJ-002 | RNF-001, RNF-013, RNF-014 | ESC-001, ESC-010, ESC-011; CA-101/CA-105/CA-113/CA-119/CA-122 |
+| OBJ-003 | RNF-007, RNF-008, RNF-015 | ESC-005, ESC-006, ESC-013; CA-108/CA-109/CA-112/CA-124/CA-125 |
+| OBJ-004 | RNF-002, RNF-016 | ESC-003, ESC-012; CA-110/CA-123 |
 | OBJ-005 | RNF-003, RNF-004, RNF-005, RNF-012 | ESC-002, ESC-009 |
-| OBJ-006 | RNF-009, RNF-010, RNF-011 | ESC-007, ESC-008 |
+| OBJ-006 | RNF-009, RNF-010, RNF-011, RNF-017, RNF-018 | ESC-007, ESC-008, ESC-014, ESC-015 |
 
 ## Revisión y evidencias futuras
 

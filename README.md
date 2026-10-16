@@ -8,9 +8,9 @@ Spec Kit y Codex.
 
 ## Estado actual
 
-Análisis inicial 0.1.0 preparado para revisión, con Spec Kit configurado. Incluye
-18 documentos de análisis, 40 requisitos funcionales, 36 reglas de negocio, 16 casos
-de uso y 58 criterios/escenarios de aceptación. La aplicación y las pruebas de carga
+Análisis inicial 0.2.0 preparado para revisión, con Spec Kit configurado. Incluye
+21 documentos de análisis, 64 requisitos funcionales, 42 reglas de negocio, 19 casos
+de uso y 90 criterios/escenarios de aceptación. La aplicación y las pruebas de carga
 todavía no están implementadas.
 
 La cadena debe admitir nuevas sedes por configuración. Tres clínicas serán los datos
@@ -32,7 +32,7 @@ un perfil de carga y evidencia; no es capacidad ya demostrada.
 ## Alcance de negocio acordado
 
 Sedes y ubicaciones; catálogo de medicamentos e insumos médicos; recepción por lote;
-existencias; solicitudes internas; despacho FEFO; traslados; devoluciones; ajustes;
+existencias; solicitudes internas; reservas explícitas; despacho FEFO; traslados; devoluciones; ajustes;
 bloqueo y retiro de lotes; consultas consolidadas; auditoría verificable.
 
 El análisis distinguirá alcance completo y entregas incrementales. Las historias

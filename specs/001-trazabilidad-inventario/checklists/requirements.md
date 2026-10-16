@@ -14,11 +14,11 @@
 ## Requirement Completeness
 
 - [x] No quedan marcadores de plantilla ni NEEDS CLARIFICATION sin explicar.
-- [x] Los cuarenta RF tienen criterios principales comprobables en 08.
+- [x] Los 64 RF tienen criterios principales comprobables en 08.
 - [x] Los criterios de éxito son observables y no dependen de un producto técnico.
 - [x] Se describen alcance, exclusiones, dependencias y supuestos.
 - [x] Hay casos alternativos, límites y concurrencia con resultados esperados.
-- [x] Las políticas propuestas y sus implicaciones están registradas en 14.
+- [x] Las cinco capacidades incluidas, las políticas propuestas y sus implicaciones están registradas en 14.
 
 ## Feature Readiness
 

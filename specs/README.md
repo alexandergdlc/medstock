@@ -5,7 +5,7 @@
 3. Consultar la [especificación base Spec Kit](001-trazabilidad-inventario/spec.md).
 4. Revisar [checklist y pendientes](001-trazabilidad-inventario/checklists/requirements.md).
 
-El análisis 0.1.0 es un borrador completo para revisión documental; no contiene
+El análisis 0.2.0 es un borrador completo para revisión documental; no contiene
 implementación ni valida procesos en campo. Los archivos canónicos de reglas y RF
 están en `analisis/07-*` y `analisis/08-*`; las historias los incorporan por referencia.
 

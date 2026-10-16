@@ -1,6 +1,6 @@
 # Procesos de negocio propuestos
 
-**Proyecto:** MedStock · **Versión:** 0.1.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
 
@@ -15,7 +15,7 @@ fuente normativa. El responsable farmacéutico validará la aplicación operativ
 | PR-01 Organización y catálogo | Nueva sede o producto | Validar códigos, definir ámbito/unidad, registrar | Entidad utilizable sin stock ficticio | Duplicado o conversión incompatible |
 | PR-02 Recepción | Documento y productos físicos | Capturar lotes, evaluar, separar observado, confirmar | Entrada utilizable/cuarentena y constancia | Fecha/lote contradictorio, reintento o fallo |
 | PR-03 Consulta | Necesidad de stock | Filtrar ámbito, consultar por condición, mostrar corte | Disponibilidad explicada | Sin permiso o resultado desactualizado |
-| PR-04 Solicitud | Necesidad de servicio | Crear líneas, validar unidad, enviar | Solicitud pendiente, sin reserva | Producto inactivo, cantidades inválidas |
+| PR-04 Solicitud | Necesidad de servicio | Crear líneas, validar unidad, enviar | Solicitud pendiente; reserva solo mediante operación explícita | Producto inactivo, cantidades inválidas |
 | PR-05 Despacho | Solicitud vigente | Revisar, proponer FEFO, aceptar parcial si aplica, revalidar, confirmar | Salida y remanente/atención completa | Cambio de stock, bloqueo, fallo o respuesta perdida |
 | PR-06 Traslado | Reposición entre sedes | Solicitar, autorizar, expedir, transportar, recibir, resolver diferencias | Origen/tránsito/destino reconciliados | Faltante, daño, repetición, destino inactivo |
 | PR-07 Devolución | Retorno de una salida | Verificar origen/cantidad, recibir en cuarentena, evaluar | Liberación o segregación con motivo | Lote no corresponde, vencido o cantidad excesiva |
@@ -41,6 +41,9 @@ flowchart TD
     V -->|Sí| T["Confirmar salida y auditoría juntas"]
     T --> Q["Actualizar remanente y emitir constancia"]
 ```
+
+Si existe reserva, el despacho consume su asignación vigente según CU-017, revalidando
+lote, tiempo y remanente. Sin reserva usa libre elegible.
 
 Una confirmación con respuesta perdida puede haber tenido éxito: se consulta su
 identidad de operación antes de repetir. No se representa como rechazo sin movimiento.
@@ -74,3 +77,14 @@ Un fallo previo a confirmar no mueve stock; uno posterior a confirmar requiere
 recuperación del resultado. Un conflicto concurrente muestra la causa y permite
 recalcular con la nueva disponibilidad. Un error humano confirmado se compensa;
 una diferencia física se investiga. Ninguno se resuelve borrando historia.
+
+## Procesos especializados añadidos
+
+- PR-11 Reservas: crear explícitamente por lote, consultar compromiso, consumir al
+  despachar o liberar por cancelación, tiempo o invalidez. No mueve físico al crear.
+- PR-12 Política temporal: capturar precisión, aprobar interpretación y evaluar
+  elegibilidad al reservar/despachar; proximidad y vencido son conceptos diferentes.
+- PR-13 Autorización: solicitar sobre contenido concreto, decidir y revalidar antes
+  de ejecutar; el acto de aprobar no descuenta existencias.
+
+El detalle de parciales y retorno por línea está en RF-041 a RF-064 y CU-017 a CU-019.
