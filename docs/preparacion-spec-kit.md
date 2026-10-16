@@ -50,11 +50,11 @@ asistente. Reiniciar la sesión de Codex si las skills recién incorporadas no a
 Las skills se invocan en el chat del agente, NO en PowerShell. Ejemplo de entrada:
 
 ```text
-$speckit-clarify Revisa las ambigüedades de la especificación de recepción por lote.
+$speckit-clarify Revisa las políticas pendientes de specs/001-trazabilidad-inventario. No implementes código.
 ```
 
-Ese ejemplo requiere que exista la especificación correspondiente; todavía no existe
-en esta rama de preparación. No ejecutar pasos técnicos sin sus documentos previos.
+La especificación base ya existe en la rama de análisis. Seleccionar su carpeta como
+explica [specs/README](../specs/README.md) antes de invocar pasos posteriores.
 
 ## Orden de uso
 

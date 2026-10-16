@@ -1,7 +1,8 @@
 # Mapa del próximo entregable de análisis
 
-Este mapa define la organización del trabajo pendiente. No representa un análisis
-ya terminado. El siguiente PR preparará los documentos en `specs/analisis/`.
+Este mapa organizó el entregable preparado en `specs/analisis/`. Los documentos
+están redactados como borrador para revisión; sus políticas PP requieren validación.
+Consultar el [índice del análisis](../specs/analisis/00-indice-y-estado.md).
 
 | Archivo previsto | Contenido |
 |---|---|
