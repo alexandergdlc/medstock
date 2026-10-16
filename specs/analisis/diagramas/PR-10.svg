@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="965" viewBox="0 -45 1100 965">
+<defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#334155"/></marker></defs>
+<rect x="0" y="-45" width="1100" height="965" fill="white"/>
+<text x="20" y="-18" font-family="sans-serif" font-size="19" fill="#16324f">PR-10 · Auditoría</text>
+<rect x="45" y="0" width="330" height="920" fill="#f0f6fa" stroke="#94a3b8"/>
+<text x="210" y="24" text-anchor="middle" font-family="sans-serif" font-size="15">Auditor</text>
+<rect x="375" y="0" width="330" height="920" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="540" y="24" text-anchor="middle" font-family="sans-serif" font-size="15">MedStock</text>
+<rect x="705" y="0" width="330" height="920" fill="#f0f6fa" stroke="#94a3b8"/>
+<text x="870" y="24" text-anchor="middle" font-family="sans-serif" font-size="15">Responsable de cadena</text>
+<polyline points="210.0,87.0 210.0,103.0 210.0,103.0 210.0,119.0" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="210.0,191.0 210.0,215.0 540.0,215.0 540.0,239.0" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="540.0,311.0 540.0,339.5 540.0,339.5 540.0,368.0" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="540.0,422.0 540.0,455.5 540.0,455.5 540.0,489.0" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="545.0" y="449.5" font-family="sans-serif" font-size="13">Sí</text>
+<polyline points="567.0,395.0 1035,395.0 1035,635.0 660.0,635.0" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="1040" y="389.0" font-family="sans-serif" font-size="13">No</text>
+<polyline points="420.0,525.0 65,525.0 65,718.0 540.0,718.0" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="660.0,635.0 685.0,635.0 685.0,835.0 557.0,835.0" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+<circle cx="210.0" cy="70.0" r="17" fill="white" stroke="#16324f" stroke-width="1.5"/>
+<text x="210.0" y="103.0" text-anchor="middle" font-family="sans-serif" font-size="13">Inicio</text>
+<rect x="90.0" y="119.0" width="240" height="72" rx="10" fill="white" stroke="#16324f"/>
+<text x="210.0" y="152.0" text-anchor="middle" font-family="sans-serif" font-size="13">Seleccionar ámbito y</text>
+<text x="210.0" y="168.0" text-anchor="middle" font-family="sans-serif" font-size="13">referencia</text>
+<rect x="420.0" y="239.0" width="240" height="72" rx="10" fill="white" stroke="#16324f"/>
+<text x="540.0" y="272.0" text-anchor="middle" font-family="sans-serif" font-size="13">Conciliar movimientos y</text>
+<text x="540.0" y="288.0" text-anchor="middle" font-family="sans-serif" font-size="13">verificar enlaces</text>
+<polygon points="540.0,368.0 567.0,395.0 540.0,422.0 513.0,395.0" fill="#fff7df" stroke="#16324f"/>
+<text x="540.0" y="400.0" text-anchor="middle" font-family="sans-serif" font-size="20">X</text>
+<rect x="410.0" y="321.0" width="260" height="32" fill="white"/>
+<text x="540.0" y="334.0" text-anchor="middle" font-family="sans-serif" font-size="13">¿Evidencia íntegra y</text>
+<text x="540.0" y="350.0" text-anchor="middle" font-family="sans-serif" font-size="13">suficiente?</text>
+<rect x="420.0" y="489.0" width="240" height="72" rx="10" fill="white" stroke="#16324f"/>
+<text x="540.0" y="530.0" text-anchor="middle" font-family="sans-serif" font-size="13">Emitir informe con alcance</text>
+<rect x="420.0" y="599.0" width="240" height="72" rx="10" fill="white" stroke="#16324f"/>
+<text x="540.0" y="632.0" text-anchor="middle" font-family="sans-serif" font-size="13">Registrar anomalía o resultado</text>
+<text x="540.0" y="648.0" text-anchor="middle" font-family="sans-serif" font-size="13">no concluyente</text>
+<circle cx="540.0" cy="735.0" r="17" fill="white" stroke="#16324f" stroke-width="3"/>
+<text x="540.0" y="768.0" text-anchor="middle" font-family="sans-serif" font-size="13">Informe emitido</text>
+<circle cx="540.0" cy="835.0" r="17" fill="white" stroke="#16324f" stroke-width="3"/>
+<text x="540.0" y="868.0" text-anchor="middle" font-family="sans-serif" font-size="13">Investigación requerida</text>
+</svg>

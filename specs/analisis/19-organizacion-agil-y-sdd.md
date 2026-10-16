@@ -1,6 +1,6 @@
 # Organización del trabajo: SDD, Scrum y Kanban
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador para revisión; capacidades incluidas y políticas de detalle identificadas.
 
@@ -9,7 +9,7 @@
 Alexander aceptó **SDD + Kanban** para organizar MedStock. Existe un desarrollador
 humano con asistencia de IA; Alexander conserva la responsabilidad de revisar y
 aceptar el trabajo. SDD guía las especificaciones y su verificación; Kanban organiza
-el flujo de los ítems. La creación del tablero en GitHub sigue pendiente.
+el flujo de los ítems. El tablero versionado enlaza Issues reales; la vista de GitHub Projects sigue pendiente.
 
 ## Scrum y contexto individual
 
@@ -33,11 +33,11 @@ el docente; esta decisión no modifica por sí sola los requisitos de farmacia.
 | Prácticas inspiradas en Scrum | Posibles revisiones periódicas y objetivos cortos en trabajo individual | Documentar adaptación, sin denominarla Scrum completo |
 | SDD + Kanban | Elegido por Alexander para este contexto individual | Definir flujo y WIP, registrar evidencia y revisar políticas |
 
-## Flujo propuesto de trabajo
+## Flujo inicial aceptado
 
 Pendiente → Preparado → En curso → En revisión → Terminado. Las tarjetas bloqueadas
 conservan la causa y cuentan como trabajo iniciado; no se sacan del límite para
-ocultar pendientes. Propuesta inicial: un trabajo principal en curso y no más de dos
+ocultar pendientes. Política inicial aceptada: un trabajo principal en curso y no más de dos
 iniciados en total contando revisión, ajustable con evidencia.
 
 Cada ítem debe expresar valor, RF/RN involucrados, criterios de aceptación y alcance
@@ -53,19 +53,20 @@ comportamiento verificable, no por crear una carpeta sin resultado.
 5. Integrar por indicación del propietario y revisar lo aprendido.
 
 Una especificación de producto puede abarcar varios ítems; un ítem no necesita
-crear otra especificación duplicada. El tablero podrá
-implementarse en GitHub Projects/Issues. En esta revisión no se creó ese tablero
-ni se fijó un calendario o capacidad semanal sin consultar a Alexander.
+crear otra especificación duplicada. El [tablero de análisis](../../docs/tablero-analisis.md)
+es la vista versionada de las Issues. GitHub Projects no está creado: la conexión
+disponible permite Issues/PRs pero no administrar Projects. Una vista futura deberá
+reflejar las mismas tarjetas, evitando dos estados contradictorios.
 
 ## Revisión periódica y terminado
 
-Como propuesta, revisar semanalmente avance, bloqueos y prioridades; registrar una
+Revisar semanalmente avance, bloqueos y prioridades; registrar una
 mejora concreta del proceso. Para documentación: enlaces, trazabilidad, fuentes y
 pendientes claros. Para código futuro: criterios funcionales, pruebas pertinentes,
 seguridad y documentación actualizada. La aceptación de un requisito y la definición
 de terminado cumplen propósitos diferentes.
 
-Las métricas candidatas del flujo son cantidad iniciada, tiempo de ciclo, antigüedad
+Las métricas que registraremos desde esta versión son cantidad iniciada, tiempo de ciclo, antigüedad
 del trabajo abierto y terminados por periodo. No existe velocidad histórica ni una
 fecha estimada fiable por haber añadido más RF. El análisis inicial del curso es una
 línea base que se refina por incremento, no una exigencia de congelar el negocio.
@@ -85,8 +86,8 @@ ejecutar `speckit-analyze` sin los documentos técnicos que requiere.
 | En revisión | PR con cambios coherentes, comprobaciones y decisiones pendientes explícitas para Alexander |
 | Terminado | Alexander acepta el resultado y se integra el PR; se cumplen los criterios del ítem |
 
-Ejemplo de situación actual: redactar la línea base de análisis está **En revisión**
-en el PR #2; elegir SDD + Kanban es una decisión aceptada que este PR registra.
+La línea base 0.2.0 quedó integrada mediante el PR #2. Esta revisión 0.3.0
+se gestiona en la Issue #3 y un PR nuevo; la aceptación del método ya está registrada.
 Validar la duración de reservas sigue **Pendiente** y no se cierra al integrar la
 línea base. Una tarea de documentar una propuesta puede terminar dejando su validación
 operativa pendiente, siempre que ese sea su alcance explícito. Una tarea de validar
@@ -97,3 +98,16 @@ reglas/RF/CU/criterios afectados, registrar fuentes y separar lo aceptado de lo
 propuesto. Integrar documentos no acredita validación farmacéutica ni implementación
 de las cinco capacidades. Tras integrar la línea base, cada mejora se prepara desde
 `main` actualizado en una rama nueva y se revisa mediante otro PR.
+
+## Medición y expectativa inicial
+
+Comenzado significa entrada en En curso; terminado significa aceptación e integración.
+En revisión y bloqueados cuentan dentro del WIP máximo de dos iniciados, con un solo
+ítem en ejecución activa. Se inicia otro solo si hay capacidad. Registrar fecha de
+inicio/fin, bloqueos y vínculos a PR; medir WIP, antigüedad, tiempo de ciclo y terminados
+por semana, sin convertir una espera de revisión en trabajo terminado.
+
+SLE provisional para una revisión documental acotada: **85 % en siete días naturales**
+desde inicio hasta aceptación/integración. Es una hipótesis de planificación del
+asistente, no un rendimiento observado ni un plazo académico acordado. Se revisará
+con Alexander y los primeros diez ítems terminados; no hay muestra histórica aún.

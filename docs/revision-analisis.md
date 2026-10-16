@@ -61,3 +61,28 @@ reservas y autorizaciones. Agrega correspondencia con fuentes oficiales de inspe
 y comparación Scrum/Kanban. Alexander aceptó SDD + Kanban; se registra la decisión
 y el flujo de revisión del análisis, con criterios de terminado. No se cambia
 la constitución ni se implementa software o tablero.
+
+## Revisión 0.3.0: decisiones logísticas y gráficos
+
+Esta ampliación contiene 24 documentos de análisis, 68 RF, 46 RN, 18 RNF,
+20 CU y 94 CA (68 principales y 26 escenarios adicionales). Conserva los IDs previos.
+Añade 20 actividades Mermaid por CU, 14 procesos BPMN descriptivos con SVG y cuatro
+vistas UML por módulo con SVG/PlantUML. Los otros modelos de contexto, estados y dominio
+se actualizan; total Mermaid: 32.
+
+Aceptado: central y almacenes por sede, farmacia principal ampliable, parcialidad con
+saldo autorizado y reserva posterior a autorización. RF-065 a RF-068 precisan red,
+autorización de demanda, riesgos y redistribución supervisada. Se incorpora el tablero
+versionado y cuatro Issues reales. GitHub Projects todavía no está creado.
+
+Validación: `python scripts/validar_analisis.py`, parser Mermaid y revisión visual de
+las 18 vistas SVG. BPMN comprobado como XML con referencias, carriles y posiciones;
+no validado contra XSD ni probado en un motor ejecutable. No se reejecutaron CLI de
+instalación, pruebas de aplicación o de carga. Archivos oficiales Spec Kit intactos.
+
+Se aplicó speckit-clarify a cinco respuestas ya aceptadas, sin nuevas preguntas.
+Se actualizaron Clarifications, historias/referencias y criterios de éxito. El checklist
+se conserva en 12/15: pendientes validación operativa, perfil de carga y revisión externa.
+No existen hooks before/after_clarify. La aprobación del propietario no certifica
+cumplimiento sanitario ni sustituye validación profesional. No corresponde pasar
+indiscriminadamente a speckit-plan hasta resolver los pendientes del incremento.

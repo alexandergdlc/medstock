@@ -1,8 +1,8 @@
 # Modelo conceptual del dominio
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Organización y saldos
 
@@ -85,3 +85,24 @@ erDiagram
 Una reserva solo compromete su remanente vigente. La aprobación refiere una versión
 del contenido del documento operativo y no es un permiso global. La interpretación
 del lote conserva su precisión y política, sin sustituir el rótulo original.
+
+## Interpretación logística de SEDE
+
+En este modelo SEDE representa un establecimiento de la cadena, tipificado como
+central logístico o clínica. El central tiene almacén, sin servicios asistenciales;
+las clínicas contienen almacenes, farmacias y servicios. Una ubicación tiene un solo
+propietario de custodia. Los servicios inicialmente son destinos sin saldo propio.
+
+```mermaid
+erDiagram
+    SOLICITUD ||--o{ DECISION_DEMANDA : autoriza
+    LINEA_SOLICITUD ||--o{ DECISION_LINEA : delimita
+    DECISION_DEMANDA ||--|{ DECISION_LINEA : contiene
+    PROPUESTA_REDISTRIBUCION ||--o| TRASLADO : origina
+    UBICACION ||--o{ PROPUESTA_REDISTRIBUCION : origen
+    UBICACION ||--o{ PROPUESTA_REDISTRIBUCION : destino
+```
+
+La decisión de demanda aprueba cantidades de producto. Las asignaciones de lote
+posteriores y las decisiones de expedición se conservan con su alcance específico.
+Una propuesta aceptada puede originar un traslado; no permite expediciones duplicadas.

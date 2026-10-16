@@ -1,8 +1,8 @@
 # Requisitos de calidad y restricciones
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Alcance de las medidas
 
@@ -64,3 +64,12 @@ Son necesarias identidad de operadores, calidad del catálogo y revisión de pro
 MedStock no reemplaza transporte adecuado, inspección, conservación ni autorizaciones
 profesionales. No declarar una devolución utilizable solo por integridad del envase.
 La aplicación debe permitir documentar la decisión del responsable competente.
+
+## Calidad aplicada a las decisiones de 0.3.0
+
+RF-065 aplica RNF-006: central y farmacias adicionales se configuran sin recompilar.
+RF-066 aplica RNF-001/RNF-016: cero reservas o despachos por encima del saldo autorizado,
+incluso con cancelación concurrente. RF-067/RF-068 aplican RNF-017: mismo corte y
+parámetros reproducen los indicadores; datos insuficientes se explicitan. Un análisis
+costoso no debe impedir confirmaciones de stock; el presupuesto y ensayo técnico
+se definirán con PN-005/PN-009. No se añaden metas de latencia sin perfil medible.

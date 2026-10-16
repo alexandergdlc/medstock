@@ -1,8 +1,8 @@
 # Estados, eventos y transiciones
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Solicitud
 
@@ -11,11 +11,16 @@ stateDiagram-v2
     [*] --> Borrador
     Borrador --> Enviada: enviar
     Borrador --> Cancelada: cancelar
-    Enviada --> Parcial: confirmar parte
-    Enviada --> Atendida: confirmar total
+    Enviada --> Autorizada: decidir cantidades
+    Enviada --> Rechazada: rechazar todo
+    Autorizada --> Parcial: confirmar parte
+    Autorizada --> Atendida: completar todo lo solicitado
+    Autorizada --> CerradaParcial: resolver todo sin entrega completa
+    Autorizada --> Cancelada: cancelar sin entregas
+    Rechazada --> [*]
     Enviada --> Cancelada: cancelar pendiente total
     Parcial --> Parcial: confirmar otra parte
-    Parcial --> Atendida: completar pendiente
+    Parcial --> Atendida: completar todo lo solicitado
     Parcial --> CerradaParcial: cancelar remanente
     Atendida --> [*]
     Cancelada --> [*]
@@ -118,3 +123,35 @@ significativo o ya no es válida para ejecutar. Una nueva revisión se registra 
 otra decisión vinculada y conserva la anterior. Ejecutar requiere además el permiso
 vigente y las precondiciones de stock/lote. No se confunde este ciclo con la sesión
 de acceso del usuario.
+
+## Distinción entre demanda y compromiso
+
+Autorizar no equivale a reservar ni a atender. Una solicitud autorizada puede tener
+cero reserva por falta de stock. La reserva tiene su ciclo independiente y solo
+el despacho confirmado aumenta entregado. El saldo no autorizado sigue por decidir
+o se rechaza expresamente; nunca desaparece. Atendida exige entregar todo lo solicitado;
+si el resto se cancela/rechaza tras alguna entrega, termina CerradaParcial. Una decisión
+parcial mantiene el documento abierto mientras queden cantidades por decidir.
+
+```mermaid
+stateDiagram-v2
+    [*] --> BorradorDespacho
+    BorradorDespacho --> Rechazado: validación fallida
+    BorradorDespacho --> Confirmado: autorización y stock válidos
+    Confirmado --> CorreccionVinculada: compensación autorizada
+    Rechazado --> [*]
+    CorreccionVinculada --> [*]
+```
+
+```mermaid
+stateDiagram-v2
+    [*] --> Cuarentena: recibir devolución
+    Cuarentena --> EvaluacionParcial: decidir subcantidad
+    EvaluacionParcial --> EvaluacionParcial: decidir otra parte
+    Cuarentena --> Evaluada: decidir todo
+    EvaluacionParcial --> Evaluada: completar evaluación
+    Evaluada --> [*]
+```
+
+Evaluada puede contener unidades liberadas y rechazadas; estas últimas conservan
+custodia segregada hasta disposición. El estado no reemplaza los saldos por condición.

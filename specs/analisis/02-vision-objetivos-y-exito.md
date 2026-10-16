@@ -1,8 +1,8 @@
 # Visión, objetivos y resultados esperados
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Visión
 
@@ -44,3 +44,11 @@ Los p95 candidatos de 500 ms/1 s se aplican a respuestas operativas según 16; l
 reportes grandes tienen otra categoría. Son metas de ingeniería pendientes, no
 promesas comerciales. No se afirma una reducción porcentual de merma o ahorro
 porque no existe línea base de una organización real.
+
+## Evaluación de optimización
+
+OBJ-002 se complementa con RF-067/RF-068: identificar sobrestock, faltantes y riesgo
+de vencimiento con corte y parámetros explícitos. Se observarán cantidad no atendida,
+merma por causa, antigüedad y cobertura por producto/ubicación. No se fija aún un
+porcentaje de reducción sin línea base. Un aumento de traslados no demuestra mejora;
+se compararán disponibilidad y pérdida evitable, sin incentivar consumo clínico.

@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P3_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P3_coll">
+    <bpmn:participant id="P3_pool" name="PR-03 Consulta" processRef="P3" />
+  </bpmn:collaboration>
+  <bpmn:process id="P3" isExecutable="false">
+    <bpmn:laneSet id="P3_lanes">
+      <bpmn:lane id="P3_lane0" name="Usuario autorizado">
+        <bpmn:flowNodeRef>P3_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P3_t1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P3_lane1" name="MedStock">
+        <bpmn:flowNodeRef>P3_t2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P3_gate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P3_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P3_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P3_ey</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P3_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P3_lane2" name="Responsable de farmacia" />
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P3_start" name="Inicio">
+      <bpmn:outgoing>P3_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P3_t1" name="Solicitar ámbito y filtros">
+      <bpmn:incoming>P3_f0</bpmn:incoming>
+      <bpmn:outgoing>P3_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P3_t2" name="Comprobar permisos">
+      <bpmn:incoming>P3_f1</bpmn:incoming>
+      <bpmn:outgoing>P3_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P3_gate" name="¿Permitido?">
+      <bpmn:incoming>P3_f2</bpmn:incoming>
+      <bpmn:outgoing>P3_f3</bpmn:outgoing>
+      <bpmn:outgoing>P3_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P3_yes" name="Mostrar saldos por condición y corte">
+      <bpmn:incoming>P3_f3</bpmn:incoming>
+      <bpmn:outgoing>P3_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P3_no" name="Informar acceso rechazado">
+      <bpmn:incoming>P3_f4</bpmn:incoming>
+      <bpmn:outgoing>P3_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P3_ey" name="Consulta informada">
+      <bpmn:incoming>P3_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P3_en" name="Acceso rechazado">
+      <bpmn:incoming>P3_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P3_f0" sourceRef="P3_start" targetRef="P3_t1" name="" />
+    <bpmn:sequenceFlow id="P3_f1" sourceRef="P3_t1" targetRef="P3_t2" name="" />
+    <bpmn:sequenceFlow id="P3_f2" sourceRef="P3_t2" targetRef="P3_gate" name="" />
+    <bpmn:sequenceFlow id="P3_f3" sourceRef="P3_gate" targetRef="P3_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P3_f4" sourceRef="P3_gate" targetRef="P3_no" name="No" />
+    <bpmn:sequenceFlow id="P3_f5" sourceRef="P3_yes" targetRef="P3_ey" name="" />
+    <bpmn:sequenceFlow id="P3_f6" sourceRef="P3_no" targetRef="P3_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P3_diagram">
+    <bpmndi:BPMNPlane id="P3_plane" bpmnElement="P3_coll">
+      <bpmndi:BPMNShape id="P3_pool_di" bpmnElement="P3_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_lane_di0" bpmnElement="P3_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_lane_di1" bpmnElement="P3_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_lane_di2" bpmnElement="P3_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P3_edge0" bpmnElement="P3_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P3_edge1" bpmnElement="P3_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="540.0" y="215.0" />
+        <di:waypoint x="540.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P3_edge2" bpmnElement="P3_f2">
+        <di:waypoint x="540.0" y="311.0" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="540.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P3_edge3" bpmnElement="P3_f3">
+        <di:waypoint x="540.0" y="422.0" />
+        <di:waypoint x="540.0" y="455.5" />
+        <di:waypoint x="540.0" y="455.5" />
+        <di:waypoint x="540.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P3_edge4" bpmnElement="P3_f4">
+        <di:waypoint x="567.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="660.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P3_edge5" bpmnElement="P3_f5">
+        <di:waypoint x="420.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="540.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P3_edge6" bpmnElement="P3_f6">
+        <di:waypoint x="660.0" y="635.0" />
+        <di:waypoint x="685.0" y="635.0" />
+        <di:waypoint x="685.0" y="835.0" />
+        <di:waypoint x="557.0" y="835.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P3_start_di" bpmnElement="P3_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_t1_di" bpmnElement="P3_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_t2_di" bpmnElement="P3_t2">
+        <dc:Bounds x="420.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_gate_di" bpmnElement="P3_gate">
+        <dc:Bounds x="513.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_yes_di" bpmnElement="P3_yes">
+        <dc:Bounds x="420.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_no_di" bpmnElement="P3_no">
+        <dc:Bounds x="420.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_ey_di" bpmnElement="P3_ey">
+        <dc:Bounds x="523.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P3_en_di" bpmnElement="P3_en">
+        <dc:Bounds x="523.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,8 +1,8 @@
 # Análisis de MedStock: índice y estado
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Propósito y lectura
 
@@ -40,6 +40,9 @@ está identificada. Tres sedes iniciales y nombres genéricos son datos de ensay
 | [18 Especialización](18-capacidades-especializadas.md) | ¿Cómo se detallan las cinco capacidades? |
 | [19 Trabajo ágil](19-organizacion-agil-y-sdd.md) | ¿Cómo combinar gestión y SDD? |
 | [20 Correspondencia sanitaria](20-correspondencia-minsa-digemid.md) | ¿Qué respaldo se verificó y qué es política propia? |
+| [21 Actividades por CU](21-diagramas-de-casos-de-uso.md) | ¿Cómo se desarrolla cada uno de los 20 casos? |
+| [22 Procesos BPMN](22-diagramas-de-procesos.md) | ¿Cómo participan los responsables en los 14 procesos? |
+| [23 Casos de uso UML](23-diagramas-uml-de-casos-de-uso.md) | ¿Qué objetivos tiene cada actor por módulo? |
 
 ## Convenciones y autoridad
 

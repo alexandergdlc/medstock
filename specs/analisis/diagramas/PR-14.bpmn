@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P14_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P14_coll">
+    <bpmn:participant id="P14_pool" name="PR-14 Prevención de merma" processRef="P14" />
+  </bpmn:collaboration>
+  <bpmn:process id="P14" isExecutable="false">
+    <bpmn:laneSet id="P14_lanes">
+      <bpmn:lane id="P14_lane0" name="Responsable de farmacia">
+        <bpmn:flowNodeRef>P14_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P14_t1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P14_lane1" name="MedStock">
+        <bpmn:flowNodeRef>P14_t2</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P14_lane2" name="Responsable de cadena">
+        <bpmn:flowNodeRef>P14_gate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P14_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P14_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P14_ey</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P14_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P14_start" name="Inicio">
+      <bpmn:outgoing>P14_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P14_t1" name="Consultar demanda saldos y vencimientos">
+      <bpmn:incoming>P14_f0</bpmn:incoming>
+      <bpmn:outgoing>P14_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P14_t2" name="Evaluar historial y propuesta explicable">
+      <bpmn:incoming>P14_f1</bpmn:incoming>
+      <bpmn:outgoing>P14_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P14_gate" name="¿Redistribución justificada?">
+      <bpmn:incoming>P14_f2</bpmn:incoming>
+      <bpmn:outgoing>P14_f3</bpmn:outgoing>
+      <bpmn:outgoing>P14_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P14_yes" name="Aceptar propuesta e iniciar traslado autorizado">
+      <bpmn:incoming>P14_f3</bpmn:incoming>
+      <bpmn:outgoing>P14_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P14_no" name="Registrar descarte o datos insuficientes">
+      <bpmn:incoming>P14_f4</bpmn:incoming>
+      <bpmn:outgoing>P14_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P14_ey" name="Propuesta vinculada a PR-06">
+      <bpmn:incoming>P14_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P14_en" name="Revisión documentada">
+      <bpmn:incoming>P14_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P14_f0" sourceRef="P14_start" targetRef="P14_t1" name="" />
+    <bpmn:sequenceFlow id="P14_f1" sourceRef="P14_t1" targetRef="P14_t2" name="" />
+    <bpmn:sequenceFlow id="P14_f2" sourceRef="P14_t2" targetRef="P14_gate" name="" />
+    <bpmn:sequenceFlow id="P14_f3" sourceRef="P14_gate" targetRef="P14_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P14_f4" sourceRef="P14_gate" targetRef="P14_no" name="No" />
+    <bpmn:sequenceFlow id="P14_f5" sourceRef="P14_yes" targetRef="P14_ey" name="" />
+    <bpmn:sequenceFlow id="P14_f6" sourceRef="P14_no" targetRef="P14_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P14_diagram">
+    <bpmndi:BPMNPlane id="P14_plane" bpmnElement="P14_coll">
+      <bpmndi:BPMNShape id="P14_pool_di" bpmnElement="P14_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_lane_di0" bpmnElement="P14_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_lane_di1" bpmnElement="P14_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_lane_di2" bpmnElement="P14_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P14_edge0" bpmnElement="P14_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P14_edge1" bpmnElement="P14_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="540.0" y="215.0" />
+        <di:waypoint x="540.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P14_edge2" bpmnElement="P14_f2">
+        <di:waypoint x="540.0" y="311.0" />
+        <di:waypoint x="540.0" y="339.5" />
+        <di:waypoint x="870.0" y="339.5" />
+        <di:waypoint x="870.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P14_edge3" bpmnElement="P14_f3">
+        <di:waypoint x="870.0" y="422.0" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="455.5" />
+        <di:waypoint x="870.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P14_edge4" bpmnElement="P14_f4">
+        <di:waypoint x="897.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="990.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P14_edge5" bpmnElement="P14_f5">
+        <di:waypoint x="750.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="870.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P14_edge6" bpmnElement="P14_f6">
+        <di:waypoint x="990.0" y="635.0" />
+        <di:waypoint x="1015.0" y="635.0" />
+        <di:waypoint x="1015.0" y="835.0" />
+        <di:waypoint x="887.0" y="835.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P14_start_di" bpmnElement="P14_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_t1_di" bpmnElement="P14_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_t2_di" bpmnElement="P14_t2">
+        <dc:Bounds x="420.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_gate_di" bpmnElement="P14_gate">
+        <dc:Bounds x="843.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_yes_di" bpmnElement="P14_yes">
+        <dc:Bounds x="750.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_no_di" bpmnElement="P14_no">
+        <dc:Bounds x="750.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_ey_di" bpmnElement="P14_ey">
+        <dc:Bounds x="853.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P14_en_di" bpmnElement="P14_en">
+        <dc:Bounds x="853.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

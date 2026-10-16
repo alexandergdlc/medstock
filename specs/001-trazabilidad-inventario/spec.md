@@ -201,7 +201,7 @@ Como responsable quiero aprobar o rechazar una operación concreta y asegurar qu
 - [CA-057](../analisis/08-requisitos-funcionales.md): Exigir separación de funciones.
 - [CA-058](../analisis/08-requisitos-funcionales.md): Invalidar aprobaciones desactualizadas.
 
-**Flujos:** CU-019.
+**Flujos:** CU-019. Autorizar demanda (RF-066) precede reserva y despacho.
 
 ### Edge Cases
 
@@ -224,13 +224,13 @@ lo incorpora por referencia, evitando dos textos normativos divergentes.
 | --- | --- |
 | HU-001 | RF-007, RF-008, RF-009, RF-010, RF-011, RF-051 |
 | HU-002 | RF-013, RF-014, RF-015, RF-016, RF-017, RF-018, RF-019, RF-041, RF-042, RF-043 |
-| HU-003 | RF-001, RF-002, RF-003, RF-004, RF-005, RF-006, RF-036, RF-037, RF-038, RF-040 |
-| HU-004 | RF-028, RF-029, RF-032, RF-033, RF-039, RF-052, RF-054, RF-063 |
+| HU-003 | RF-065, RF-001, RF-002, RF-003, RF-004, RF-005, RF-006, RF-036, RF-037, RF-038, RF-040 |
+| HU-004 | RF-067, RF-068, RF-028, RF-029, RF-032, RF-033, RF-039, RF-052, RF-054, RF-063 |
 | HU-005 | RF-020, RF-021, RF-022, RF-023 |
 | HU-006 | RF-024, RF-025, RF-026, RF-027, RF-030, RF-031, RF-059, RF-060, RF-061, RF-062 |
 | HU-007 | RF-012, RF-034, RF-035, RF-053 |
 | HU-008 | RF-044, RF-045, RF-046, RF-047, RF-048, RF-049, RF-050, RF-064 |
-| HU-009 | RF-055, RF-056, RF-057, RF-058 |
+| HU-009 | RF-066, RF-055, RF-056, RF-057, RF-058 |
 
 ### Key Entities
 
@@ -255,7 +255,7 @@ el [modelo conceptual](../analisis/12-modelo-conceptual.md); no se fija almacena
   medir errores y tiempos por clase. Candidatos por validar: 95 % de consultas en
   500 ms y movimientos en 1 s, con menos de 1 % de errores técnicos y cero violaciones
   de inventario. No hay medición ni capacidad acreditada todavía.
-- **SC-006**: cada uno de los 64 RF tiene criterio, regla, caso de uso y objetivo;
+- **SC-006**: cada uno de los 68 RF tiene criterio, regla, caso de uso y objetivo;
   las políticas aún abiertas se identifican, no se presentan como hechos aprobados.
 
 - **SC-007**: en los escenarios de reserva no se excede el libre elegible ni se consume/libera dos veces; la vigencia se aplica incluso con limpieza retrasada.
@@ -281,3 +281,13 @@ para permitir revisión, no decisiones silenciosas. La normativa aplicable y el
 perfil de carga exigen validación. La planificación de cada incremento se hará tras
 cerrar sus pendientes críticos. No se requiere completar todo el producto para
 revisar esta especificación base.
+
+### Session 2026-10-15 — Organización y operación aceptadas
+
+- Q: ¿Cómo se organiza la custodia? → A: Almacén central, almacenes de sede y farmacia principal por sede, ampliables; servicios inicialmente sin subinventario.
+- Q: ¿Qué ocurre con las entregas parciales? → A: Conservar saldo autorizado, permitir nuevas entregas y cierre justificado; 100 autorizadas menos 40 entregadas dejan 60 pendientes.
+- Q: ¿Cuándo se reserva? → A: Después de autorizar y antes de despachar; enviar no reserva, aprobar no mueve stock y despachar consume el compromiso.
+- Q: ¿Qué significa optimizar? → A: Reducir faltantes, sobrestock y merma mediante indicadores y redistribución supervisada, sin maximizar movimientos ni automatizar consumo clínico.
+- Q: ¿Cómo se documenta y gestiona? → A: Fuentes con límites explícitos, diagramas de procesos y actividades por CU, SDD + Kanban; sin entrevistas farmacéuticas disponibles.
+
+RF-065 a RF-068 amplían el catálogo canónico: red de custodia, autorización de demanda, indicadores y redistribución. HU-004 incorpora revisar riesgos y proponer redistribución (CU-020, CA-067/CA-068); los parámetros y evidencia externa continúan pendientes.

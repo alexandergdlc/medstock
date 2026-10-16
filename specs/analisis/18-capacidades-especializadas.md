@@ -1,6 +1,6 @@
 # Especialización de las cinco capacidades
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador para revisión; capacidades incluidas y políticas de detalle identificadas.
 
@@ -28,7 +28,7 @@ y cierre del remanente; no se construyen dos módulos diferentes para la misma s
 
 1. Hay treinta unidades elegibles en una ubicación. Un servicio solicita veinte.
 2. Enviar la solicitud no altera libre ni físico.
-3. Una reserva explícita compromete veinte: físico treinta, compromiso veinte, libre diez.
+3. Tras autorizar veinte, una reserva explícita compromete veinte: físico treinta, compromiso veinte, libre diez.
 4. Se despachan cinco contra esa reserva: físico veinticinco, compromiso quince, libre diez.
 5. Se cancela el resto de la reserva: físico veinticinco, compromiso cero, libre veinticinco.
 6. La solicitud conserva quince pendientes, salvo cancelación explícita de esas cantidades.
@@ -61,3 +61,10 @@ Los objetivos de latencia RNF-003/RNF-004 siguen candidatos: no se multiplican m
 arbitrarias por cada pantalla. I1 prepara datos/fechas, I2 implementaría parciales y
 FEFO; I3 incorporaría reservas y decisiones logísticas ampliadas. El diseño de I2
 debe considerar la evolución de reservas, sin presumir que ya existe en I1.
+
+## Ejemplo de parcialidad autorizado
+
+Solicitar y autorizar 100, luego entregar 40, deja 60 pendientes autorizadas.
+Reservar 30 de esas 60 deja 30 pendientes comprometidas y 30 pendientes sin reserva;
+no reduce el pendiente a 30. Cancelar las 60 requiere motivo y libera las 30 reservadas,
+sin revertir las 40 entregadas. La solicitud termina cerrada parcialmente.
