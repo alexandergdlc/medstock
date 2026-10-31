@@ -30,4 +30,4 @@ semanalmente. Los estados de la tabla y de la descripción de Issue deben actual
 al cambiar; integrar este archivo no cierra por sí solo todos los pendientes.
 
 Las reglas completas y SLE provisional están en
-[organización SDD + Kanban](../specs/analisis/19-organizacion-agil-y-sdd.md).
+[organización SDD + Kanban](../specs/analisis/08-gestion/19-organizacion-agil-y-sdd.md).

@@ -77,8 +77,8 @@ de merma mediante indicadores y redistribución supervisada. El análisis incluy
 vistas UML por módulo, además de los modelos de dominio/estados.
 
 - [Tablero Kanban e Issues](docs/tablero-analisis.md).
-- [Atlas de actividades](specs/analisis/21-diagramas-de-casos-de-uso.md).
-- [Atlas BPMN](specs/analisis/22-diagramas-de-procesos.md).
-- [Casos de uso UML](specs/analisis/23-diagramas-uml-de-casos-de-uso.md).
+- [Atlas de actividades](specs/analisis/04-casos-de-uso/21-diagramas-de-casos-de-uso.md).
+- [Atlas BPMN](specs/analisis/02-negocio/22-diagramas-de-procesos.md).
+- [Casos de uso UML](specs/analisis/04-casos-de-uso/23-diagramas-uml-de-casos-de-uso.md).
 
 Los parámetros operativos y la validación sanitaria continúan pendientes.

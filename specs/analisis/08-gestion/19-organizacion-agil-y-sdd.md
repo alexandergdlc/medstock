@@ -53,7 +53,7 @@ comportamiento verificable, no por crear una carpeta sin resultado.
 5. Integrar por indicación del propietario y revisar lo aprendido.
 
 Una especificación de producto puede abarcar varios ítems; un ítem no necesita
-crear otra especificación duplicada. El [tablero de análisis](../../docs/tablero-analisis.md)
+crear otra especificación duplicada. El [tablero de análisis](../../../docs/tablero-analisis.md)
 es la vista versionada de las Issues. GitHub Projects no está creado: la conexión
 disponible permite Issues/PRs pero no administrar Projects. Una vista futura deberá
 reflejar las mismas tarjetas, evitando dos estados contradictorios.
