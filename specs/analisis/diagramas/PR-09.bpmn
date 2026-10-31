@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="P9_defs" targetNamespace="https://medstock.example/analysis">
+  <bpmn:collaboration id="P9_coll">
+    <bpmn:participant id="P9_pool" name="PR-09 Bloqueo retiro y baja" processRef="P9" />
+  </bpmn:collaboration>
+  <bpmn:process id="P9" isExecutable="false">
+    <bpmn:laneSet id="P9_lanes">
+      <bpmn:lane id="P9_lane0" name="Responsable farmacéutico">
+        <bpmn:flowNodeRef>P9_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P9_t1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P9_gate</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P9_lane1" name="Operador de custodia">
+        <bpmn:flowNodeRef>P9_yes</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P9_no</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P9_ey</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P9_en</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="P9_lane2" name="MedStock">
+        <bpmn:flowNodeRef>P9_t2</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="P9_start" name="Inicio">
+      <bpmn:outgoing>P9_f0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="P9_t1" name="Identificar lote y bloquear alcance">
+      <bpmn:incoming>P9_f0</bpmn:incoming>
+      <bpmn:outgoing>P9_f1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P9_t2" name="Localizar saldos tránsito y salidas">
+      <bpmn:incoming>P9_f1</bpmn:incoming>
+      <bpmn:outgoing>P9_f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="P9_gate" name="¿Corresponde baja autorizada?">
+      <bpmn:incoming>P9_f2</bpmn:incoming>
+      <bpmn:outgoing>P9_f3</bpmn:outgoing>
+      <bpmn:outgoing>P9_f4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="P9_yes" name="Registrar salida de segregado y evidencia">
+      <bpmn:incoming>P9_f3</bpmn:incoming>
+      <bpmn:outgoing>P9_f5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="P9_no" name="Mantener bloqueo y seguimiento">
+      <bpmn:incoming>P9_f4</bpmn:incoming>
+      <bpmn:outgoing>P9_f6</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="P9_ey" name="Baja registrada">
+      <bpmn:incoming>P9_f5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="P9_en" name="Seguimiento abierto">
+      <bpmn:incoming>P9_f6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="P9_f0" sourceRef="P9_start" targetRef="P9_t1" name="" />
+    <bpmn:sequenceFlow id="P9_f1" sourceRef="P9_t1" targetRef="P9_t2" name="" />
+    <bpmn:sequenceFlow id="P9_f2" sourceRef="P9_t2" targetRef="P9_gate" name="" />
+    <bpmn:sequenceFlow id="P9_f3" sourceRef="P9_gate" targetRef="P9_yes" name="Sí" />
+    <bpmn:sequenceFlow id="P9_f4" sourceRef="P9_gate" targetRef="P9_no" name="No" />
+    <bpmn:sequenceFlow id="P9_f5" sourceRef="P9_yes" targetRef="P9_ey" name="" />
+    <bpmn:sequenceFlow id="P9_f6" sourceRef="P9_no" targetRef="P9_en" name="" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="P9_diagram">
+    <bpmndi:BPMNPlane id="P9_plane" bpmnElement="P9_coll">
+      <bpmndi:BPMNShape id="P9_pool_di" bpmnElement="P9_pool" isHorizontal="false">
+        <dc:Bounds x="35" y="0" width="1030" height="920" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_lane_di0" bpmnElement="P9_lane0" isHorizontal="false">
+        <dc:Bounds x="45" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_lane_di1" bpmnElement="P9_lane1" isHorizontal="false">
+        <dc:Bounds x="375" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_lane_di2" bpmnElement="P9_lane2" isHorizontal="false">
+        <dc:Bounds x="705" y="30" width="330" height="890" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="P9_edge0" bpmnElement="P9_f0">
+        <di:waypoint x="210.0" y="87.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="103.0" />
+        <di:waypoint x="210.0" y="119.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P9_edge1" bpmnElement="P9_f1">
+        <di:waypoint x="210.0" y="191.0" />
+        <di:waypoint x="210.0" y="215.0" />
+        <di:waypoint x="870.0" y="215.0" />
+        <di:waypoint x="870.0" y="239.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P9_edge2" bpmnElement="P9_f2">
+        <di:waypoint x="870.0" y="311.0" />
+        <di:waypoint x="870.0" y="339.5" />
+        <di:waypoint x="210.0" y="339.5" />
+        <di:waypoint x="210.0" y="368.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P9_edge3" bpmnElement="P9_f3">
+        <di:waypoint x="210.0" y="422.0" />
+        <di:waypoint x="210.0" y="455.5" />
+        <di:waypoint x="540.0" y="455.5" />
+        <di:waypoint x="540.0" y="489.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P9_edge4" bpmnElement="P9_f4">
+        <di:waypoint x="237.0" y="395.0" />
+        <di:waypoint x="1035" y="395.0" />
+        <di:waypoint x="1035" y="635.0" />
+        <di:waypoint x="660.0" y="635.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P9_edge5" bpmnElement="P9_f5">
+        <di:waypoint x="420.0" y="525.0" />
+        <di:waypoint x="65" y="525.0" />
+        <di:waypoint x="65" y="718.0" />
+        <di:waypoint x="540.0" y="718.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="P9_edge6" bpmnElement="P9_f6">
+        <di:waypoint x="660.0" y="635.0" />
+        <di:waypoint x="685.0" y="635.0" />
+        <di:waypoint x="685.0" y="835.0" />
+        <di:waypoint x="557.0" y="835.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="P9_start_di" bpmnElement="P9_start">
+        <dc:Bounds x="193.0" y="53.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_t1_di" bpmnElement="P9_t1">
+        <dc:Bounds x="90.0" y="119.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_t2_di" bpmnElement="P9_t2">
+        <dc:Bounds x="750.0" y="239.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_gate_di" bpmnElement="P9_gate">
+        <dc:Bounds x="183.0" y="368.0" width="54" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_yes_di" bpmnElement="P9_yes">
+        <dc:Bounds x="420.0" y="489.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_no_di" bpmnElement="P9_no">
+        <dc:Bounds x="420.0" y="599.0" width="240" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_ey_di" bpmnElement="P9_ey">
+        <dc:Bounds x="523.0" y="718.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P9_en_di" bpmnElement="P9_en">
+        <dc:Bounds x="523.0" y="818.0" width="34" height="34" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

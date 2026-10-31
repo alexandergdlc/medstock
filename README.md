@@ -8,9 +8,9 @@ Spec Kit y Codex, y gestión del flujo con Kanban.
 
 ## Estado actual
 
-Análisis inicial 0.2.0 preparado para revisión, con Spec Kit configurado. Incluye
-21 documentos de análisis, 64 requisitos funcionales, 42 reglas de negocio, 19 casos
-de uso y 90 criterios/escenarios de aceptación. La aplicación y las pruebas de carga
+Análisis inicial 0.3.0 preparado para revisión, con Spec Kit configurado. Incluye
+24 documentos de análisis, 68 requisitos funcionales, 46 reglas de negocio, 20 casos
+de uso y 94 criterios/escenarios de aceptación. La aplicación y las pruebas de carga
 todavía no están implementadas.
 
 La cadena debe admitir nuevas sedes por configuración. Tres clínicas serán los datos
@@ -67,3 +67,18 @@ Spec Kit **1.2.0**, origen `github/spec-kit`, etiqueta `v1.2.0`, commit
 fallback Bash. Sus archivos distribuidos conservan la
 [licencia MIT de GitHub](.specify/UPSTREAM-LICENSE.txt).
 Esta licencia de terceros no asigna una licencia al código propio de MedStock.
+
+## Revisión logística 0.3.0
+
+Decisiones aceptadas: central y almacenes por sede, farmacia principal ampliable,
+saldo parcial autorizado y reserva posterior a autorización. Se añade prevención
+de merma mediante indicadores y redistribución supervisada. El análisis incluye
+20 actividades de casos de uso, 14 procesos BPMN con fuentes editables y cuatro
+vistas UML por módulo, además de los modelos de dominio/estados.
+
+- [Tablero Kanban e Issues](docs/tablero-analisis.md).
+- [Atlas de actividades](specs/analisis/21-diagramas-de-casos-de-uso.md).
+- [Atlas BPMN](specs/analisis/22-diagramas-de-procesos.md).
+- [Casos de uso UML](specs/analisis/23-diagramas-uml-de-casos-de-uso.md).
+
+Los parámetros operativos y la validación sanitaria continúan pendientes.

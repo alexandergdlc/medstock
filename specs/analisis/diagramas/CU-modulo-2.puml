@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+title Inventario y suministro
+rectangle MedStock {
+usecase "CU-005: Recibir productos por lote" as CU005
+usecase "CU-006: Consultar stock e historial" as CU006
+usecase "CU-007: Solicitar insumos al servicio" as CU007
+usecase "CU-008: Despachar mediante FEFO" as CU008
+}
+actor "Almacenero autorizado." as A0
+A0 -- CU005
+actor "Usuario autorizado." as A1
+A1 -- CU006
+actor "Solicitante." as A2
+A2 -- CU007
+actor "Farmacia." as A3
+A3 -- CU008
+@enduml

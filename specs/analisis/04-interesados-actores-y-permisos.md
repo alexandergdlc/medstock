@@ -1,8 +1,8 @@
 # Interesados, actores y permisos
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Interesados
 
@@ -35,7 +35,7 @@ incluido por defecto. Cualquier permiso adicional exige asignación explícita.
 | Sedes/ubicaciones | C | — | S ubicaciones | — | — | — | — | lectura C |
 | Productos/presentaciones | — | C | lectura S | lectura S | lectura S | lectura S | lectura C | lectura C |
 | Recibir/conteo | — | — | supervisar S | S | — | S si asignado | supervisar S | lectura C |
-| Solicitar | — | — | S | — | P/S | — | — | — |
+| Solicitar | — | — | S | S reposición | P/S | S reposición | — | — |
 | Despachar | — | — | — | — | — | S | S si asignado | — |
 | Expedir/recibir traslado | — | — | autorizar S | S si asignado | — | S si asignado | supervisar S | lectura C |
 | Proponer ajuste | — | — | S | S | — | S | S | — |
@@ -71,3 +71,14 @@ flowchart TD
 ```
 
 Este es contexto funcional de análisis; no fija contenedores ni proveedores.
+
+## Rutas y responsabilidades aceptadas
+
+Farmacia es el interlocutor principal del suministro farmacéutico. Los responsables
+autorizados de Emergencia, Hospitalización, Consultorios y Centro Quirúrgico pueden
+solicitar; el catálogo de servicios es configurable. Farmacia valida y autoriza
+demanda dentro de su sede (RF-066); el almacén central/sede prepara reposiciones
+entre ubicaciones mediante traslados (RF-020 a RF-023). El operador de origen
+expide y el receptor de destino confirma; no se da permiso central a toda farmacia.
+La autorización automática está deshabilitada inicialmente. La separación obligatoria
+de usuarios para ajustes/bajas no se extiende sin decisión a toda solicitud ordinaria.

@@ -1,6 +1,6 @@
 # Correspondencia con MINSA/DIGEMID y límites de atribución
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
 **Estado:** borrador para revisión; capacidades incluidas y políticas de detalle identificadas.
 

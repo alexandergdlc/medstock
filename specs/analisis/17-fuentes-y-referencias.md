@@ -1,8 +1,8 @@
 # Fuentes, alcance de evidencia y referencias
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Registro de procedencia
 
@@ -31,7 +31,7 @@ elaboración propia para MedStock.
 | FU-011 | DIRIS Lima Este, acta de inspección BPOF y hojas modificatorias | Entrega parcial en receta 7.5.2.27, p. 11; no extrapolar como obligación idéntica a solicitud interna |
 | FU-012 | GERESA Arequipa, guía de inspección BPOF publicada en sitio oficial | Numerales 7.5.1.19/.20 (p. 7) y 7.5.1.27–.31 (p. 8): vencimientos, rotación y retorno; no reemplaza manual íntegro |
 | FU-013 | Schwaber y Sutherland, Guía Scrum 2020 oficial | Responsabilidades y marco completo; sirve para comparar, no declarar adopción ya realizada |
-| FU-014 | The Kanban Guide, edición mayo 2025 oficial | Visualización, control de flujo y mejora; propuesta de gestión individual, pendiente de elección |
+| FU-014 | The Kanban Guide, edición mayo 2025 oficial | Visualización, control de flujo y mejora; gestión aceptada por Alexander; políticas de flujo y medidas |
 
 ## Citas utilizadas
 
@@ -112,3 +112,17 @@ Guide*. https://kanbanguides.org/the-kanban-guide/
 Las referencias nuevas se separan para facilitar revisión del cambio; en una
 exportación académica se ordenará alfabéticamente la lista conjunta. No se afirma
 una revisión exhaustiva de toda la normativa a partir de búsquedas parciales.
+
+## Referencia institucional incorporada en 0.3.0
+
+| ID | Fuente | Uso limitado |
+|---|---|---|
+| FU-015 | Hospital II-1 Rioja, página oficial de Farmacia | Ejemplo público de organización de farmacia central, emergencia, dosis unitaria y almacén; no prueba un modelo obligatorio ni procesos de una clínica privada |
+
+Hospital II-1 Rioja. (s. f.). *Farmacia*. Recuperado el 15 de octubre de 2026, de
+https://hospitalrioja.gob.pe/servicio/farmacia/
+
+Las decisiones de topología, reserva después de autorizar y optimización son FU-001.
+FU-015 contextualiza roles, no impone una farmacia única por sede. Las comparaciones
+internacionales futuras deberán registrar país, institución, fecha y límites de uso;
+no se presentan como normas peruanas ni entrevistas realizadas.

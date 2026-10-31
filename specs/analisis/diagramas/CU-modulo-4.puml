@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+title Control y optimización
+rectangle MedStock {
+usecase "CU-015: Auditar, verificar y conciliar" as CU015
+usecase "CU-016: Consolidar y exportar" as CU016
+usecase "CU-017: Reservar, consumir y liberar cantidades" as CU017
+usecase "CU-018: Interpretar fechas e identificar vencimientos" as CU018
+usecase "CU-019: Solicitar y ejecutar autorizaciones operativas" as CU019
+usecase "CU-020: Evaluar riesgo y redistribución" as CU020
+}
+actor "Auditor." as A0
+A0 -- CU015
+actor "Responsable central o auditor." as A1
+A1 -- CU016
+actor "Farmacia autorizada; expiración disparada por tiempo operativo." as A2
+A2 -- CU017
+actor "Responsable farmacéutico y operador autorizado." as A3
+A3 -- CU018
+actor "Operador solicitante y responsable con permiso específico." as A4
+A4 -- CU019
+actor "Responsable de farmacia o cadena." as A5
+A5 -- CU020
+@enduml

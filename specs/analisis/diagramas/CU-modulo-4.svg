@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700">
+<rect width="100%" height="100%" fill="white"/>
+<text x="25" y="30" font-family="sans-serif" font-size="20">Control y optimización</text>
+<rect x="280" y="50" width="690" height="630" fill="#f4f8fb" stroke="#334155"/>
+<text x="300" y="75" font-family="sans-serif" font-size="16">MedStock</text>
+<circle cx="55" cy="94" r="10" fill="none" stroke="#16324f"/>
+<path d="M55 104v25 M35 113h40 M55 129l-16 17 M55 129l16 17" fill="none" stroke="#16324f"/>
+<line x1="245" y1="110" x2="350" y2="110" stroke="#334155"/>
+<ellipse cx="635" cy="110" rx="285" ry="34" fill="white" stroke="#16324f"/>
+<text x="88" y="102" font-family="sans-serif" font-size="12">Auditor</text>
+<text x="635" y="105" text-anchor="middle" font-family="sans-serif" font-size="14">CU-015: Auditar, verificar y conciliar</text>
+<circle cx="55" cy="194" r="10" fill="none" stroke="#16324f"/>
+<path d="M55 204v25 M35 213h40 M55 229l-16 17 M55 229l16 17" fill="none" stroke="#16324f"/>
+<line x1="245" y1="210" x2="350" y2="210" stroke="#334155"/>
+<ellipse cx="635" cy="210" rx="285" ry="34" fill="white" stroke="#16324f"/>
+<text x="88" y="202" font-family="sans-serif" font-size="12">Responsable central o</text>
+<text x="88" y="218" font-family="sans-serif" font-size="12">auditor</text>
+<text x="635" y="205" text-anchor="middle" font-family="sans-serif" font-size="14">CU-016: Consolidar y exportar</text>
+<circle cx="55" cy="294" r="10" fill="none" stroke="#16324f"/>
+<path d="M55 304v25 M35 313h40 M55 329l-16 17 M55 329l16 17" fill="none" stroke="#16324f"/>
+<line x1="245" y1="310" x2="350" y2="310" stroke="#334155"/>
+<ellipse cx="635" cy="310" rx="285" ry="34" fill="white" stroke="#16324f"/>
+<text x="88" y="302" font-family="sans-serif" font-size="12">Farmacia autorizada;</text>
+<text x="88" y="318" font-family="sans-serif" font-size="12">expiración disparada por</text>
+<text x="88" y="334" font-family="sans-serif" font-size="12">tiempo operativo</text>
+<text x="635" y="305" text-anchor="middle" font-family="sans-serif" font-size="14">CU-017: Reservar, consumir y liberar cantidades</text>
+<circle cx="55" cy="394" r="10" fill="none" stroke="#16324f"/>
+<path d="M55 404v25 M35 413h40 M55 429l-16 17 M55 429l16 17" fill="none" stroke="#16324f"/>
+<line x1="245" y1="410" x2="350" y2="410" stroke="#334155"/>
+<ellipse cx="635" cy="410" rx="285" ry="34" fill="white" stroke="#16324f"/>
+<text x="88" y="402" font-family="sans-serif" font-size="12">Responsable farmacéutico</text>
+<text x="88" y="418" font-family="sans-serif" font-size="12">y operador autorizado</text>
+<text x="635" y="405" text-anchor="middle" font-family="sans-serif" font-size="14">CU-018: Interpretar fechas e identificar vencimientos</text>
+<circle cx="55" cy="494" r="10" fill="none" stroke="#16324f"/>
+<path d="M55 504v25 M35 513h40 M55 529l-16 17 M55 529l16 17" fill="none" stroke="#16324f"/>
+<line x1="245" y1="510" x2="350" y2="510" stroke="#334155"/>
+<ellipse cx="635" cy="510" rx="285" ry="34" fill="white" stroke="#16324f"/>
+<text x="88" y="502" font-family="sans-serif" font-size="12">Operador solicitante y</text>
+<text x="88" y="518" font-family="sans-serif" font-size="12">responsable con permiso</text>
+<text x="88" y="534" font-family="sans-serif" font-size="12">específico</text>
+<text x="635" y="505" text-anchor="middle" font-family="sans-serif" font-size="14">CU-019: Solicitar y ejecutar autorizaciones operativas</text>
+<circle cx="55" cy="594" r="10" fill="none" stroke="#16324f"/>
+<path d="M55 604v25 M35 613h40 M55 629l-16 17 M55 629l16 17" fill="none" stroke="#16324f"/>
+<line x1="245" y1="610" x2="350" y2="610" stroke="#334155"/>
+<ellipse cx="635" cy="610" rx="285" ry="34" fill="white" stroke="#16324f"/>
+<text x="88" y="602" font-family="sans-serif" font-size="12">Responsable de farmacia</text>
+<text x="88" y="618" font-family="sans-serif" font-size="12">o cadena</text>
+<text x="635" y="605" text-anchor="middle" font-family="sans-serif" font-size="14">CU-020: Evaluar riesgo y redistribución</text>
+</svg>

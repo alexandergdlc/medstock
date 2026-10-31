@@ -14,7 +14,7 @@
 ## Requirement Completeness
 
 - [x] No quedan marcadores de plantilla ni NEEDS CLARIFICATION sin explicar.
-- [x] Los 64 RF tienen criterios principales comprobables en 08.
+- [x] Los 68 RF tienen criterios principales comprobables en 08.
 - [x] Los criterios de éxito son observables y no dependen de un producto técnico.
 - [x] Se describen alcance, exclusiones, dependencias y supuestos.
 - [x] Hay casos alternativos, límites y concurrencia con resultados esperados.

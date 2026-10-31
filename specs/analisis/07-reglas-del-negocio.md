@@ -1,8 +1,8 @@
 # Reglas de negocio e invariantes
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Autoridad y estado
 
@@ -25,9 +25,9 @@ atribuidas a DIGEMID ni a una cadena privada. Su detalle y decisión están en 1
 | RN-012 | Integridad de operación | Cada recepción, despacho o salida de traslado confirmada une su documento, cambios de existencia y auditoría: se confirman juntos o no producen efecto de negocio. | ACORDADA |
 | RN-013 | Sin negativos | Ninguna intercalación de operaciones válidas puede dejar existencia negativa o entregar más unidades que las disponibles. | ACORDADA |
 | RN-014 | Reintentos | Una misma operación lógica produce como máximo un efecto: un reintento con el mismo contenido devuelve su resultado; contenido diferente con la misma identidad se rechaza. | ACORDADA |
-| RN-015 | Parcialidad | Si no alcanza el stock, se rechaza sin efectos salvo aceptación explícita de una cantidad parcial. La cantidad pendiente se conserva; nunca se marca completada una solicitud incompleta. | PROPUESTA PP-005 |
-| RN-016 | Reservas explícitas | Enviar o consultar una solicitud no reserva stock. El alcance incluye una operación explícita de reserva por lote, con vigencia finita, consumo y liberación; su activación está prevista en I3. | CAPACIDAD ACORDADA; detalle PP-006 |
-| RN-017 | Solicitud | Solo una solicitud enviada y vigente puede atenderse. Su creador no cambia líneas ya atendidas ni cancela unidades entregadas. | PROPUESTA PP-007 |
+| RN-015 | Parcialidad | Si no alcanza el stock, se rechaza sin efectos salvo aceptación explícita de una cantidad parcial. La cantidad pendiente se conserva; nunca se marca completada una solicitud incompleta. | ACORDADA POR PROPIETARIO; PP-005 |
+| RN-016 | Reservas explícitas | Enviar o consultar una solicitud no reserva stock. El alcance incluye una operación explícita de reserva por lote posterior a autorización y anterior al despacho, con vigencia finita, consumo y liberación; su activación está prevista en I3. | CAPACIDAD ACORDADA; detalle PP-006 |
+| RN-017 | Solicitud | Solo una solicitud autorizada y vigente puede atenderse, dentro de sus cantidades aprobadas. Su creador no cambia líneas ya atendidas ni cancela unidades entregadas. | ACORDADA POR PROPIETARIO; PP-007 |
 | RN-018 | Traslado | El origen y destino son distintos. La salida descuenta origen y crea tránsito; la recepción descuenta tránsito y acredita destino sin duplicar existencia global. | ACORDADA |
 | RN-019 | Diferencias | En recepción de traslado, cantidades dañadas quedan segregadas y faltantes permanecen como diferencia pendiente; no se convierte automáticamente un faltante en pérdida aprobada. | PROPUESTA PP-008 |
 | RN-020 | Devolución | Una devolución referencia la salida y sus lotes. No puede superar la cantidad entregada menos devoluciones previas; entra a cuarentena hasta evaluación. | ACORDADA |
@@ -45,7 +45,7 @@ atribuidas a DIGEMID ni a una cadena privada. Su detalle y decisión están en 1
 | RN-032 | Producto sin caducidad | Solo categorías con revisión autorizada admiten lote sin fecha; no compiten con lotes caducables en FEFO. Si no se justifica esta categoría, se excluye del prototipo. | PROPUESTA PP-013 |
 | RN-033 | Informe | Los resultados indican ámbito, filtros y fecha de corte; los consolidados no exponen sedes fuera de permisos. | ACORDADA |
 | RN-034 | Aislamiento de fallos | Un resultado incierto no autoriza repetir con otra identidad: primero se consulta el resultado de la operación original. | ACORDADA |
-| RN-035 | Salida a servicio | La entrega a un servicio constituye salida del inventario gestionado. No afirma que el medicamento fue administrado al paciente; el subinventario clínico del servicio es evolución posterior. | PROPUESTA PP-014 |
+| RN-035 | Salida a servicio | La entrega a un servicio constituye salida del inventario gestionado. No afirma que el medicamento fue administrado al paciente; el subinventario clínico del servicio es evolución posterior. | ACORDADA POR PROPIETARIO; PP-014 |
 | RN-036 | Obligaciones separadas | La aplicación apoya registros y controles; el software no acredita inspección física, condiciones de conservación ni certificación sanitaria. | ACORDADA |
 
 ## Reglas especializadas de compromiso y decisión
@@ -53,7 +53,7 @@ atribuidas a DIGEMID ni a una cadena privada. Su detalle y decisión están en 1
 | ID | Regla | Definición | Estado |
 | --- | --- | --- | --- |
 | RN-037 | Compromisos y libre | En cada corte, libre = utilizable elegible menos compromiso vigente consumible. El compromiso no cambia físico y no supera la cantidad elegible a la que se vincula. | CAPACIDAD ACORDADA; detalle PP-006 |
-| RN-038 | Elegibilidad de reserva | Solo se reserva para solicitud vigente, ámbito permitido y lotes elegibles. La reserva se asigna por FEFO y nunca autoriza consumir un lote que después dejó de ser elegible. | ACORDADA; detalle PP-015 |
+| RN-038 | Elegibilidad de reserva | Solo se reserva para solicitud autorizada y vigente, ámbito permitido y lotes elegibles; el compromiso total no supera su saldo autorizado pendiente. La reserva se asigna por FEFO y nunca autoriza consumir un lote que después dejó de ser elegible. | ACORDADA; detalle PP-015 |
 | RN-039 | Ciclo temporal | Una reserva se cancela, expira o invalida solo por su remanente. A partir del fin T ya no compromete ni autoriza consumo, independientemente de cuándo se actualice su estado materializado. Un lote bloqueado no pasa a libre por liberar la reserva. | CAPACIDAD ACORDADA; plazo PP-016 |
 | RN-040 | Decisión ligada al contenido | Aprobaciones e interpretaciones conservan versión, alcance, autor y evidencia. Una aprobación no se reutiliza con cantidades o lotes diferentes ni sustituye revalidar permisos y stock. | PROPUESTA PP-017 |
 | RN-041 | Evidencia del retorno | Liberar devolución exige causa, origen y evidencia de conservación revisada por responsable facultado. Rechazarla conserva stock segregado hasta una disposición autorizada. | ACORDADA; procedimiento PP-018 |
@@ -69,7 +69,9 @@ para despachar vencidos o saltarse bloqueos por urgencia dentro de este alcance.
 
 ## Invariantes comprobables
 
-- Cantidad por balance >= 0; pendiente = solicitado - entregado - cancelado >= 0.
+- Cantidad por balance >= 0. Por línea: solicitado = por decidir + rechazado + cancelado antes de autorizar + autorizado. Autorizado = entregado + cancelado autorizado + pendiente autorizado. Todos son no negativos.
+- El saldo reservado vigente es parte del pendiente autorizado; no se resta dos veces.
+- Entregado no supera autorizado; autorizado no supera solicitado. Cada decisión registra sus cantidades; no se reduce retroactivamente lo entregado.
 - Entregado por solicitud nunca supera lo solicitado sin una nueva solicitud autorizada.
 - Devuelto acumulado no supera lo entregado por línea y lote.
 - Expedido de traslado = recibido registrado + diferencia en tránsito pendiente +
@@ -95,3 +97,17 @@ mediante otra asignación válida; no se limita su derecho a su vista de libre a
 Si llega otro lote con vencimiento anterior después de reservar, PP-015 propone
 respetar el compromiso original válido; reasignar exige una operación explícita,
 no un cambio silencioso. Esta política debe revisarse antes de implementar reservas.
+
+## Organización logística y optimización aceptadas
+
+| ID | Regla | Definición | Estado |
+|---|---|---|---|
+| RN-043 | Topología logística | Una cadena contiene un establecimiento logístico central y sedes clínicas. Cada ubicación de custodia tiene un único establecimiento responsable y clase: almacén central, almacén de sede o farmacia. Una farmacia principal por sede es la configuración inicial, no un límite del modelo. Los servicios son destinos; no tienen existencias propias en la primera versión. | ACORDADA |
+| RN-044 | Autorización de demanda | El envío registra demanda. La autorización identifica producto, cantidad máxima, origen, destino y versión; no garantiza stock ni produce movimiento. Reservar requiere saldo autorizado y elegible. El despacho consume reserva vigente o asigna libre sin invadir compromisos ajenos; ambos respetan el saldo autorizado. Automatizar la autorización exige política explícita versionada, deshabilitada inicialmente. | ACORDADA; matriz de permisos pendiente |
+| RN-045 | Rotación útil | Medir demanda y salidas finales por producto/ubicación/periodo. Traslados internos, ajustes, bajas y devoluciones no se cuentan como consumo clínico ni como demanda satisfecha nueva. Sin historial suficiente o con demanda cero, la cobertura se informa no calculable, nunca como cero riesgo. Alertas no crean compras, traslados ni bajas. | ACORDADA; parámetros PN-002 |
+| RN-046 | Redistribución supervisada | Una propuesta compara libre elegible en origen, demanda y capacidad de recepción en destino, compromisos, conservación y tiempo hasta vencimiento. No garantiza consumo futuro ni ejecuta movimientos. Un responsable acepta, modifica o descarta con motivo; aceptar inicia el circuito de traslado, que revalida stock y autorización. | ACORDADA |
+
+La autorización inicial de solicitud aprueba producto y techo cuantitativo antes de
+asignar lotes. La asignación FEFO posterior conserva su propio registro. Si una
+autorización de expedición identifica lotes concretos, cambiarlos requiere nueva
+revisión (RN-040). Así no se exige conocer un lote antes de autorizar demanda.

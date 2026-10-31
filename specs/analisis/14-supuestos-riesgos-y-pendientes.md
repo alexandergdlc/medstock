@@ -1,8 +1,8 @@
 # Supuestos, políticas propuestas y riesgos
 
-**Proyecto:** MedStock · **Versión:** 0.2.0 · **Fecha:** 2026-10-15
+**Proyecto:** MedStock · **Versión:** 0.3.0 · **Fecha:** 2026-10-15
 
-**Estado:** borrador de análisis para revisión del propietario. Las políticas PP son propuestas.
+**Estado:** borrador de análisis para revisión del propietario. Decisiones del propietario aceptadas; detalles operativos pendientes según 14.
 
 ## Decisiones ya aceptadas
 
@@ -23,8 +23,8 @@ confirmado. El borrador permite revisarlas sin pedir respuestas para cada párra
 | PP-002 | Identidad de lote | Producto + fabricante + código; fecha conflictiva pasa a revisión. | Gestor de catálogo / farmacia | PN-001 |
 | PP-003 | Fecha | Excluir vencimiento <= fecha operativa; mes/año no se normaliza sin validación. | Responsable farmacéutico | PN-001 |
 | PP-004 | Empate FEFO | Primera recepción en la ubicación de salida y después identificador de lote. | Farmacia | PN-002 |
-| PP-005 | Parciales | Rechazar insuficiencia salvo aceptación explícita; conservar remanente. | Responsable de servicio / farmacia | PN-002 |
-| PP-006 | Reservas | Capacidad incluida por Alexander: reserva explícita y finita en I3; solicitar/consultar no reserva. Plazo y autoridades se validan. | Propietario / farmacia | PN-002 |
+| PP-005 | Parciales | ACEPTADA POR PROPIETARIO: aceptar explícitamente la entrega parcial, conservar saldo autorizado y cancelar remanente solo con motivo y responsable. | Responsable de servicio / farmacia | PN-002 |
+| PP-006 | Reservas | Capacidad incluida por Alexander: reserva explícita y finita en I3, posterior a autorización y anterior a despacho; solicitar/consultar no reserva. Momento ACEPTADO; plazo y autoridades se validan. | Propietario / farmacia | PN-002 |
 | PP-007 | Edición de solicitud | No editar líneas atendidas; cancelar solo remanente. | Responsable de servicio | PN-002 |
 | PP-008 | Diferencias | Faltante conserva tránsito; daño recibido se segrega en destino. | Logística y destino | PN-003 |
 | PP-009 | Ajustes | Aprobador distinto; revalidar saldo/corte antes de confirmar. | Responsable de cadena | PN-003 |
@@ -32,7 +32,7 @@ confirmado. El borrador permite revisarlas sin pedir respuestas para cada párra
 | PP-011 | Roles | Matriz de 04; administrador no obtiene facultad clínica automática. | Dirección / responsable farmacéutico | PN-004 |
 | PP-012 | Alertas | Umbrales configurables por sede/producto; valores iniciales deben validarse, sin número universal. | Farmacia | PN-002 |
 | PP-013 | No caducables | Categoría autorizada o exclusión del prototipo; sin FEFO artificial. | Gestor de catálogo / farmacia | PN-001 |
-| PP-014 | Frontera de stock | La salida al servicio deja el inventario gestionado; subinventario clínico posterior. | Propietario / responsable de servicio | PN-004 |
+| PP-014 | Frontera de stock | ACEPTADA POR PROPIETARIO: inventario en almacenes y farmacia; salida final a servicio deja inventario gestionado. Una existencia de emergencia futura exige ubicación y custodia explícitas, sin activación implícita. | Propietario / responsable de servicio | PN-004 |
 
 ## Políticas de detalle añadidas en 0.2.0
 
@@ -49,9 +49,9 @@ confirmado. El borrador permite revisarlas sin pedir respuestas para cada párra
 | ID | Decisión / evidencia faltante | Impacto | Responsable / cierre |
 |---|---|---|---|
 | PN-001 | Unidades, lote, vencimiento y categorías especiales | Elegibilidad y calidad de datos | Responsable farmacéutico antes de diseñar recepción/FEFO |
-| PN-002 | Detalles de parcialidad; duración, consumo y liberación de reservas; empates y umbrales | Las cinco capacidades están incluidas; quedan parámetros y políticas operativas | Alexander con representantes operativos antes de diseñar cada capacidad |
+| PN-002 | Duración de reservas, prioridades excepcionales, empates FEFO, umbrales de alertas/cobertura y ventana de demanda; momento de reserva y saldo parcial aceptados | Las cinco capacidades están incluidas; quedan parámetros y políticas operativas | Alexander con representantes operativos antes de diseñar cada capacidad |
 | PN-003 | Aprobaciones y resolución de diferencias | Integridad logística y correcciones | Responsable de cadena antes de diseñar I3 |
-| PN-004 | Roles finales y frontera de stock del servicio | Alcance y privacidad | Alexander y organización antes de fijar permisos |
+| PN-004 | Roles finales y configuración de futuras existencias de servicio; frontera inicial aceptada | Alcance y privacidad | Alexander y organización antes de fijar permisos |
 | PN-005 | Perfil, volumen y tiempos objetivos de carga | Factibilidad de 2 000 usuarios y cuota | Alexander antes de plan de carga / diseño de rendimiento |
 | PN-006 | Retención, respaldos, RPO/RTO y referencia confiable de auditoría | Recuperación y capacidad de detectar reescritura/truncado | Organización y arquitectura antes de producción |
 | PN-007 | Organización concreta, entrevistas y normativa aplicable consolidada | Validación externa y afirmaciones sanitarias | Alexander / profesional competente antes de alegar uso real |
@@ -67,7 +67,8 @@ Ningún pendiente está resuelto por el hecho de integrar un archivo de document
 Operación online; una sola cadena en el alcance; usuarios de ensayo sin pacientes;
 catálogo inicial preparado; ubicaciones y lotes identificables; recepción/entrega
 físicas ejecutadas por personal responsable. No se presume integración con sistemas
-clínicos, un almacén central obligatorio ni cuota ilimitada de servicios gratuitos.
+clínicos ni cuota ilimitada de servicios gratuitos. Se confirma un almacén central
+y almacenes por sede; inicialmente una farmacia principal por sede.
 
 ## Riesgos
 
@@ -95,4 +96,21 @@ como duración de reserva y precisión de vencimiento. Esto no acredita validaci
 un responsable farmacéutico ni convierte una decisión del producto en mandato legal.
 
 Alexander aceptó SDD + Kanban; ver [organización del trabajo](19-organizacion-agil-y-sdd.md).
-El tablero y los parámetros de flujo siguen pendientes de puesta en práctica.
+El tablero versionado e Issues comienzan en 0.3.0; GitHub Projects queda pendiente.
+Los parámetros de negocio pendientes no se cierran por crear tarjetas.
+
+## Decisiones confirmadas el 15 de octubre de 2026
+
+Alexander acepta: almacén central y almacenes por sede; farmacia principal por sede
+con ubicaciones ampliables; servicios configurables; parciales con saldo pendiente;
+reserva posterior a autorización y previa a despacho; investigación documental con
+límites explícitos; diagramas de procesos y casos de uso; gestión SDD + Kanban.
+También acepta orientar la optimización a reducir faltantes, sobrestock y mermas.
+No se busca maximizar movimientos ni adelantar consumos clínicos innecesarios.
+
+Estas decisiones cierran su elección de producto. No convierten todos los valores
+PP en políticas sanitarias validadas. No hay farmacéutico disponible para entrevistas;
+PN-007 permanece abierto y el análisis usa fuentes documentales identificadas.
+
+La organización inicial y la optimización están en RN-043 a RN-046. Los parámetros
+numéricos de cobertura, demanda, reserva y prioridad urgente siguen en PN-002.

@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+title Organización y acceso
+rectangle MedStock {
+usecase "CU-001: Acceder y operar con seguimiento" as CU001
+usecase "CU-002: Administrar identidades y permisos" as CU002
+usecase "CU-003: Gestionar establecimientos" as CU003
+usecase "CU-004: Mantener catálogo y políticas" as CU004
+}
+actor "Usuario." as A0
+A0 -- CU001
+actor "Administrador." as A1
+A1 -- CU002
+actor "Administrador o responsable de sede." as A2
+A2 -- CU003
+actor "Gestor de catálogo o responsable central." as A3
+A3 -- CU004
+@enduml
