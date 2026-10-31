@@ -27,13 +27,13 @@ Como operador de almacén autorizado quiero recibir productos por lote y consult
 
 **Acceptance Scenarios**:
 
-- [CA-007](../analisis/08-requisitos-funcionales.md): Registrar procedencias.
-- [CA-008](../analisis/08-requisitos-funcionales.md): Preparar recepción.
-- [CA-009](../analisis/08-requisitos-funcionales.md): Confirmar recepción.
-- [CA-010](../analisis/08-requisitos-funcionales.md): Consultar existencias.
-- [CA-011](../analisis/08-requisitos-funcionales.md): Consultar historial por lote.
+- [CA-007](../analisis/03-requisitos/08-requisitos-funcionales.md): Registrar procedencias.
+- [CA-008](../analisis/03-requisitos/08-requisitos-funcionales.md): Preparar recepción.
+- [CA-009](../analisis/03-requisitos/08-requisitos-funcionales.md): Confirmar recepción.
+- [CA-010](../analisis/03-requisitos/08-requisitos-funcionales.md): Consultar existencias.
+- [CA-011](../analisis/03-requisitos/08-requisitos-funcionales.md): Consultar historial por lote.
 
-- [CA-051](../analisis/08-requisitos-funcionales.md): Capturar precisión del vencimiento.
+- [CA-051](../analisis/03-requisitos/08-requisitos-funcionales.md): Capturar precisión del vencimiento.
 
 **Flujos:** CU-005, CU-006. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -47,17 +47,17 @@ Como farmacia quiero atender demanda interna mediante lotes elegibles, conservan
 
 **Acceptance Scenarios**:
 
-- [CA-013](../analisis/08-requisitos-funcionales.md): Crear solicitud interna.
-- [CA-014](../analisis/08-requisitos-funcionales.md): Consultar o cancelar solicitud.
-- [CA-015](../analisis/08-requisitos-funcionales.md): Evaluar disponibilidad FEFO.
-- [CA-016](../analisis/08-requisitos-funcionales.md): Confirmar despacho.
-- [CA-017](../analisis/08-requisitos-funcionales.md): Atender parcialmente.
-- [CA-018](../analisis/08-requisitos-funcionales.md): Recuperar resultado.
-- [CA-019](../analisis/08-requisitos-funcionales.md): Emitir constancia de salida.
+- [CA-013](../analisis/03-requisitos/08-requisitos-funcionales.md): Crear solicitud interna.
+- [CA-014](../analisis/03-requisitos/08-requisitos-funcionales.md): Consultar o cancelar solicitud.
+- [CA-015](../analisis/03-requisitos/08-requisitos-funcionales.md): Evaluar disponibilidad FEFO.
+- [CA-016](../analisis/03-requisitos/08-requisitos-funcionales.md): Confirmar despacho.
+- [CA-017](../analisis/03-requisitos/08-requisitos-funcionales.md): Atender parcialmente.
+- [CA-018](../analisis/03-requisitos/08-requisitos-funcionales.md): Recuperar resultado.
+- [CA-019](../analisis/03-requisitos/08-requisitos-funcionales.md): Emitir constancia de salida.
 
-- [CA-041](../analisis/08-requisitos-funcionales.md): Registrar consentimiento de entrega parcial.
-- [CA-042](../analisis/08-requisitos-funcionales.md): Continuar o cerrar remanentes.
-- [CA-043](../analisis/08-requisitos-funcionales.md): Consultar seguimiento de parciales.
+- [CA-041](../analisis/03-requisitos/08-requisitos-funcionales.md): Registrar consentimiento de entrega parcial.
+- [CA-042](../analisis/03-requisitos/08-requisitos-funcionales.md): Continuar o cerrar remanentes.
+- [CA-043](../analisis/03-requisitos/08-requisitos-funcionales.md): Consultar seguimiento de parciales.
 
 **Flujos:** CU-007, CU-008. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -71,16 +71,16 @@ Como administrador quiero incorporar nuevas sedes y asignar acceso para ampliar 
 
 **Acceptance Scenarios**:
 
-- [CA-001](../analisis/08-requisitos-funcionales.md): Acceder y cerrar sesión.
-- [CA-002](../analisis/08-requisitos-funcionales.md): Administrar permisos.
-- [CA-003](../analisis/08-requisitos-funcionales.md): Gestionar sedes.
-- [CA-004](../analisis/08-requisitos-funcionales.md): Gestionar ubicaciones y servicios.
-- [CA-005](../analisis/08-requisitos-funcionales.md): Gestionar catálogo.
-- [CA-006](../analisis/08-requisitos-funcionales.md): Definir presentaciones.
-- [CA-036](../analisis/08-requisitos-funcionales.md): Desactivar sin borrar.
-- [CA-037](../analisis/08-requisitos-funcionales.md): Configurar políticas.
-- [CA-038](../analisis/08-requisitos-funcionales.md): Auditar acceso y administración.
-- [CA-040](../analisis/08-requisitos-funcionales.md): Mostrar errores y seguimiento.
+- [CA-001](../analisis/03-requisitos/08-requisitos-funcionales.md): Acceder y cerrar sesión.
+- [CA-002](../analisis/03-requisitos/08-requisitos-funcionales.md): Administrar permisos.
+- [CA-003](../analisis/03-requisitos/08-requisitos-funcionales.md): Gestionar sedes.
+- [CA-004](../analisis/03-requisitos/08-requisitos-funcionales.md): Gestionar ubicaciones y servicios.
+- [CA-005](../analisis/03-requisitos/08-requisitos-funcionales.md): Gestionar catálogo.
+- [CA-006](../analisis/03-requisitos/08-requisitos-funcionales.md): Definir presentaciones.
+- [CA-036](../analisis/03-requisitos/08-requisitos-funcionales.md): Desactivar sin borrar.
+- [CA-037](../analisis/03-requisitos/08-requisitos-funcionales.md): Configurar políticas.
+- [CA-038](../analisis/03-requisitos/08-requisitos-funcionales.md): Auditar acceso y administración.
+- [CA-040](../analisis/03-requisitos/08-requisitos-funcionales.md): Mostrar errores y seguimiento.
 
 **Flujos:** CU-001, CU-002, CU-003, CU-004. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -94,15 +94,15 @@ Como responsable y auditor quiero impedir salidas de lotes afectados y reconstru
 
 **Acceptance Scenarios**:
 
-- [CA-028](../analisis/08-requisitos-funcionales.md): Bloquear y liberar lote.
-- [CA-029](../analisis/08-requisitos-funcionales.md): Gestionar retiro de lote.
-- [CA-032](../analisis/08-requisitos-funcionales.md): Consultar auditoría.
-- [CA-033](../analisis/08-requisitos-funcionales.md): Verificar integridad.
-- [CA-039](../analisis/08-requisitos-funcionales.md): Reconciliar inventario.
+- [CA-028](../analisis/03-requisitos/08-requisitos-funcionales.md): Bloquear y liberar lote.
+- [CA-029](../analisis/03-requisitos/08-requisitos-funcionales.md): Gestionar retiro de lote.
+- [CA-032](../analisis/03-requisitos/08-requisitos-funcionales.md): Consultar auditoría.
+- [CA-033](../analisis/03-requisitos/08-requisitos-funcionales.md): Verificar integridad.
+- [CA-039](../analisis/03-requisitos/08-requisitos-funcionales.md): Reconciliar inventario.
 
-- [CA-052](../analisis/08-requisitos-funcionales.md): Versionar interpretación de fechas.
-- [CA-054](../analisis/08-requisitos-funcionales.md): Revalidar fechas al comprometer stock.
-- [CA-063](../analisis/08-requisitos-funcionales.md): Consultar decisión y evidencia operativa.
+- [CA-052](../analisis/03-requisitos/08-requisitos-funcionales.md): Versionar interpretación de fechas.
+- [CA-054](../analisis/03-requisitos/08-requisitos-funcionales.md): Revalidar fechas al comprometer stock.
+- [CA-063](../analisis/03-requisitos/08-requisitos-funcionales.md): Consultar decisión y evidencia operativa.
 
 **Flujos:** CU-013, CU-015. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -116,10 +116,10 @@ Como responsable logístico quiero expedir y recibir por lote, conservando trán
 
 **Acceptance Scenarios**:
 
-- [CA-020](../analisis/08-requisitos-funcionales.md): Solicitar traslado.
-- [CA-021](../analisis/08-requisitos-funcionales.md): Autorizar y expedir traslado.
-- [CA-022](../analisis/08-requisitos-funcionales.md): Recibir traslado.
-- [CA-023](../analisis/08-requisitos-funcionales.md): Resolver diferencia de traslado.
+- [CA-020](../analisis/03-requisitos/08-requisitos-funcionales.md): Solicitar traslado.
+- [CA-021](../analisis/03-requisitos/08-requisitos-funcionales.md): Autorizar y expedir traslado.
+- [CA-022](../analisis/03-requisitos/08-requisitos-funcionales.md): Recibir traslado.
+- [CA-023](../analisis/03-requisitos/08-requisitos-funcionales.md): Resolver diferencia de traslado.
 
 **Flujos:** CU-009, CU-010. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -133,17 +133,17 @@ Como responsable quiero evaluar devoluciones, conteos y bajas sin borrar movimie
 
 **Acceptance Scenarios**:
 
-- [CA-024](../analisis/08-requisitos-funcionales.md): Registrar devolución.
-- [CA-025](../analisis/08-requisitos-funcionales.md): Evaluar devolución.
-- [CA-026](../analisis/08-requisitos-funcionales.md): Registrar conteo.
-- [CA-027](../analisis/08-requisitos-funcionales.md): Autorizar ajuste.
-- [CA-030](../analisis/08-requisitos-funcionales.md): Registrar baja.
-- [CA-031](../analisis/08-requisitos-funcionales.md): Compensar error.
+- [CA-024](../analisis/03-requisitos/08-requisitos-funcionales.md): Registrar devolución.
+- [CA-025](../analisis/03-requisitos/08-requisitos-funcionales.md): Evaluar devolución.
+- [CA-026](../analisis/03-requisitos/08-requisitos-funcionales.md): Registrar conteo.
+- [CA-027](../analisis/03-requisitos/08-requisitos-funcionales.md): Autorizar ajuste.
+- [CA-030](../analisis/03-requisitos/08-requisitos-funcionales.md): Registrar baja.
+- [CA-031](../analisis/03-requisitos/08-requisitos-funcionales.md): Compensar error.
 
-- [CA-059](../analisis/08-requisitos-funcionales.md): Documentar causas y conservación del retorno.
-- [CA-060](../analisis/08-requisitos-funcionales.md): Controlar saldo retornable concurrente.
-- [CA-061](../analisis/08-requisitos-funcionales.md): Evaluar retorno por línea.
-- [CA-062](../analisis/08-requisitos-funcionales.md): Disponer retorno rechazado.
+- [CA-059](../analisis/03-requisitos/08-requisitos-funcionales.md): Documentar causas y conservación del retorno.
+- [CA-060](../analisis/03-requisitos/08-requisitos-funcionales.md): Controlar saldo retornable concurrente.
+- [CA-061](../analisis/03-requisitos/08-requisitos-funcionales.md): Evaluar retorno por línea.
+- [CA-062](../analisis/03-requisitos/08-requisitos-funcionales.md): Disponer retorno rechazado.
 
 **Flujos:** CU-011, CU-012, CU-014. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -157,11 +157,11 @@ Como responsable central quiero consultar alertas y reportes por corte y ámbito
 
 **Acceptance Scenarios**:
 
-- [CA-012](../analisis/08-requisitos-funcionales.md): Alertar stock y vencimiento.
-- [CA-034](../analisis/08-requisitos-funcionales.md): Consolidar reportes.
-- [CA-035](../analisis/08-requisitos-funcionales.md): Exportar resultados.
+- [CA-012](../analisis/03-requisitos/08-requisitos-funcionales.md): Alertar stock y vencimiento.
+- [CA-034](../analisis/03-requisitos/08-requisitos-funcionales.md): Consolidar reportes.
+- [CA-035](../analisis/03-requisitos/08-requisitos-funcionales.md): Exportar resultados.
 
-- [CA-053](../analisis/08-requisitos-funcionales.md): Identificar próximos vencimientos.
+- [CA-053](../analisis/03-requisitos/08-requisitos-funcionales.md): Identificar próximos vencimientos.
 
 **Flujos:** CU-006, CU-016. Los criterios completos son canónicos en 08 y los casos en 10.
 
@@ -175,14 +175,14 @@ Como farmacia quiero apartar cantidades por lote para una solicitud y liberar su
 
 **Acceptance Scenarios**:
 
-- [CA-044](../analisis/08-requisitos-funcionales.md): Crear reserva explícita por lote.
-- [CA-045](../analisis/08-requisitos-funcionales.md): Consultar libre y comprometido.
-- [CA-046](../analisis/08-requisitos-funcionales.md): Cancelar y liberar reserva.
-- [CA-047](../analisis/08-requisitos-funcionales.md): Expirar reserva por tiempo operativo.
-- [CA-048](../analisis/08-requisitos-funcionales.md): Consumir reserva al despachar.
-- [CA-049](../analisis/08-requisitos-funcionales.md): Invalidar reserva no elegible.
-- [CA-050](../analisis/08-requisitos-funcionales.md): Auditar ciclo de reserva.
-- [CA-064](../analisis/08-requisitos-funcionales.md): Conciliar compromisos y saldos físicos.
+- [CA-044](../analisis/03-requisitos/08-requisitos-funcionales.md): Crear reserva explícita por lote.
+- [CA-045](../analisis/03-requisitos/08-requisitos-funcionales.md): Consultar libre y comprometido.
+- [CA-046](../analisis/03-requisitos/08-requisitos-funcionales.md): Cancelar y liberar reserva.
+- [CA-047](../analisis/03-requisitos/08-requisitos-funcionales.md): Expirar reserva por tiempo operativo.
+- [CA-048](../analisis/03-requisitos/08-requisitos-funcionales.md): Consumir reserva al despachar.
+- [CA-049](../analisis/03-requisitos/08-requisitos-funcionales.md): Invalidar reserva no elegible.
+- [CA-050](../analisis/03-requisitos/08-requisitos-funcionales.md): Auditar ciclo de reserva.
+- [CA-064](../analisis/03-requisitos/08-requisitos-funcionales.md): Conciliar compromisos y saldos físicos.
 
 **Flujos:** CU-017, CU-015.
 
@@ -196,10 +196,10 @@ Como responsable quiero aprobar o rechazar una operación concreta y asegurar qu
 
 **Acceptance Scenarios**:
 
-- [CA-055](../analisis/08-requisitos-funcionales.md): Solicitar autorización vinculada.
-- [CA-056](../analisis/08-requisitos-funcionales.md): Aprobar o rechazar con alcance.
-- [CA-057](../analisis/08-requisitos-funcionales.md): Exigir separación de funciones.
-- [CA-058](../analisis/08-requisitos-funcionales.md): Invalidar aprobaciones desactualizadas.
+- [CA-055](../analisis/03-requisitos/08-requisitos-funcionales.md): Solicitar autorización vinculada.
+- [CA-056](../analisis/03-requisitos/08-requisitos-funcionales.md): Aprobar o rechazar con alcance.
+- [CA-057](../analisis/03-requisitos/08-requisitos-funcionales.md): Exigir separación de funciones.
+- [CA-058](../analisis/03-requisitos/08-requisitos-funcionales.md): Invalidar aprobaciones desactualizadas.
 
 **Flujos:** CU-019. Autorizar demanda (RF-066) precede reserva y despacho.
 
@@ -210,14 +210,14 @@ diferente; fallo entre efectos; lote bloqueado o vencido tras consultar; empate 
 traslado parcial con daño y faltante; devolución acumulada concurrente; compensación
 sobre stock ya consumido; revocación de permisos; corte de reporte y truncado de
 historial. Los resultados esperados están en CA-101 a CA-126 del
-[plan de validación](../analisis/15-trazabilidad-y-validacion.md).
+[plan de validación](../analisis/06-calidad-y-validacion/15-trazabilidad-y-validacion.md).
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
 La definición única de cada RF y su criterio está en el
-[catálogo funcional](../analisis/08-requisitos-funcionales.md). Esta especificación
+[catálogo funcional](../analisis/03-requisitos/08-requisitos-funcionales.md). Esta especificación
 lo incorpora por referencia, evitando dos textos normativos divergentes.
 
 | Historia | Requisitos canónicos |
@@ -237,7 +237,7 @@ lo incorpora por referencia, evitando dos textos normativos divergentes.
 Sede, ubicación, servicio, usuario/asignación, producto/presentación, lote/existencia,
 recepción, solicitud/despacho, traslado, devolución, conteo/ajuste, bloqueo y
 operación/movimiento/evento de auditoría, reserva/línea, aprobación y política temporal. Las relaciones y significados están en
-el [modelo conceptual](../analisis/12-modelo-conceptual.md); no se fija almacenamiento.
+el [modelo conceptual](../analisis/05-modelos/12-modelo-conceptual.md); no se fija almacenamiento.
 
 ## Success Criteria *(mandatory)*
 
@@ -276,7 +276,7 @@ todavía no se ha creado.
 
 Una cadena; operación online; identidades y datos de ensayo; cantidades discretas;
 solicitudes internas sin pacientes; recepción física revisada por responsable.
-Las PP de [14](../analisis/14-supuestos-riesgos-y-pendientes.md) son defaults propuestos
+Las PP de [14](../analisis/08-gestion/14-supuestos-riesgos-y-pendientes.md) son defaults propuestos
 para permitir revisión, no decisiones silenciosas. La normativa aplicable y el
 perfil de carga exigen validación. La planificación de cada incremento se hará tras
 cerrar sus pendientes críticos. No se requiere completar todo el producto para

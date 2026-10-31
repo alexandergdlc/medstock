@@ -6,9 +6,9 @@
 
 ## Matriz funcional completa
 
-Los enlaces canónicos son [RF/CA](08-requisitos-funcionales.md),
-[RN](07-reglas-del-negocio.md), [CU](10-casos-de-uso-e-historias.md) y
-[OBJ](02-vision-objetivos-y-exito.md). La tabla permite seguir ambas direcciones;
+Los enlaces canónicos son [RF/CA](../03-requisitos/08-requisitos-funcionales.md),
+[RN](../02-negocio/07-reglas-del-negocio.md), [CU](../04-casos-de-uso/10-casos-de-uso-e-historias.md) y
+[OBJ](../01-contexto/02-vision-objetivos-y-exito.md). La tabla permite seguir ambas direcciones;
 los IDs se mantienen aunque se reordenen archivos. FU-001 origina las capacidades;
 las PP se vinculan desde RN y el registro 14.
 
